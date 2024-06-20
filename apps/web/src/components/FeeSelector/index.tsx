@@ -2,7 +2,7 @@ import {
   FeePoolSelectAction,
   LiquidityEventName,
 } from "@uniswap/analytics-events";
-import { Currency } from "@uniswap/sdk-core";
+import { Currency } from "core87";
 import { FeeAmount } from "@uniswap/v3-sdk";
 import { useWeb3React } from "@web3-react/core";
 import { sendAnalyticsEvent, useTrace } from "analytics";

@@ -1,4 +1,4 @@
-import { Currency } from '@uniswap/sdk-core'
+import { Currency } from 'core87'
 import { LocalizationContextState } from 'wallet/src/features/language/LocalizationContext'
 import { getValidAddress, shortenAddress } from 'wallet/src/utils/addresses'
 import { ValueType, getCurrencyAmount } from 'wallet/src/utils/getCurrencyAmount'

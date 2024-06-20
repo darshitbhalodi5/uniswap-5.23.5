@@ -3,7 +3,7 @@ import {
   SUPPORTED_CHAINS,
   SupportedChainsType,
   V2_ROUTER_ADDRESSES,
-} from "@uniswap/sdk-core";
+} from "core87";
 
 export const CHAIN_IDS_TO_NAMES = {
   [ChainId.MAINNET]: "mainnet",

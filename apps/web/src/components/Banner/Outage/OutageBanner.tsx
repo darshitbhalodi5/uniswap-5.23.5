@@ -1,4 +1,4 @@
-import { ChainId } from '@uniswap/sdk-core'
+import { ChainId } from 'core87'
 import { Container, PopupContainer, StyledXButton, TextContainer } from 'components/Banner/shared/styled'
 import { ChainOutageData } from 'featureFlags/flags/outageBanner'
 import { chainIdToBackendName } from 'graphql/data/util'

@@ -1,4 +1,4 @@
-import { ChainId, Currency } from '@uniswap/sdk-core'
+import { ChainId, Currency } from 'core87'
 import { useWeb3React } from '@web3-react/core'
 import Badge from 'components/Badge'
 import { ChainLogo } from 'components/Logo/ChainLogo'

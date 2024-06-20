@@ -1,4 +1,4 @@
-import { Currency, TradeType } from '@uniswap/sdk-core'
+import { Currency, TradeType } from 'core87'
 import { useTranslation } from 'react-i18next'
 import { Flex, Icons, Text, useSporeColors } from 'ui/src'
 import { fonts, spacing } from 'ui/src/theme'

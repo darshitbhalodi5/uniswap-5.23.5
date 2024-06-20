@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, Fraction, Percent } from '@uniswap/sdk-core'
+import { Currency, CurrencyAmount, Fraction, Percent } from 'core87'
 import { Trans } from 'i18n'
 import { Text } from 'rebass'
 import { ThemedText } from 'theme/components'

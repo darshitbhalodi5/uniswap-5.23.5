@@ -1,5 +1,5 @@
 import { ApolloError } from '@apollo/client'
-import { Token } from '@uniswap/sdk-core'
+import { Token } from 'core87'
 import {
   Chain,
   Token as GQLToken,

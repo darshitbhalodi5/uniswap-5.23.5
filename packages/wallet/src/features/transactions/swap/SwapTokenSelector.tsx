@@ -1,4 +1,4 @@
-import { Currency } from '@uniswap/sdk-core'
+import { Currency } from 'core87'
 import { useCallback } from 'react'
 import { isWeb } from 'ui/src'
 import { flowToModalName } from 'wallet/src/components/TokenSelector/flowToModalName'

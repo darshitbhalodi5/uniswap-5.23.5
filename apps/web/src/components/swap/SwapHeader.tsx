@@ -1,4 +1,4 @@
-import { ChainId } from "@uniswap/sdk-core";
+import { ChainId } from "core87";
 import { Trans } from "i18n";
 import { useSwapAndLimitContext, useSwapContext } from "state/swap/hooks";
 import styled from "styled-components";

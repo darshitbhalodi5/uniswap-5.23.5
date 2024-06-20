@@ -12,7 +12,7 @@ import {
   CurrencyAmount,
   NONFUNGIBLE_POSITION_MANAGER_ADDRESSES,
   Percent,
-} from "@uniswap/sdk-core";
+} from "core87";
 import { FeeAmount, NonfungiblePositionManager } from "@uniswap/v3-sdk";
 import { useWeb3React } from "@web3-react/core";
 import { TraceEvent, sendAnalyticsEvent, useTrace } from "analytics";

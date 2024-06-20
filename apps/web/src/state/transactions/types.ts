@@ -1,4 +1,4 @@
-import { TradeType } from '@uniswap/sdk-core'
+import { TradeType } from 'core87'
 
 import { VoteOption } from '../governance/types'
 

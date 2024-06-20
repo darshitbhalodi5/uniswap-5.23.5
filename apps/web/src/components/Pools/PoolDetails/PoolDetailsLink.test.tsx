@@ -1,4 +1,4 @@
-import { ChainId } from '@uniswap/sdk-core'
+import { ChainId } from 'core87'
 import { USDC_MAINNET } from 'constants/tokens'
 import store from 'state'
 import { addSerializedToken } from 'state/user/reducer'

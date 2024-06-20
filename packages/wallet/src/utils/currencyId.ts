@@ -1,4 +1,4 @@
-import { Currency } from '@uniswap/sdk-core'
+import { Currency } from 'core87'
 import { CurrencyId } from 'uniswap/src/types/currency'
 import { getNativeAddress, getWrappedNativeAddress } from 'wallet/src/constants/addresses'
 import { ChainId, DEFAULT_NATIVE_ADDRESS } from 'wallet/src/constants/chains'

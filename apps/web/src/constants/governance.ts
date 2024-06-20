@@ -5,7 +5,7 @@ import {
   GOVERNANCE_BRAVO_ADDRESSES,
   TIMELOCK_ADDRESSES,
   UNI_ADDRESSES,
-} from '@uniswap/sdk-core'
+} from 'core87'
 
 export const COMMON_CONTRACT_NAMES: Record<number, { [address: string]: string }> = {
   [ChainId.MAINNET]: {

@@ -1,4 +1,4 @@
-import { Percent } from "@uniswap/sdk-core";
+import { Percent } from "core87";
 import { useWeb3React } from "@web3-react/core";
 import { Scrim } from "components/AccountDrawer";
 import AnimatedDropdown from "components/AnimatedDropdown";

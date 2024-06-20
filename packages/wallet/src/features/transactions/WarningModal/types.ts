@@ -1,4 +1,4 @@
-import { Currency } from '@uniswap/sdk-core'
+import { Currency } from 'core87'
 import { FunctionComponent } from 'react'
 import { SvgProps } from 'react-native-svg'
 import { ColorTokens } from 'ui/src'

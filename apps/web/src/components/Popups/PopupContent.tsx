@@ -1,4 +1,4 @@
-import { ChainId } from '@uniswap/sdk-core'
+import { ChainId } from 'core87'
 import { useOpenOffchainActivityModal } from 'components/AccountDrawer/MiniPortfolio/Activity/OffchainActivityModal'
 import { signatureToActivity, transactionToActivity } from 'components/AccountDrawer/MiniPortfolio/Activity/parseLocal'
 import { Activity } from 'components/AccountDrawer/MiniPortfolio/Activity/types'

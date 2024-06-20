@@ -1,4 +1,4 @@
-import { ChainId, Percent } from '@uniswap/sdk-core'
+import { ChainId, Percent } from 'core87'
 import { exploreSearchStringAtom } from 'components/Tokens/state'
 import { BIPS_BASE } from 'constants/misc'
 import { OrderDirection, chainIdToBackendName } from 'graphql/data/util'

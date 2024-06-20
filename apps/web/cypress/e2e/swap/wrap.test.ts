@@ -1,4 +1,4 @@
-import { ChainId, CurrencyAmount, WETH9 } from '@uniswap/sdk-core'
+import { ChainId, CurrencyAmount, WETH9 } from 'core87'
 
 import { getBalance, getTestSelector } from '../../utils'
 

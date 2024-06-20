@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, Percent, TradeType } from '@uniswap/sdk-core'
+import { Currency, CurrencyAmount, Percent, TradeType } from 'core87'
 import { formatTimestamp } from 'components/AccountDrawer/MiniPortfolio/formatTimestamp'
 import { LoadingRow } from 'components/Loader/styled'
 import RouterLabel from 'components/RouterLabel'

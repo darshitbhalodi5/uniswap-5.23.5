@@ -1,4 +1,4 @@
-import { ChainId, Token } from '@uniswap/sdk-core'
+import { ChainId, Token } from 'core87'
 import { createMigrate } from 'redux-persist'
 import { RouterPreference } from 'state/routing/types'
 import { SlippageTolerance } from 'state/user/types'

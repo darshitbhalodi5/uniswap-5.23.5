@@ -1,4 +1,4 @@
-import { Currency, Token } from '@uniswap/sdk-core'
+import { Currency, Token } from 'core87'
 import { Tags, TokenInfo, TokenList } from '@uniswap/token-lists'
 
 import { isAddress } from 'utilities/src/addresses'

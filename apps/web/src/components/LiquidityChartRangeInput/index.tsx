@@ -1,4 +1,4 @@
-import { Currency, Price, Token } from '@uniswap/sdk-core'
+import { Currency, Price, Token } from 'core87'
 import { FeeAmount } from '@uniswap/v3-sdk'
 import { AutoColumn, ColumnCenter } from 'components/Column'
 import Loader from 'components/Icons/LoadingSpinner'

@@ -1,4 +1,4 @@
-import { ChainId, TradeType as MockTradeType, Token } from "@uniswap/sdk-core";
+import { ChainId, TradeType as MockTradeType, Token } from "core87";
 import { PERMIT2_ADDRESS } from "@uniswap/universal-router-sdk";
 import {
   DAI as MockDAI,

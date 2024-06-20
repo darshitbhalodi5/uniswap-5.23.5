@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount } from '@uniswap/sdk-core'
+import { Currency, CurrencyAmount } from 'core87'
 import { providers } from 'ethers'
 import { useMemo } from 'react'
 import { logger } from 'utilities/src/logger/logger'

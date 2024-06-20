@@ -1,4 +1,4 @@
-import { Token } from '@uniswap/sdk-core'
+import { Token } from 'core87'
 import { getWrappedNativeAddress } from 'wallet/src/constants/addresses'
 import { ChainId } from 'wallet/src/constants/chains'
 

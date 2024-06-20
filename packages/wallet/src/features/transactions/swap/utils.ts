@@ -1,5 +1,5 @@
 import { Protocol } from '@uniswap/router-sdk'
-import { Currency, Percent, TradeType } from '@uniswap/sdk-core'
+import { Currency, Percent, TradeType } from 'core87'
 import {
   FlatFeeOptions,
   SwapOptions as UniversalRouterSwapOptions,

@@ -5,7 +5,7 @@ import {
   Token,
   UNI_ADDRESSES,
   WETH9,
-} from "@uniswap/sdk-core";
+} from "core87";
 import invariant from "tiny-invariant";
 
 // eslint-disable-next-line no-restricted-syntax

@@ -1,4 +1,4 @@
-import { ChainId } from "@uniswap/sdk-core";
+import { ChainId } from "core87";
 import { MouseoverTooltip } from "components/Tooltip";
 import { getChainInfo } from "constants/chainInfo";
 import { TokenQueryData } from "graphql/data/Token";

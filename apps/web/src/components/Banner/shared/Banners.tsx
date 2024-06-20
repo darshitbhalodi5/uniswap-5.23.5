@@ -1,5 +1,5 @@
 import { InterfacePageName } from '@uniswap/analytics-events'
-import { ChainId } from '@uniswap/sdk-core'
+import { ChainId } from 'core87'
 import { OutageBanner, getOutageBannerSessionStorageKey } from 'components/Banner/Outage/OutageBanner'
 import { manualChainOutageAtom, useOutageBanners } from 'featureFlags/flags/outageBanner'
 import { getValidUrlChainId } from 'graphql/data/util'

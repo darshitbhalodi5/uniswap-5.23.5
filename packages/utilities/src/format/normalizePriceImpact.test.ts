@@ -1,4 +1,4 @@
-import { Percent } from '@uniswap/sdk-core'
+import { Percent } from 'core87'
 import { normalizePriceImpact } from './normalizePriceImpact'
 
 describe('normalizePriceImpact', () => {

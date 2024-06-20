@@ -1,4 +1,4 @@
-import { Token } from '@uniswap/sdk-core'
+import { Token } from 'core87'
 import dayjs from 'dayjs'
 import {
   Amount,
