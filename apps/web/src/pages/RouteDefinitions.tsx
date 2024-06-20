@@ -9,7 +9,6 @@ import { isBrowserRouterEnabled } from "utils/env";
 import { getDefaultTokensTitle } from "./getDefaultTokensTitle";
 import { getExploreTitle } from "./getExploreTitle";
 // High-traffic pages (index and /swap) should not be lazy-loaded.
-import Landing from "./Landing";
 import Swap from "./Swap";
 
 const NftExplore = lazy(() => import("nft/pages/explore"));
@@ -17,10 +16,10 @@ const Collection = lazy(() => import("nft/pages/collection"));
 const Profile = lazy(() => import("nft/pages/profile"));
 const Asset = lazy(() => import("nft/pages/asset/Asset"));
 const AddLiquidityWithTokenRedirects = lazy(
-  () => import("pages/AddLiquidity/redirects"),
+  () => import("pages/AddLiquidity/redirects")
 );
 const AddLiquidityV2WithTokenRedirects = lazy(
-  () => import("pages/AddLiquidityV2/redirects"),
+  () => import("pages/AddLiquidityV2/redirects")
 );
 const RedirectExplore = lazy(() => import("pages/Explore/redirects"));
 const MigrateV2 = lazy(() => import("pages/MigrateV2"));
@@ -75,7 +74,7 @@ export function useRouterConfig(): RouterConfig {
       hash,
       shouldDisableNFTRoutes: Boolean(shouldDisableNFTRoutes),
     }),
-    [browserRouterEnabled, hash, shouldDisableNFTRoutes],
+    [browserRouterEnabled, hash, shouldDisableNFTRoutes]
   );
 }
 
@@ -89,13 +88,13 @@ export interface RouteDefinition {
 
 // Assigns the defaults to the route definition.
 function createRouteDefinition(
-  route: Partial<RouteDefinition>,
+  route: Partial<RouteDefinition>
 ): RouteDefinition {
   return {
     getElement: () => null,
     getTitle: () => "UdonSwap Interface",
     enabled: () => true,
-    path: "/",
+    path: "/swap",
     nestedPaths: [],
     // overwrite the defaults
     ...route,
@@ -106,16 +105,10 @@ const SwapTitle = t`Buy, sell & trade Ethereum and other top tokens on UdonSwap`
 
 export const routes: RouteDefinition[] = [
   createRouteDefinition({
-    path: "/",
+    path: "/swap",
     getTitle: () =>
       t`UdonSwap | Trade crypto & NFTs safely on the top DeFi exchange`,
-    getElement: (args) => {
-      return args.browserRouterEnabled && args.hash ? (
-        <Navigate to={args.hash.replace("#", "")} replace />
-      ) : (
-        <Landing />
-      );
-    },
+    getElement: () => <Swap />,
   }),
   createRouteDefinition({
     path: "/explore",
@@ -327,7 +320,7 @@ export const findRouteByPath = (pathname: string) => {
       return route;
     }
     const subPaths = route.nestedPaths.map(
-      (nestedPath) => `${route.path}/${nestedPath}`,
+      (nestedPath) => `${route.path}/${nestedPath}`
     );
     for (const subPath of subPaths) {
       const match = matchPath(subPath, pathname);

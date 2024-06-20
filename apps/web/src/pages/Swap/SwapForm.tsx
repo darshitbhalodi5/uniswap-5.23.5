@@ -104,18 +104,18 @@ export function SwapForm({
   }, [parsedQs]);
   const prefilledInputCurrency = useCurrency(
     prefilledCurrencies?.inputCurrencyId,
-    chainId,
+    chainId
   );
   const prefilledOutputCurrency = useCurrency(
     prefilledCurrencies?.outputCurrencyId,
-    chainId,
+    chainId
   );
 
   const [loadedInputCurrency, setLoadedInputCurrency] = useState(
-    prefilledInputCurrency,
+    prefilledInputCurrency
   );
   const [loadedOutputCurrency, setLoadedOutputCurrency] = useState(
-    prefilledOutputCurrency,
+    prefilledOutputCurrency
   );
 
   useEffect(() => {
@@ -131,9 +131,9 @@ export function SwapForm({
   const urlLoadedTokens: Token[] = useMemo(
     () =>
       [loadedInputCurrency, loadedOutputCurrency]?.filter(
-        (c): c is Token => c?.isToken ?? false,
+        (c): c is Token => c?.isToken ?? false
       ) ?? [],
-    [loadedInputCurrency, loadedOutputCurrency],
+    [loadedInputCurrency, loadedOutputCurrency]
   );
   const handleConfirmTokenWarning = useCallback(() => {
     setDismissTokenWarning(true);
@@ -162,7 +162,7 @@ export function SwapForm({
               });
             })
         : [],
-    [chainId, defaultTokens, urlLoadedTokens],
+    [chainId, defaultTokens, urlLoadedTokens]
   );
 
   const theme = useTheme();
@@ -184,7 +184,7 @@ export function SwapForm({
 
   const [inputTokenHasTax, outputTokenHasTax] = useMemo(
     () => [!inputTax.equalTo(0), !outputTax.equalTo(0)],
-    [inputTax, outputTax],
+    [inputTax, outputTax]
   );
 
   useEffect(() => {
@@ -205,7 +205,7 @@ export function SwapForm({
   } = useWrapCallback(
     currencies[Field.INPUT],
     currencies[Field.OUTPUT],
-    typedValue,
+    typedValue
   );
   const showWrap: boolean = wrapType !== WrapType.NOT_APPLICABLE;
 
@@ -226,7 +226,7 @@ export function SwapForm({
                 ? parsedAmount
                 : trade?.outputAmount,
           },
-    [independentField, parsedAmount, showWrap, trade],
+    [independentField, parsedAmount, showWrap, trade]
   );
 
   const showFiatValueInput = Boolean(parsedAmounts[Field.INPUT]);
@@ -235,18 +235,18 @@ export function SwapForm({
     if (!currency) return;
     return CurrencyAmount.fromRawAmount(
       currency,
-      JSBI.BigInt(10 ** currency.decimals),
+      JSBI.BigInt(10 ** currency.decimals)
     );
   };
 
   const fiatValueInput = useUSDPrice(
     parsedAmounts[Field.INPUT] ?? getSingleUnitAmount(currencies[Field.INPUT]),
-    currencies[Field.INPUT],
+    currencies[Field.INPUT]
   );
   const fiatValueOutput = useUSDPrice(
     parsedAmounts[Field.OUTPUT] ??
       getSingleUnitAmount(currencies[Field.OUTPUT]),
-    currencies[Field.OUTPUT],
+    currencies[Field.OUTPUT]
   );
 
   const [routeNotFound, routeIsLoading, routeIsSyncing] = useMemo(
@@ -255,7 +255,7 @@ export function SwapForm({
       tradeState === TradeState.LOADING,
       tradeState === TradeState.LOADING && Boolean(trade),
     ],
-    [trade, tradeState],
+    [trade, tradeState]
   );
 
   const fiatValueTradeInput = useUSDPrice(trade?.inputAmount);
@@ -268,11 +268,11 @@ export function SwapForm({
         : [
             computeFiatValuePriceImpact(
               fiatValueTradeInput.data,
-              fiatValueTradeOutput.data,
+              fiatValueTradeOutput.data
             ),
             computeFiatValuePriceImpact(
               fiatValueTradeInput.data,
-              preTaxFiatValueTradeOutput.data,
+              preTaxFiatValueTradeOutput.data
             ),
           ],
     [
@@ -282,7 +282,7 @@ export function SwapForm({
       routeIsSyncing,
       trade,
       showWrap,
-    ],
+    ]
   );
 
   const { onSwitchTokens, onCurrencySelection, onUserInput } =
@@ -295,20 +295,20 @@ export function SwapForm({
       onUserInput(Field.INPUT, value);
       maybeLogFirstSwapAction(trace);
     },
-    [onUserInput, trace],
+    [onUserInput, trace]
   );
   const handleTypeOutput = useCallback(
     (value: string) => {
       onUserInput(Field.OUTPUT, value);
       maybeLogFirstSwapAction(trace);
     },
-    [onUserInput, trace],
+    [onUserInput, trace]
   );
 
   const navigate = useNavigate();
   const swapIsUnsupported = useIsSwapUnsupported(
     currencies[Field.INPUT],
-    currencies[Field.OUTPUT],
+    currencies[Field.OUTPUT]
   );
 
   // reset if they close warning without tokens in params
@@ -341,12 +341,12 @@ export function SwapForm({
     const prefilledInputChanged =
       previousPrefilledState?.inputCurrency &&
       !prefilledState.inputCurrency?.equals(
-        previousPrefilledState.inputCurrency,
+        previousPrefilledState.inputCurrency
       );
     const prefilledOutputChanged =
       previousPrefilledState?.outputCurrency &&
       !prefilledState?.outputCurrency?.equals(
-        previousPrefilledState.outputCurrency,
+        previousPrefilledState.outputCurrency
       );
 
     if (chainChanged || prefilledInputChanged || prefilledOutputChanged) {
@@ -385,13 +385,13 @@ export function SwapForm({
       parsedAmounts,
       showWrap,
       typedValue,
-    ],
+    ]
   );
 
   const userHasSpecifiedInputOutput = Boolean(
     currencies[Field.INPUT] &&
       currencies[Field.OUTPUT] &&
-      parsedAmounts[independentField]?.greaterThan(JSBI.BigInt(0)),
+      parsedAmounts[independentField]?.greaterThan(JSBI.BigInt(0))
   );
 
   const maximumAmountIn = useMaxAmountIn(trade, allowedSlippage);
@@ -401,16 +401,16 @@ export function SwapForm({
         ? (parsedAmounts[Field.INPUT] as CurrencyAmount<Token>)
         : undefined),
     isSupportedChain(chainId) ? UNIVERSAL_ROUTER_ADDRESS(chainId) : undefined,
-    trade?.fillType,
+    trade?.fillType
   );
 
   const maxInputAmount: CurrencyAmount<Currency> | undefined = useMemo(
     () => maxAmountSpend(currencyBalances[Field.INPUT]),
-    [currencyBalances],
+    [currencyBalances]
   );
   const showMaxButton = Boolean(
     maxInputAmount?.greaterThan(0) &&
-      !parsedAmounts[Field.INPUT]?.equalTo(maxInputAmount),
+      !parsedAmounts[Field.INPUT]?.equalTo(maxInputAmount)
   );
   const swapFiatValues = useMemo(() => {
     return {
@@ -427,7 +427,7 @@ export function SwapForm({
     allowedSlippage,
     allowance.state === AllowanceState.ALLOWED
       ? allowance.permitSignature
-      : undefined,
+      : undefined
   );
 
   const handleContinueToReview = useCallback(() => {
@@ -512,7 +512,7 @@ export function SwapForm({
       : undefined;
     const largerPriceImpact = largerPercentValue(
       marketPriceImpact,
-      preTaxStablecoinPriceImpact,
+      preTaxStablecoinPriceImpact
     );
     return {
       priceImpactSeverity: warningSeverity(largerPriceImpact),
@@ -547,7 +547,7 @@ export function SwapForm({
       });
       maybeLogFirstSwapAction(trace);
     },
-    [onCurrencyChange, onCurrencySelection, currencyState, trace],
+    [onCurrencyChange, onCurrencySelection, currencyState, trace]
   );
   const inputCurrencyNumericalInputRef = useRef<HTMLInputElement>(null);
 
@@ -565,7 +565,7 @@ export function SwapForm({
       });
       maybeLogFirstSwapAction(trace);
     },
-    [onCurrencyChange, onCurrencySelection, currencyState, trace],
+    [onCurrencyChange, onCurrencySelection, currencyState, trace]
   );
 
   const showPriceImpactWarning =
@@ -580,7 +580,7 @@ export function SwapForm({
         trade,
         allowedSlippage,
         swapQuoteLatency,
-        outputFeeFiatValue,
+        outputFeeFiatValue
       ),
       ...trace,
     });
@@ -596,13 +596,13 @@ export function SwapForm({
   const showDetailsDropdown = Boolean(
     !showWrap &&
       userHasSpecifiedInputOutput &&
-      (trade || routeIsLoading || routeIsSyncing),
+      (trade || routeIsLoading || routeIsSyncing)
   );
 
   const inputCurrency = currencies[Field.INPUT] ?? undefined;
   const switchChain = useSwitchChain();
   const switchingChain = useAppSelector(
-    (state) => state.wallets.switchingChain,
+    (state) => state.wallets.switchingChain
   );
 
   return (
@@ -643,7 +643,7 @@ export function SwapForm({
           }}
         />
       )}
-      <div style={{ display: "relative" }}>
+      <div style={{ display: "relative", color: "white" }}>
         <SwapSection>
           <Trace section={InterfaceSectionName.CURRENCY_INPUT_PANEL}>
             <SwapCurrencyInputPanel
@@ -751,7 +751,7 @@ export function SwapForm({
                 received_swap_quote: getIsReviewableQuote(
                   trade,
                   tradeState,
-                  swapInputError,
+                  swapInputError
                 ),
               }}
               element={InterfaceElementName.CONNECT_WALLET_BUTTON}

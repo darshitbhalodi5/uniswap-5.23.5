@@ -1,28 +1,28 @@
 // Tamagui syntax for defining sub-themes
 
-import { colorsDark, colorsLight } from 'ui/src/theme/color/colors'
-import { opacify } from 'ui/src/theme/color/utils'
+import { colorsDark, colorsLight } from "ui/src/theme/color/colors";
+import { opacify } from "ui/src/theme/color/utils";
 
 // this is just a helper for things that want to accept theme names as props
 export type ThemeNames =
-  | 'primary'
-  | 'secondary'
-  | 'tertiary'
-  | 'outline'
-  | 'warning'
-  | 'detrimental'
+  | "primary"
+  | "secondary"
+  | "tertiary"
+  | "outline"
+  | "warning"
+  | "detrimental";
 
 // TODO: systematize hover and focus states. requires consolidating mobile and web design systems (they have different button styles right now)
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const hoverColor = (color: any): string => opacify(85, color)
+const hoverColor = (color: any): string => opacify(85, color);
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const pressedColor = (color: any): string => opacify(65, color)
+const pressedColor = (color: any): string => opacify(65, color);
 
 // remove $none from theme because it causes issues where $none tokens always resolve to transparent color
 // even if they are technically a gap or other space/size property
 // tamagui could make this so that themes only apply to color based properties, but would need a release
-const { none: darkTransparent, ...tamaguiColorsDark } = colorsDark
-const { none: lightTransparent, ...tamaguiColorsLight } = colorsLight
+const { none: darkTransparent, ...tamaguiColorsDark } = colorsDark;
+const { none: lightTransparent, ...tamaguiColorsLight } = colorsLight;
 
 // TODO can convert tokens to createTokens() and then use them here
 // Tamagui will automatically convert them though, so it just saves a small amount of performance
@@ -45,11 +45,11 @@ const light = {
   colorHover: colorsLight.accent1,
   colorPress: colorsLight.accent1,
   colorFocus: colorsLight.accent1,
-  shadowColor: 'rgba(0,0,0,0.15)',
-  shadowColorHover: 'rgba(0,0,0,0.2)',
-}
+  shadowColor: "rgba(0,0,0,0.15)",
+  shadowColorHover: "rgba(0,0,0,0.2)",
+};
 
-type BaseTheme = typeof light
+type BaseTheme = typeof light;
 
 const dark: BaseTheme = {
   ...tamaguiColorsDark,
@@ -66,9 +66,9 @@ const dark: BaseTheme = {
   colorHover: colorsDark.accent1,
   colorPress: colorsDark.accent1,
   colorFocus: colorsDark.accent1,
-  shadowColor: 'rgba(0,0,0,0.4)',
-  shadowColorHover: 'rgba(0,0,0,0.5)',
-}
+  shadowColor: "rgba(0,0,0,0.4)",
+  shadowColorHover: "rgba(0,0,0,0.5)",
+};
 
 // if you need to add non-token values, use createTheme
 // const dark_translucent: ButtonTheme = createTheme({
@@ -90,48 +90,48 @@ const dark: BaseTheme = {
 const light_branded: BaseTheme = {
   ...light,
   color: colorsLight.accent1,
-}
+};
 const dark_branded: BaseTheme = {
   ...dark,
   color: colorsDark.accent1,
-}
+};
 const light_primary: BaseTheme = {
   ...light,
-}
+};
 const dark_primary: BaseTheme = {
   ...dark,
-}
+};
 const light_secondary: BaseTheme = {
   ...light,
-}
+};
 const dark_secondary: BaseTheme = {
   ...dark,
   color: colorsDark.neutral2,
-}
+};
 const light_tertiary: BaseTheme = {
   ...light,
-}
+};
 const dark_tertiary: BaseTheme = {
   ...dark,
-}
+};
 const light_outline: BaseTheme = {
   ...light,
-}
+};
 const dark_outline: BaseTheme = {
   ...dark,
-}
+};
 const light_detrimental: BaseTheme = {
   ...light,
-}
+};
 const dark_detrimental: BaseTheme = {
   ...dark,
-}
+};
 const light_warning: BaseTheme = {
   ...light,
-}
+};
 const dark_warning: BaseTheme = {
   ...dark,
-}
+};
 
 // Button
 // primary
@@ -142,7 +142,7 @@ const light_primary_Button: BaseTheme = {
   backgroundHover: hoverColor(colorsLight.accent1),
   backgroundPress: pressedColor(colorsLight.accent1),
   color: colorsLight.sporeWhite,
-}
+};
 
 // theme: dark
 const dark_primary_Button: BaseTheme = {
@@ -151,7 +151,7 @@ const dark_primary_Button: BaseTheme = {
   backgroundHover: hoverColor(colorsDark.accent1),
   backgroundPress: pressedColor(colorsDark.accent1),
   color: colorsDark.sporeWhite,
-}
+};
 
 // secondary
 // theme: light
@@ -161,7 +161,7 @@ const light_secondary_Button: BaseTheme = {
   backgroundHover: hoverColor(colorsLight.surface2),
   backgroundPress: pressedColor(colorsLight.surface2),
   color: colorsLight.sporeBlack,
-}
+};
 
 // theme: dark
 const dark_secondary_Button: BaseTheme = {
@@ -170,7 +170,7 @@ const dark_secondary_Button: BaseTheme = {
   backgroundHover: hoverColor(colorsDark.surface2),
   backgroundPress: pressedColor(colorsDark.surface2),
   color: colorsDark.sporeWhite,
-}
+};
 
 // tertiary
 // theme: light
@@ -182,7 +182,7 @@ const light_tertiary_Button: BaseTheme = {
   backgroundPress: colorsLight.surface2,
   borderColor: colorsLight.none,
   color: colorsLight.neutral1,
-}
+};
 
 // theme: dark
 const dark_tertiary_Button: BaseTheme = {
@@ -193,7 +193,7 @@ const dark_tertiary_Button: BaseTheme = {
   backgroundPress: colorsDark.surface2,
   borderColor: colorsDark.none,
   color: colorsDark.neutral1,
-}
+};
 
 // outline
 // theme: light
@@ -204,7 +204,7 @@ const light_outline_Button: BaseTheme = {
   backgroundPress: colorsLight.none,
   borderColor: colorsLight.surface3,
   color: colorsLight.neutral1,
-}
+};
 
 // theme: dark
 const dark_outline_Button: BaseTheme = {
@@ -214,7 +214,7 @@ const dark_outline_Button: BaseTheme = {
   backgroundPress: colorsDark.none,
   borderColor: colorsDark.surface3,
   color: colorsDark.neutral1,
-}
+};
 
 // detrimental
 // theme: light
@@ -224,7 +224,7 @@ const light_detrimental_Button: BaseTheme = {
   backgroundHover: colorsLight.DEP_accentCriticalSoft,
   backgroundPress: colorsLight.DEP_accentCriticalSoft,
   color: colorsLight.statusCritical,
-}
+};
 
 // theme: dark
 const dark_detrimental_Button: BaseTheme = {
@@ -233,7 +233,7 @@ const dark_detrimental_Button: BaseTheme = {
   backgroundHover: colorsLight.DEP_accentCriticalSoft,
   backgroundPress: colorsLight.DEP_accentCriticalSoft,
   color: colorsDark.statusCritical,
-}
+};
 
 // warning
 // theme: light
@@ -243,7 +243,7 @@ const light_warning_Button: BaseTheme = {
   backgroundHover: colorsLight.DEP_accentWarningSoft,
   backgroundPress: colorsLight.DEP_accentWarningSoft,
   color: colorsLight.DEP_accentWarning,
-}
+};
 
 // theme: dark
 const dark_warning_Button: BaseTheme = {
@@ -252,7 +252,7 @@ const dark_warning_Button: BaseTheme = {
   backgroundHover: colorsDark.DEP_accentWarningSoft,
   backgroundPress: colorsDark.DEP_accentWarningSoft,
   color: colorsDark.DEP_accentWarning,
-}
+};
 
 // combine and narrow theme types before exporting
 const allThemes = {
@@ -284,11 +284,11 @@ const allThemes = {
   dark_detrimental_Button,
   light_warning_Button,
   dark_warning_Button,
-}
+};
 
-type ThemeName = keyof typeof allThemes
+type ThemeName = keyof typeof allThemes;
 type Themes = {
-  [key in ThemeName]: BaseTheme
-}
+  [key in ThemeName]: BaseTheme;
+};
 
-export const themes: Themes = allThemes
+export const themes: Themes = allThemes;

@@ -1,12 +1,12 @@
-import Column from 'components/Column'
-import FilterButton from 'components/DropdownSelector/FilterButton'
-import { MouseoverTooltip, TooltipSize } from 'components/Tooltip'
-import { useOnClickOutside } from 'hooks/useOnClickOutside'
-import React, { useRef } from 'react'
-import { ChevronDown } from 'react-feather'
-import styled, { css } from 'styled-components'
-import { dropdownSlideDown } from 'theme/styles'
-import { Z_INDEX } from 'theme/zIndex'
+import Column from "components/Column";
+import FilterButton from "components/DropdownSelector/FilterButton";
+import { MouseoverTooltip, TooltipSize } from "components/Tooltip";
+import { useOnClickOutside } from "hooks/useOnClickOutside";
+import React, { useRef } from "react";
+import { ChevronDown } from "react-feather";
+import styled, { css } from "styled-components";
+import { dropdownSlideDown } from "theme/styles";
+import { Z_INDEX } from "theme/zIndex";
 
 export const InternalMenuItem = styled.div<{ disabled?: boolean }>`
   display: flex;
@@ -30,11 +30,11 @@ export const InternalMenuItem = styled.div<{ disabled?: boolean }>`
       opacity: 60%;
       pointer-events: none;
     `}
-`
+`;
 const MenuFlyout = styled(Column)<{ menuFlyoutCss?: string }>`
   min-width: 150px;
   overflow: auto;
-  background-color: ${({ theme }) => theme.surface1};
+  background-color: rgb(19, 17, 24);
   box-shadow: ${({ theme }) => theme.deprecated_deepShadow};
   border: 0.5px solid ${({ theme }) => theme.surface3};
   border-radius: 12px;
@@ -74,7 +74,7 @@ const MenuFlyout = styled(Column)<{ menuFlyoutCss?: string }>`
   }
 
   ${({ menuFlyoutCss }) => menuFlyoutCss}
-`
+`;
 const StyledMenu = styled.div`
   display: flex;
   justify-content: center;
@@ -83,7 +83,7 @@ const StyledMenu = styled.div`
   border: none;
   text-align: left;
   width: 100%;
-`
+`;
 export const StyledMenuContent = styled.div`
   display: flex;
   justify-content: space-between;
@@ -94,28 +94,30 @@ export const StyledMenuContent = styled.div`
   width: 100%;
   vertical-align: middle;
   white-space: nowrap;
-`
+`;
 const Chevron = styled.span<{ open: boolean }>`
   display: flex;
   color: ${({ open, theme }) => (open ? theme.neutral1 : theme.neutral2)};
-  rotate: ${({ open }) => (open ? '180deg' : '0deg')};
-  transition: rotate ${({ theme }) => `${theme.transition.duration.fast} ${theme.transition.timing.inOut}`};
-`
+  rotate: ${({ open }) => (open ? "180deg" : "0deg")};
+  transition: rotate
+    ${({ theme }) =>
+      `${theme.transition.duration.fast} ${theme.transition.timing.inOut}`};
+`;
 const StyledFilterButton = styled(FilterButton)<{ buttonCss?: string }>`
   ${({ buttonCss }) => buttonCss}
-`
+`;
 
 interface DropdownSelectorProps {
-  isOpen: boolean
-  toggleOpen: React.DispatchWithoutAction
-  menuLabel: JSX.Element
-  internalMenuItems: JSX.Element
-  dataTestId?: string
-  optionsContainerTestId?: string
-  tooltipText?: string
-  hideChevron?: boolean
-  buttonCss?: any
-  menuFlyoutCss?: any
+  isOpen: boolean;
+  toggleOpen: React.DispatchWithoutAction;
+  menuLabel: JSX.Element;
+  internalMenuItems: JSX.Element;
+  dataTestId?: string;
+  optionsContainerTestId?: string;
+  tooltipText?: string;
+  hideChevron?: boolean;
+  buttonCss?: any;
+  menuFlyoutCss?: any;
 }
 
 export function DropdownSelector({
@@ -130,8 +132,8 @@ export function DropdownSelector({
   buttonCss,
   menuFlyoutCss,
 }: DropdownSelectorProps) {
-  const node = useRef<HTMLDivElement | null>(null)
-  useOnClickOutside(node, isOpen ? toggleOpen : undefined)
+  const node = useRef<HTMLDivElement | null>(null);
+  useOnClickOutside(node, isOpen ? toggleOpen : undefined);
 
   return (
     <StyledMenu ref={node}>
@@ -140,7 +142,7 @@ export function DropdownSelector({
         text={tooltipText}
         size={TooltipSize.Max}
         placement="top"
-        style={{ width: '100%' }}
+        style={{ width: "100%" }}
       >
         <StyledFilterButton
           onClick={toggleOpen}
@@ -160,10 +162,13 @@ export function DropdownSelector({
         </StyledFilterButton>
       </MouseoverTooltip>
       {isOpen && (
-        <MenuFlyout data-testid={optionsContainerTestId} menuFlyoutCss={menuFlyoutCss}>
+        <MenuFlyout
+          data-testid={optionsContainerTestId}
+          menuFlyoutCss={menuFlyoutCss}
+        >
           {internalMenuItems}
         </MenuFlyout>
       )}
     </StyledMenu>
-  )
+  );
 }

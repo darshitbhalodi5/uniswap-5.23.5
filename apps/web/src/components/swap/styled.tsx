@@ -32,7 +32,7 @@ export const SwapWrapperOuter = styled.main<{ isDark?: boolean }>`
 `;
 
 export const SwapWrapper = (
-  props: React.ComponentProps<typeof SwapWrapperOuter>,
+  props: React.ComponentProps<typeof SwapWrapperOuter>
 ) => {
   return (
     <SwapWrapperOuter {...props}>
@@ -142,13 +142,10 @@ export const SwapShowAcceptChanges = styled(AutoColumn)`
 
 export const SwapSection = styled.div`
   background-color: ${({ theme }) => theme.surface2};
-  box-shadow:
-    rgba(0, 0, 0, 0.01) 0px 0px 1px,
-    rgba(0, 0, 0, 0.04) 0px 4px 8px,
-    rgba(0, 0, 0, 0.04) 0px 16px 24px,
-    rgba(0, 0, 0, 0.01) 0px 24px 32px;
+  box-shadow: rgba(0, 0, 0, 0.01) 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 4px 8px,
+    rgba(0, 0, 0, 0.04) 0px 16px 24px, rgba(0, 0, 0, 0.01) 0px 24px 32px;
   border-radius: 16px;
-  color: ${({ theme }) => theme.neutral2};
+  color: #ffffff;
   font-size: 14px;
   font-weight: 500;
   height: 120px;
@@ -189,13 +186,12 @@ export const ArrowContainer = styled.div`
 
 export const SwapHeaderTabButton = styled(ButtonText)<{ $isActive: boolean }>`
   color: ${({ theme, $isActive }) => ($isActive ? "#9657EB" : "#525252")};
-  background-color: ${({ theme, $isActive }) => $isActive && theme.surface3};
   padding: 8px 16px;
   border-radius: 20px;
-  font-size: 20px;
+  font-size: 18px;
   gap: 4px;
 
-  font-weight: 500;
+  font-weight: 550;
   &:focus {
     text-decoration: none;
     color: white;

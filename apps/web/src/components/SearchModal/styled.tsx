@@ -1,13 +1,13 @@
-import searchIcon from 'assets/svg/search.svg'
-import { LoadingRows as BaseLoadingRows } from 'components/Loader/styled'
-import styled from 'styled-components'
+import searchIcon from "assets/svg/search.svg";
+import { LoadingRows as BaseLoadingRows } from "components/Loader/styled";
+import styled from "styled-components";
 
-import { AutoColumn } from '../Column'
-import { RowBetween } from '../Row'
+import { AutoColumn } from "../Column";
+import { RowBetween } from "../Row";
 
 export const PaddedColumn = styled(AutoColumn)`
   padding: 20px;
-`
+`;
 
 export const MenuItem = styled(RowBetween)<{ dim?: boolean }>`
   padding: 4px 20px;
@@ -15,13 +15,14 @@ export const MenuItem = styled(RowBetween)<{ dim?: boolean }>`
   display: grid;
   grid-template-columns: auto minmax(auto, 1fr) auto minmax(0, 72px);
   grid-gap: 16px;
-  cursor: ${({ disabled }) => !disabled && 'pointer'};
-  pointer-events: ${({ disabled }) => disabled && 'none'};
+  cursor: ${({ disabled }) => !disabled && "pointer"};
+  pointer-events: ${({ disabled }) => disabled && "none"};
   :hover {
     background-color: ${({ theme }) => theme.deprecated_hoverDefault};
   }
-  opacity: ${({ disabled, selected, dim }) => (dim || disabled || selected ? 0.4 : 1)};
-`
+  opacity: ${({ disabled, selected, dim }) =>
+    dim || disabled || selected ? 0.4 : 1};
+`;
 
 export const SearchInput = styled.input`
   background: no-repeat scroll 7px 7px;
@@ -36,34 +37,31 @@ export const SearchInput = styled.input`
   align-items: center;
   width: 100%;
   white-space: nowrap;
-  background-color: ${({ theme }) => theme.surface2};
+ 
   border: none;
   outline: none;
-  border-radius: 12px;
+  border-radius: 20px;
   color: ${({ theme }) => theme.neutral1};
   border-style: solid;
-  border: 1px solid ${({ theme }) => theme.surface3};
+  border: 1px solid  rgba(172, 177, 198, 1);
   -webkit-appearance: none;
   font-weight: 485;
 
   font-size: 16px;
 
   ::placeholder {
-    color: ${({ theme }) => theme.neutral3};
-    font-size: 16px;
+    color: rgba(172, 177, 198, 1);
   }
   transition: border 100ms;
   :focus {
-    border: 1px solid ${({ theme }) => theme.surface3};
-    background-color: ${({ theme }) => theme.surface2};
+    border: 1px solid #ACB1C6 ;
     outline: none;
-  }
-`
+`;
 export const Separator = styled.div`
   width: 100%;
   height: 1px;
   background-color: ${({ theme }) => theme.surface3};
-`
+`;
 
 export const LoadingRows = styled(BaseLoadingRows)`
   grid-column-gap: 0.5em;
@@ -85,4 +83,4 @@ export const LoadingRows = styled(BaseLoadingRows)`
     grid-column: 1 / 4;
     height: 0.75em;
   }
-`
+`;

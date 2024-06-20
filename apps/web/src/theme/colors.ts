@@ -1,7 +1,7 @@
 // Based mostly on https://github.com/Uniswap/interface/blob/main/src/theme/index.tsx
 
 export const colors = {
-  white: "#FFFFFF",
+  white: "#000000",
   black: "#000000",
   gray50: "#F5F6FC",
   gray100: "#E8ECFB",
@@ -103,7 +103,7 @@ export const colors = {
   neutral1_dark: "#FFFFFF",
   neutral2_dark: "#9B9B9B",
   neutral3_dark: "#5E5E5E",
-  surface1_dark: "transparent",
+  surface1_dark: "#000000",
   surface2_dark: "rgb(19,17,24)",
   surface3_dark: "#FFFFFF12",
   surface4_dark: "#FFFFFF20",
@@ -114,7 +114,7 @@ export const colors = {
   neutral1_light: "#222222",
   neutral2_light: "#7D7D7D",
   neutral3_light: "#CECECE",
-  surface1_light: "#FFFFFF",
+  surface1_light: "#000000",
   surface2_light: "#F9F9F9",
   surface3_light: "#22222212",
   surface4_light: "#FFFFFF64",

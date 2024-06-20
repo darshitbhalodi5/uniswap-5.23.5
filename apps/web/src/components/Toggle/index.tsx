@@ -4,7 +4,7 @@ import styled, { keyframes } from 'styled-components'
 
 const Wrapper = styled.button<{ isActive?: boolean; activeElement?: boolean }>`
   align-items: center;
-  background: ${({ isActive, theme }) => (isActive ? theme.accent2 : 'transparent')};
+  background: ${({ isActive, theme }) => (isActive ? '#9657EB' : 'transparent')};
   border: ${({ theme, isActive }) => (isActive ? '1px solid transparent' : `1px solid ${theme.surface3}`)};
   border-radius: 20px;
   cursor: pointer;

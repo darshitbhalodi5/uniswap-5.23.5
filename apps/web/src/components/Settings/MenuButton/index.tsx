@@ -1,14 +1,15 @@
-import { Settings } from 'components/Icons/Settings'
-import Row from 'components/Row'
-import { t, Trans } from 'i18n'
-import { InterfaceTrade } from 'state/routing/types'
-import { isUniswapXTrade } from 'state/routing/utils'
-import { useUserSlippageTolerance } from 'state/user/hooks'
-import { SlippageTolerance } from 'state/user/types'
-import styled from 'styled-components'
-import { ThemedText } from 'theme/components'
-import { useFormatter } from 'utils/formatNumbers'
-import validateUserSlippageTolerance, { SlippageValidationResult } from 'utils/validateUserSlippageTolerance'
+import { Settings } from "components/Icons/Settings";
+import Row from "components/Row";
+import { t, Trans } from "i18n";
+import { InterfaceTrade } from "state/routing/types";
+import { isUniswapXTrade } from "state/routing/utils";
+import { useUserSlippageTolerance } from "state/user/hooks";
+import { SlippageTolerance } from "state/user/types";
+import styled from "styled-components";
+import { useFormatter } from "utils/formatNumbers";
+import validateUserSlippageTolerance, {
+  SlippageValidationResult,
+} from "utils/validateUserSlippageTolerance";
 
 const Icon = styled(Settings)`
   height: 24px;
@@ -16,7 +17,7 @@ const Icon = styled(Settings)`
   > * {
     fill: ${({ theme }) => theme.neutral2};
   }
-`
+`;
 
 const Button = styled.button<{ isActive: boolean }>`
   border: none;
@@ -31,49 +32,69 @@ const Button = styled.button<{ isActive: boolean }>`
   }
 
   ${({ isActive }) => isActive && `opacity: 0.7`}
-`
+`;
 
 const IconContainer = styled(Row)`
   padding: 6px 12px;
   border-radius: 16px;
-`
+`;
 
-const IconContainerWithSlippage = styled(IconContainer)<{ displayWarning?: boolean }>`
+const IconContainerWithSlippage = styled(IconContainer)<{
+  displayWarning?: boolean;
+}>`
   div {
-    color: ${({ theme, displayWarning }) => (displayWarning ? theme.deprecated_accentWarning : theme.neutral2)};
+    color: ${({ theme, displayWarning }) =>
+      displayWarning ? theme.deprecated_accentWarning : "rgb(138, 143, 157)"};
   }
 
   background-color: ${({ theme, displayWarning }) =>
     displayWarning ? theme.deprecated_accentWarningSoft : theme.surface2};
-`
+`;
 
-const ButtonContent = ({ trade, compact }: { trade?: InterfaceTrade; compact: boolean }) => {
-  const [userSlippageTolerance] = useUserSlippageTolerance()
-  const { formatPercent } = useFormatter()
+const ButtonContent = ({
+  trade,
+  compact,
+}: {
+  trade?: InterfaceTrade;
+  compact: boolean;
+}) => {
+  const [userSlippageTolerance] = useUserSlippageTolerance();
+  const { formatPercent } = useFormatter();
 
-  if (userSlippageTolerance === SlippageTolerance.Auto || isUniswapXTrade(trade)) {
+  if (
+    userSlippageTolerance === SlippageTolerance.Auto ||
+    isUniswapXTrade(trade)
+  ) {
     return (
       <IconContainer>
         <Icon />
       </IconContainer>
-    )
+    );
   }
 
-  const isInvalidSlippage = validateUserSlippageTolerance(userSlippageTolerance) !== SlippageValidationResult.Valid
+  const isInvalidSlippage =
+    validateUserSlippageTolerance(userSlippageTolerance) !==
+    SlippageValidationResult.Valid;
 
   return (
-    <IconContainerWithSlippage data-testid="settings-icon-with-slippage" gap="sm" displayWarning={isInvalidSlippage}>
-      <ThemedText.Caption>
+    <IconContainerWithSlippage
+      data-testid="settings-icon-with-slippage"
+      gap="sm"
+      displayWarning={isInvalidSlippage}
+    >
+      <div>
         {compact ? (
           formatPercent(userSlippageTolerance)
         ) : (
-          <Trans>{{ amt: formatPercent(userSlippageTolerance) }} slippage</Trans>
+          <Trans>
+            {{ amt: formatPercent(userSlippageTolerance) }} slippage
+          </Trans>
         )}
-      </ThemedText.Caption>
+      </div>
       <Icon />
     </IconContainerWithSlippage>
-  )
-}
+  );
+};
 
 export default function MenuButton({
   disabled,
@@ -82,11 +103,11 @@ export default function MenuButton({
   compact,
   trade,
 }: {
-  disabled: boolean
-  onClick: () => void
-  isActive: boolean
-  compact: boolean
-  trade?: InterfaceTrade
+  disabled: boolean;
+  onClick: () => void;
+  isActive: boolean;
+  compact: boolean;
+  trade?: InterfaceTrade;
 }) {
   return (
     <Button
@@ -99,5 +120,5 @@ export default function MenuButton({
     >
       <ButtonContent trade={trade} compact={compact} />
     </Button>
-  )
+  );
 }

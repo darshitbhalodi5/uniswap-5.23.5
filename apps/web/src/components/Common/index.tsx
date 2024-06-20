@@ -1,4 +1,4 @@
-import { css } from 'styled-components'
+import { css } from "styled-components";
 
 export const ScrollBarStyles = css<{ $isHorizontalScroll?: boolean }>`
   // Firefox scrollbar styling
@@ -20,7 +20,7 @@ export const ScrollBarStyles = css<{ $isHorizontalScroll?: boolean }>`
         : css`
             width: 4px;
             overflow-y: scroll;
-          `
+          `;
     }}
   }
 
@@ -28,14 +28,14 @@ export const ScrollBarStyles = css<{ $isHorizontalScroll?: boolean }>`
     background: ${({ theme }) => theme.surface3};
     border-radius: 8px;
   }
-`
+`;
 export const HideScrollBarStyles = css`
   ::-webkit-scrollbar {
     display: none;
   }
   -ms-overflow-style: none;
   scrollbar-width: none;
-`
+`;
 export const OpacityHoverState = css`
   &:hover {
     opacity: ${({ theme }) => theme.opacity.hover};
@@ -50,4 +50,4 @@ export const OpacityHoverState = css`
       transition: { duration, timing },
     },
   }) => `opacity ${duration.medium} ${timing.ease}`};
-`
+`;

@@ -234,7 +234,7 @@ export default function CurrencyInputPanel({
   const { account, chainId } = useWeb3React();
   const selectedCurrencyBalance = useCurrencyBalance(
     account ?? undefined,
-    currency ?? undefined,
+    currency ?? undefined
   );
   const theme = useTheme();
   const { formatCurrencyAmount } = useFormatter();
@@ -315,7 +315,7 @@ export default function CurrencyInputPanel({
                               "..." +
                               currency.symbol.slice(
                                 currency.symbol.length - 5,
-                                currency.symbol.length,
+                                currency.symbol.length
                               )
                             : currency?.symbol) || (
                             <Trans>Select a token</Trans>
@@ -346,10 +346,10 @@ export default function CurrencyInputPanel({
                         style={{ display: "inline", cursor: "pointer" }}
                       >
                         {Boolean(
-                          !hideBalance && currency && selectedCurrencyBalance,
+                          !hideBalance && currency && selectedCurrencyBalance
                         ) &&
                           (renderBalance?.(
-                            selectedCurrencyBalance as CurrencyAmount<Currency>,
+                            selectedCurrencyBalance as CurrencyAmount<Currency>
                           ) || (
                             <Trans>
                               Balance:{" "}
