@@ -77,6 +77,7 @@ const baseMenuItem = style([
   {
     lineHeight: "22px",
     textDecoration: "none",
+
     ":hover": {
       color: "yellow",
     },

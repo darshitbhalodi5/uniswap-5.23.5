@@ -80,6 +80,7 @@ export const PageTabs = () => {
       <MenuItem
         href="/swap"
         isActive={pathname.startsWith("/swap") || pathname === "/"}
+        id="menuItem"
       >
         <Trans>Swap</Trans>
       </MenuItem>
@@ -89,6 +90,7 @@ export const PageTabs = () => {
           (chainName !== Chain.Ethereum ? `/${chainName.toLowerCase()}` : "")
         }
         isActive={pathname.startsWith("/explore")}
+        id="menuItem"
       >
         <Trans>Explore</Trans>
       </MenuItem>
