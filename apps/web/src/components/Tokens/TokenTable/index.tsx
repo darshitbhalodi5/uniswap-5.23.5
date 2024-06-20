@@ -271,7 +271,7 @@ function TokenTable({
         id: "index",
         header: () => (
           <Cell justifyContent="center" minWidth={44}>
-            <ThemedText.BodySecondary>#</ThemedText.BodySecondary>
+            <div>#</div>
           </Cell>
         ),
         cell: (index) => (
@@ -290,9 +290,9 @@ function TokenTable({
         id: "tokenDescription",
         header: () => (
           <Cell justifyContent="flex-start" width={240} grow>
-            <ThemedText.BodySecondary>
+            <div>
               <Trans color="white">Token name</Trans>
-            </ThemedText.BodySecondary>
+            </div>
           </Cell>
         ),
         cell: (tokenDescription) => (
@@ -311,11 +311,13 @@ function TokenTable({
         id: "price",
         header: () => (
           <Cell minWidth={133} grow>
-            <TokenTableHeader
-              category={TokenSortMethod.PRICE}
-              isCurrentSortMethod={sortMethod === TokenSortMethod.PRICE}
-              direction={orderDirection}
-            />
+            <div>
+              <TokenTableHeader
+                category={TokenSortMethod.PRICE}
+                isCurrentSortMethod={sortMethod === TokenSortMethod.PRICE}
+                direction={orderDirection}
+              />
+            </div>
           </Cell>
         ),
         cell: (price) => (

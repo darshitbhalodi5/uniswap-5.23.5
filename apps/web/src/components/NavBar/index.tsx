@@ -77,7 +77,10 @@ export const PageTabs = () => {
 
   return (
     <>
-      <MenuItem href="/swap" isActive={pathname.startsWith("/swap")}>
+      <MenuItem
+        href="/swap"
+        isActive={pathname.startsWith("/swap") || pathname === "/"}
+      >
         <Trans>Swap</Trans>
       </MenuItem>
       <MenuItem
@@ -120,7 +123,7 @@ const Navbar = ({ blur }: { blur: boolean }) => {
       toggleAccountDrawer();
     }
     navigate({
-      pathname: "/swap",
+      pathname: "/",
       search: "?intro=true",
     });
   }, [account, accountDrawerOpen, navigate, toggleAccountDrawer]);

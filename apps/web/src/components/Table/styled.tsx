@@ -115,7 +115,10 @@ export const LoadingIndicator = styled(Row)`
 
 const TableRow = styled(Row)`
   padding: 0px 12px;
+  margin: 5px 0px;
+  background: #18151f;
   width: fit-content;
+  border-collapse: separate;
   min-width: 100%;
   display: flex;
   min-height: 64px;
@@ -123,7 +126,7 @@ const TableRow = styled(Row)`
 export const DataRow = styled(TableRow)`
   @media not all and (hover: none) {
     :hover {
-      background: ${({ theme }) => theme.surface3};
+      background: #ffffff12;
     }
   }
 `;
@@ -168,7 +171,7 @@ const StyledInternalLink = styled(Link)`
 `;
 
 export const TableRowLink = styled(Link)`
-  color: none;
+  color: red !important;
   text-decoration: none;
   cursor: pointer;
 `;
@@ -178,6 +181,7 @@ export const ClickableHeaderRow = styled(Row)<{ $justify?: string }>`
   cursor: pointer;
   width: 100%;
   gap: 4px;
+
   ${ClickableStyle}
 `;
 export const HeaderArrow = styled(ArrowDown)<{
@@ -189,10 +193,10 @@ export const HeaderArrow = styled(ArrowDown)<{
   transform: ${({ direction }) =>
     direction === "asc" ? "rotate(180deg)" : "rotate(0deg)"};
 `;
-export const HeaderSortText = styled(ThemedText.BodySecondary)<{
+export const HeaderSortText = styled(ThemedText.BodyPrimary)<{
   $active?: boolean;
 }>`
-  ${({ $active, theme }) => $active && `color: ${theme.neutral1};`}
+  ${({ $active, theme }) => $active && `color: white;`}
 `;
 
 export const FilterHeaderRow = styled(Row)<{ modalOpen?: boolean }>`
@@ -212,7 +216,7 @@ const StyledExternalLinkIcon = styled(ExternalLinkIcon)`
   display: none;
   height: 16px;
   width: 16px;
-  color: ${({ theme }) => theme.neutral2};
+  color: white;
   ${StyledTimestampRow}:hover & {
     display: block;
   }

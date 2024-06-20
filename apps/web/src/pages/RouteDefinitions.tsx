@@ -94,7 +94,7 @@ function createRouteDefinition(
     getElement: () => null,
     getTitle: () => "UdonSwap Interface",
     enabled: () => true,
-    path: "/swap",
+    path: "/",
     nestedPaths: [],
     // overwrite the defaults
     ...route,
@@ -105,7 +105,7 @@ const SwapTitle = t`Buy, sell & trade Ethereum and other top tokens on UdonSwap`
 
 export const routes: RouteDefinition[] = [
   createRouteDefinition({
-    path: "/swap",
+    path: "/",
     getTitle: () =>
       t`UdonSwap | Trade crypto & NFTs safely on the top DeFi exchange`,
     getElement: () => <Swap />,
