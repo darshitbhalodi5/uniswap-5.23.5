@@ -1,5 +1,5 @@
 import { Currency, CurrencyAmount, Percent, Price, Token } from 'core87'
-import { Pair } from '@uniswap/v2-sdk'
+import { Pair } from 'v287'
 import { useWeb3React } from '@web3-react/core'
 import { Trans } from 'i18n'
 import JSBI from 'jsbi'

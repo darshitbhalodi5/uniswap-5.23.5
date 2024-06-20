@@ -1,5 +1,5 @@
 import { Percent, Token, V2_FACTORY_ADDRESSES } from 'core87'
-import { Pair, computePairAddress } from '@uniswap/v2-sdk'
+import { Pair, computePairAddress } from 'v287'
 import { useWeb3React } from '@web3-react/core'
 import { L2_CHAIN_IDS } from 'constants/chains'
 import { SupportedLocale } from 'constants/locales'

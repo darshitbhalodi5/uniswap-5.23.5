@@ -1,6 +1,6 @@
 import { Protocol } from '@uniswap/router-sdk'
 import { Currency, Percent, TradeType } from 'core87'
-import { Pair } from '@uniswap/v2-sdk'
+import { Pair } from 'v287'
 import { FeeAmount } from '@uniswap/v3-sdk'
 import { ClassicTrade } from 'state/routing/types'
 

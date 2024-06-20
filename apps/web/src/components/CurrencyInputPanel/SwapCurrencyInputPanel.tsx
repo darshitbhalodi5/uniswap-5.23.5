@@ -4,7 +4,7 @@ import {
   SwapEventName,
 } from "@uniswap/analytics-events";
 import { Currency, CurrencyAmount, Percent } from "core87";
-import { Pair } from "@uniswap/v2-sdk";
+import { Pair } from "v287";
 import { useWeb3React } from "@web3-react/core";
 import { TraceEvent } from "analytics";
 import { AutoColumn } from "components/Column";

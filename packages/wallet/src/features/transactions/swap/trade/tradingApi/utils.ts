@@ -1,6 +1,6 @@
 import { MixedRouteSDK } from '@uniswap/router-sdk'
 import { Currency, CurrencyAmount, Percent, Token, TradeType } from 'core87'
-import { Pair, Route as V2Route } from '@uniswap/v2-sdk'
+import { Pair, Route as V2Route } from 'v287'
 import { FeeAmount, Pool, Route as V3Route } from '@uniswap/v3-sdk'
 import { BigNumber } from 'ethers'
 import { logger } from 'utilities/src/logger/logger'

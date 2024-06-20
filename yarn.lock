@@ -13283,7 +13283,6 @@ __metadata:
     "@uniswap/universal-router-sdk": 1.8.2
     "@uniswap/v2-core": 1.0.1
     "@uniswap/v2-periphery": 1.1.0-beta.0
-    "@uniswap/v2-sdk": 4.3.0
     "@uniswap/v3-core": 1.0.1
     "@uniswap/v3-periphery": 1.4.4
     "@uniswap/v3-sdk": 3.11.0
@@ -13410,6 +13409,7 @@ __metadata:
     use-resize-observer: 9.1.0
     utilities: "workspace:^"
     uuid: 9.0.0
+    v287: 1.0.0
     video-extensions: 1.2.0
     wcag-contrast: 3.0.0
     web-vitals: 2.1.4
@@ -13644,6 +13644,37 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@uniswap/sdk-core@npm:^4.0.7":
+  version: 4.2.1
+  resolution: "@uniswap/sdk-core@npm:4.2.1"
+  dependencies:
+    "@ethersproject/address": ^5.0.2
+    big.js: ^5.2.2
+    decimal.js-light: ^2.5.0
+    jsbi: ^3.1.4
+    tiny-invariant: ^1.1.0
+    toformat: ^2.0.0
+  checksum: a72b85e7fafe787a0cb2215cab5f7981fb18c1f63b58a3257accbefe0cc8fd64b7ad99d6ae9d0fc12f4383ac90d3991bae49a6af1fc5c89b72e1a9132af2c8e5
+  languageName: node
+  linkType: hard
+
+"@uniswap/sdk-core@npm:^5.3.1":
+  version: 5.3.1
+  resolution: "@uniswap/sdk-core@npm:5.3.1"
+  dependencies:
+    "@ethersproject/address": ^5.0.2
+    "@ethersproject/bytes": ^5.7.0
+    "@ethersproject/keccak256": 5.7.0
+    "@ethersproject/strings": 5.7.0
+    big.js: ^5.2.2
+    decimal.js-light: ^2.5.0
+    jsbi: ^3.1.4
+    tiny-invariant: ^1.1.0
+    toformat: ^2.0.0
+  checksum: fcf33b2dc07f740070a79468f9c7d0badd668a8126b512c5cfa71d5f7a406fe0d25b5d6994745b8c2f112a0f416c76cd5cc7e1b3198039813c3a09539f6fe345
+  languageName: node
+  linkType: hard
+
 "@uniswap/smart-order-router@npm:3.17.3":
   version: 3.17.3
   resolution: "@uniswap/smart-order-router@npm:3.17.3"
@@ -13761,16 +13792,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uniswap/v2-sdk@npm:4.3.0":
-  version: 4.3.0
-  resolution: "@uniswap/v2-sdk@npm:4.3.0"
+"@uniswap/v2-sdk@npm:^3.2.3":
+  version: 3.3.0
+  resolution: "@uniswap/v2-sdk@npm:3.3.0"
   dependencies:
     "@ethersproject/address": ^5.0.0
     "@ethersproject/solidity": ^5.0.0
-    core87: ^4.2.0
+    "@uniswap/sdk-core": ^4.0.7
     tiny-invariant: ^1.1.0
     tiny-warning: ^1.0.3
-  checksum: 1cc5a19486ec9832e674d642c2c715f8db9282ae4075df949a0667c7e1ba270c62c4bdd9d12a0698c44bfc7fc3e8352d2ccc97a800ab554e00938892405463ab
+  checksum: 8a6f3c5f1d53749dc61aa46a89799272a3f2f6e01fab36a1c022ef2ffac1f8d52e3a6a4b23b43074b738c77fa45182abf67a9b416c1e83af854ba794d55cc0d7
+  languageName: node
+  linkType: hard
+
+"@uniswap/v2-sdk@npm:^4.2.0, @uniswap/v2-sdk@npm:^4.3.0":
+  version: 4.4.1
+  resolution: "@uniswap/v2-sdk@npm:4.4.1"
+  dependencies:
+    "@ethersproject/address": ^5.0.2
+    "@ethersproject/solidity": ^5.0.9
+    "@uniswap/sdk-core": ^5.3.1
+    tiny-invariant: ^1.1.0
+    tiny-warning: ^1.0.3
+  checksum: 4f80f7927002c8a3accbec8fc855f53efcf753bb95cf01c566b9147d0ecb39ebf63829148eee91f710f9b9f7d968e4d882efcb7715764a15136658da0ecd3f13
   languageName: node
   linkType: hard
 
@@ -43844,6 +43888,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"v287@npm:1.0.0":
+  version: 1.0.0
+  resolution: "v287@npm:1.0.0"
+  dependencies:
+    "@ethersproject/address": ^5.0.0
+    "@ethersproject/solidity": ^5.0.0
+    core87: ^1.0.0
+    tiny-invariant: ^1.1.0
+    tiny-warning: ^1.0.3
+  checksum: 3c188a478c454a634cbb3b90c10071eb47a2aad340f5b9e9bf1daab00e41709b2a2ccf402aaffbef03d5086294913ad1e4f2bf11ed44ee3d58c458a4bcda72f6
+  languageName: node
+  linkType: hard
+
 "v8-compile-cache-lib@npm:^3.0.1":
   version: 3.0.1
   resolution: "v8-compile-cache-lib@npm:3.0.1"
@@ -44288,7 +44345,6 @@ __metadata:
     "@uniswap/permit2-sdk": 1.2.0
     "@uniswap/router-sdk": 1.9.0
     "@uniswap/universal-router-sdk": 1.8.2
-    "@uniswap/v2-sdk": 4.3.0
     "@uniswap/v3-sdk": 3.11.0
     apollo-link-rest: 0.9.0
     axios: 1.6.5
@@ -44339,6 +44395,7 @@ __metadata:
     uniswap: "workspace:^"
     utilities: "workspace:^"
     uuid: 9.0.0
+    v287: 1.0.0
     wcag-contrast: 3.0.0
     zod: 3.22.4
     zxcvbn: 4.4.2
