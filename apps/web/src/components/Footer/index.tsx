@@ -1,9 +1,8 @@
-import React from "react";
-import "../../components/Footer/footer.css";
-import X from "../../assets/images/x.png";
-import web from "../../assets/images/web.png";
-import discord from "../../assets/images/discord.png";
 import logo from "../../assets/images/UdonSwapLogo.png";
+import discord from "../../assets/images/discord.png";
+import web from "../../assets/images/web.png";
+import X from "../../assets/images/x.png";
+import "../Footer/footer.css";
 
 function Footer() {
   return (

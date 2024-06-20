@@ -70,18 +70,19 @@ const CurrencySelect = styled(ButtonGray)<{
 }>`
   align-items: center;
   background-color: ${({ selected, theme }) =>
-    selected ? theme.surface1 : theme.accent1};
+    selected ? "transparent" : "#ffffff"};
   opacity: ${({ disabled }) => (!disabled ? 1 : 0.4)};
-  box-shadow: ${({ theme }) => theme.deprecated_shallowShadow};
-  color: ${({ selected, theme }) =>
-    selected ? theme.neutral1 : theme.neutral1};
+  color: ${({ selected, theme }) => (selected ? "#000000" : "#9657EB")};
+  box-shadow: ${({ selected }) =>
+    selected ? "none" : "0px 6px 10px rgba(0, 0, 0, 0.075)"};
   cursor: pointer;
   border-radius: 16px;
   outline: none;
   user-select: none;
   border: none;
+
   font-size: 24px;
-  font-weight: 535;
+  font-weight: 485;
   height: ${({ hideInput }) => (hideInput ? "2.8rem" : "2.4rem")};
   width: ${({ hideInput }) => (hideInput ? "100%" : "initial")};
   padding: 0 8px;
@@ -90,7 +91,11 @@ const CurrencySelect = styled(ButtonGray)<{
   :focus,
   :hover {
     background-color: ${({ selected, theme }) =>
-      selected ? theme.surface2 : darken(0.05, theme.accent1)};
+      selected ? "transparent" : "#9657EB"};
+    color: ${({ selected, theme }) => (selected ? "#000000" : "#FFFFFF")};
+    svg path {
+      stroke: #ffffff;
+    }
   }
   visibility: ${({ visible }) => (visible ? "visible" : "hidden")};
   ${({ pointerEvents }) => pointerEvents && `pointer-events: none`}
@@ -137,8 +142,7 @@ const StyledDropDown = styled(DropDown)<{ selected: boolean }>`
   height: 35%;
 
   path {
-    stroke: ${({ selected, theme }) =>
-      selected ? theme.neutral1 : theme.white};
+    stroke: ${({ selected, theme }) => (selected ? "white" : "#9657EB")};
     stroke-width: 1.5px;
   }
 `;
@@ -150,6 +154,7 @@ const StyledTokenName = styled.span<{ active?: boolean }>`
       : "  margin: 0 0.25rem 0 0.25rem;"}
   font-size: 20px;
   white-space: nowrap;
+  color: ${({ active }) => (active ? "#FFFFFF" : "none")};
 
   @media screen and (max-width: ${BREAKPOINTS.sm}px) {
     font-size: 16px;
@@ -157,21 +162,21 @@ const StyledTokenName = styled.span<{ active?: boolean }>`
 `;
 
 const StyledBalanceMax = styled.button<{ disabled?: boolean }>`
-  background-color: transparent;
-  background-color: ${({ theme }) => theme.accent2};
+  background: #9657eb47;
   border: none;
-  border-radius: 12px;
-  color: ${({ theme }) => theme.accent1};
+  border-radius: 10px;
+  color: white;
   cursor: pointer;
   font-size: 11px;
   font-weight: 535;
   margin-left: 0.25rem;
   opacity: ${({ disabled }) => (!disabled ? 1 : 0.4)};
-  padding: 4px 6px;
+  padding: 6px;
   pointer-events: ${({ disabled }) => (!disabled ? "initial" : "none")};
 
   :hover {
     opacity: ${({ disabled }) => (!disabled ? 0.8 : 0.4)};
+    border: 1px solid white;
   }
 
   :focus {

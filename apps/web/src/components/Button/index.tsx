@@ -136,11 +136,13 @@ const BaseButtonLight = styled(BaseButton)`
 `;
 
 export const ButtonGray = styled(BaseButton)`
-  background-color: ${({ theme }) => theme.surface1};
-  color: ${({ theme }) => theme.neutral2};
+  background-color: #1c1924;
+  color: ${({ theme }) => theme.neutral1};
   border: 1px solid ${({ theme }) => theme.surface3};
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 535;
+  border-radius: 8px;
+  padding: 4px;
 
   &:hover {
     background-color: ${({ theme, disabled }) =>
@@ -181,17 +183,17 @@ export const ButtonSecondary = styled(BaseButton)`
 `;
 
 export const ButtonOutlined = styled(BaseButton)`
-  border: 1px solid ${({ theme }) => theme.surface3};
-  background-color: transparent;
+  border: none;
+  line-height: 12px;
+  border-radius: 7px;
+  background: transparent;
   color: ${({ theme }) => theme.neutral1};
   &:focus {
-    box-shadow: 0 0 0 1px ${({ theme }) => theme.surface3};
   }
   &:hover {
-    box-shadow: 0 0 0 1px ${({ theme }) => theme.neutral3};
+    border: 1px solid white;
   }
   &:active {
-    box-shadow: 0 0 0 1px ${({ theme }) => theme.surface3};
   }
   &:disabled {
     opacity: 50%;
@@ -332,8 +334,9 @@ export function ButtonDropdownLight({
 }
 
 const ActiveOutlined = styled(ButtonOutlined)`
-  border: 1px solid;
-  border-color: ${({ theme }) => theme.accent1};
+  border: none;
+  background-color: #9657eb;
+  color: ${({ theme }) => theme.neutral1};
 `;
 
 const Circle = styled.div`

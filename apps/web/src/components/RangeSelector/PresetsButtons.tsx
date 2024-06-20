@@ -7,6 +7,7 @@ import { ThemedText } from 'theme/components'
 const Button = styled(ButtonOutlined).attrs(() => ({
   padding: '6px',
   $borderRadius: '8px',
+  background: '#9657eb47',
 }))`
   color: ${({ theme }) => theme.neutral1};
   flex: 1;
