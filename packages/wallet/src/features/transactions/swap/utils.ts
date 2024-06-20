@@ -4,7 +4,7 @@ import {
   FlatFeeOptions,
   SwapOptions as UniversalRouterSwapOptions,
   SwapRouter as UniversalSwapRouter,
-} from '@uniswap/universal-router-sdk'
+} from 'universal87'
 import { FeeOptions } from 'v387'
 import { BigNumber } from 'ethers'
 import { AppTFunction } from 'ui/src/i18n/types'

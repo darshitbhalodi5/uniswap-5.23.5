@@ -6,7 +6,7 @@ import {
   PermitSingle,
 } from '@uniswap/permit2-sdk'
 import { Currency, CurrencyAmount } from 'core87'
-import { UNIVERSAL_ROUTER_ADDRESS } from '@uniswap/universal-router-sdk'
+import { UNIVERSAL_ROUTER_ADDRESS } from 'universal87'
 import dayjs from 'dayjs'
 import { BigNumber, TypedDataField, providers } from 'ethers'
 import { useCallback } from 'react'

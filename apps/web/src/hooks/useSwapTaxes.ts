@@ -1,6 +1,6 @@
 import { InterfaceEventName } from '@uniswap/analytics-events'
 import { ChainId, Percent } from 'core87'
-import { WETH_ADDRESS as getWethAddress } from '@uniswap/universal-router-sdk'
+import { WETH_ADDRESS as getWethAddress } from 'universal87'
 import { useWeb3React } from '@web3-react/core'
 import { sendAnalyticsEvent } from 'analytics'
 import { BIPS_BASE, ZERO_PERCENT } from 'constants/misc'

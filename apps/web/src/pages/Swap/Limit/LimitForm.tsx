@@ -6,7 +6,7 @@ import {
   SwapEventName,
 } from "@uniswap/analytics-events";
 import { Currency, CurrencyAmount, Token } from "core87";
-import { UNIVERSAL_ROUTER_ADDRESS } from "@uniswap/universal-router-sdk";
+import { UNIVERSAL_ROUTER_ADDRESS } from "universal87";
 import { useWeb3React } from "@web3-react/core";
 import { Trace, TraceEvent } from "analytics";
 import {

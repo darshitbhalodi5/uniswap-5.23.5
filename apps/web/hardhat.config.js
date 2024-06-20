@@ -1,5 +1,5 @@
 import { ChainId } from 'core87'
-import { UNIVERSAL_ROUTER_CREATION_BLOCK } from '@uniswap/universal-router-sdk'
+import { UNIVERSAL_ROUTER_CREATION_BLOCK } from 'universal87'
 
 /* eslint-env node */
 require('dotenv').config()

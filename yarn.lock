@@ -13279,7 +13279,6 @@ __metadata:
     "@uniswap/smart-order-router": 3.17.3
     "@uniswap/token-lists": 1.0.0-beta.33
     "@uniswap/uniswapx-sdk": 2.0.1-alpha.4
-    "@uniswap/universal-router-sdk": 1.8.2
     "@uniswap/v2-core": 1.0.1
     "@uniswap/v2-periphery": 1.1.0-beta.0
     "@uniswap/v3-core": 1.0.1
@@ -13405,6 +13404,7 @@ __metadata:
     tsafe: 1.6.4
     typescript: 5.3.3
     uniswap: "workspace:^"
+    universal87: 1.0.0
     use-resize-observer: 9.1.0
     utilities: "workspace:^"
     uuid: 9.0.0
@@ -13741,7 +13741,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uniswap/universal-router-sdk@npm:1.8.2, @uniswap/universal-router-sdk@npm:^1.5.4, @uniswap/universal-router-sdk@npm:^1.5.8":
+"@uniswap/universal-router-sdk@npm:^1.5.4, @uniswap/universal-router-sdk@npm:^1.5.8":
   version: 1.8.2
   resolution: "@uniswap/universal-router-sdk@npm:1.8.2"
   dependencies:
@@ -39125,7 +39125,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"router87@npm:1.0.0":
+"router87@npm:1.0.0, router87@npm:^1.0.0":
   version: 1.0.0
   resolution: "router87@npm:1.0.0"
   dependencies:
@@ -43344,6 +43344,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"universal87@npm:1.0.0":
+  version: 1.0.0
+  resolution: "universal87@npm:1.0.0"
+  dependencies:
+    "@uniswap/permit2-sdk": ^1.2.0
+    "@uniswap/universal-router": 1.6.0
+    bignumber.js: ^9.0.2
+    core87: ^1.0.0
+    ethers: ^5.3.1
+    router87: ^1.0.0
+    v287: ^1.0.0
+    v387: ^1.0.0
+  checksum: 1cb3e5dc97a3dcb980299a93eefbaf0f73b3702045ce6d1cd8de005c373e46f3f0a0860ec1beca116d5e708166657fbe0e2f591adb9fafb425b3ec3e431fa863
+  languageName: node
+  linkType: hard
+
 "universalify@npm:^0.1.0":
   version: 0.1.2
   resolution: "universalify@npm:0.1.2"
@@ -44372,7 +44388,6 @@ __metadata:
     "@uniswap/analytics-events": 2.32.0
     "@uniswap/eslint-config": "workspace:^"
     "@uniswap/permit2-sdk": 1.2.0
-    "@uniswap/universal-router-sdk": 1.8.2
     apollo-link-rest: 0.9.0
     axios: 1.6.5
     core87: 1.0.0
@@ -44421,6 +44436,7 @@ __metadata:
     typescript: 5.3.3
     ui: "workspace:^"
     uniswap: "workspace:^"
+    universal87: 1.0.0
     utilities: "workspace:^"
     uuid: 9.0.0
     v287: 1.0.0

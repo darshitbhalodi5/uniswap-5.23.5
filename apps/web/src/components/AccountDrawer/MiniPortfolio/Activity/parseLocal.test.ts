@@ -1,5 +1,5 @@
 import { ChainId, TradeType as MockTradeType, Token } from "core87";
-import { PERMIT2_ADDRESS } from "@uniswap/universal-router-sdk";
+import { PERMIT2_ADDRESS } from "universal87";
 import {
   DAI as MockDAI,
   USDC_MAINNET as MockUSDC_MAINNET,
