@@ -1,4 +1,4 @@
-import { Protocol } from '@uniswap/router-sdk'
+import { Protocol } from 'router87'
 import { Currency, Percent } from 'core87'
 import { FeeAmount } from 'v387'
 import { DAI, USDC_MAINNET, WBTC } from 'constants/tokens'

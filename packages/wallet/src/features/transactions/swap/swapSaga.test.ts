@@ -1,6 +1,6 @@
 import { MaxUint256 } from '@ethersproject/constants'
 import { call, select } from '@redux-saga/core/effects'
-import { Protocol } from '@uniswap/router-sdk'
+import { Protocol } from 'router87'
 import { TradeType } from 'core87'
 import { UNIVERSAL_ROUTER_ADDRESS } from '@uniswap/universal-router-sdk'
 import { expectSaga } from 'redux-saga-test-plan'

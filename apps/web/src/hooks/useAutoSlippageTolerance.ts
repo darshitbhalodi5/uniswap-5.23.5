@@ -1,4 +1,4 @@
-import { MixedRoute, partitionMixedRouteByProtocol, Protocol, Trade } from '@uniswap/router-sdk'
+import { MixedRoute, partitionMixedRouteByProtocol, Protocol, Trade } from 'router87'
 import { Currency, CurrencyAmount, Percent, TradeType } from 'core87'
 import { Pair } from 'v287'
 import { Pool } from 'v387'

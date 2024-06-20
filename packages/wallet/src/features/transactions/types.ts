@@ -1,5 +1,5 @@
 import { AnyAction } from '@reduxjs/toolkit'
-import { Protocol } from '@uniswap/router-sdk'
+import { Protocol } from 'router87'
 import { TradeType } from 'core87'
 import { providers } from 'ethers'
 import { Dispatch } from 'react'

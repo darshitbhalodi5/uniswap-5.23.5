@@ -1,4 +1,4 @@
-import { Trade } from '@uniswap/router-sdk'
+import { Trade } from 'router87'
 import { CurrencyAmount, Percent, TradeType } from 'core87'
 import { Pair, Route as V2Route } from 'v287'
 import { Route as V3Route } from 'v387'

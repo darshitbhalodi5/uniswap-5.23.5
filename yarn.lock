@@ -13276,7 +13276,6 @@ __metadata:
     "@uniswap/merkle-distributor": 1.0.1
     "@uniswap/permit2-sdk": 1.2.0
     "@uniswap/redux-multicall": 1.1.8
-    "@uniswap/router-sdk": 1.9.0
     "@uniswap/smart-order-router": 3.17.3
     "@uniswap/token-lists": 1.0.0-beta.33
     "@uniswap/uniswapx-sdk": 2.0.1-alpha.4
@@ -13392,6 +13391,7 @@ __metadata:
     redux: 4.2.1
     redux-persist: 6.0.0
     resize-observer-polyfill: 1.5.1
+    router87: 1.0.0
     serve: ^14.2.0
     source-map-explorer: 2.5.3
     start-server-and-test: 2.0.0
@@ -13631,7 +13631,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uniswap/router-sdk@npm:1.9.0, @uniswap/router-sdk@npm:^1.6.0, @uniswap/router-sdk@npm:^1.9.0":
+"@uniswap/router-sdk@npm:^1.6.0, @uniswap/router-sdk@npm:^1.9.0":
   version: 1.9.0
   resolution: "@uniswap/router-sdk@npm:1.9.0"
   dependencies:
@@ -39125,6 +39125,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"router87@npm:1.0.0":
+  version: 1.0.0
+  resolution: "router87@npm:1.0.0"
+  dependencies:
+    "@ethersproject/abi": ^5.5.0
+    "@uniswap/swap-router-contracts": ^1.1.0
+    core87: ^1.0.0
+    v287: ^1.0.0
+    v387: ^1.0.0
+  checksum: 23267a74b4108c447b2e71780515ec5920d76919346a72394359ffd7cd4f22d4c96b54cf59b00d4c1f7a8fa7e7822a3932013ef60ec649ec15bf288fdca5f6c6
+  languageName: node
+  linkType: hard
+
 "rpc-websockets@npm:^7.5.1":
   version: 7.6.2
   resolution: "rpc-websockets@npm:7.6.2"
@@ -43901,7 +43914,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"v387@npm:1.0.0":
+"v387@npm:1.0.0, v387@npm:^1.0.0":
   version: 1.0.0
   resolution: "v387@npm:1.0.0"
   dependencies:
@@ -44359,7 +44372,6 @@ __metadata:
     "@uniswap/analytics-events": 2.32.0
     "@uniswap/eslint-config": "workspace:^"
     "@uniswap/permit2-sdk": 1.2.0
-    "@uniswap/router-sdk": 1.9.0
     "@uniswap/universal-router-sdk": 1.8.2
     apollo-link-rest: 0.9.0
     axios: 1.6.5
@@ -44403,6 +44415,7 @@ __metadata:
     redux: 4.2.1
     redux-saga: 1.2.2
     redux-saga-test-plan: 4.0.4
+    router87: 1.0.0
     statsig-react-native: 4.11.0
     typed-redux-saga: 1.5.0
     typescript: 5.3.3

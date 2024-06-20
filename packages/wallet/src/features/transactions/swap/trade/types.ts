@@ -1,6 +1,6 @@
 import { SerializedError } from '@reduxjs/toolkit'
 import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query'
-import { MixedRouteSDK, Trade as RouterSDKTrade } from '@uniswap/router-sdk'
+import { MixedRouteSDK, Trade as RouterSDKTrade } from 'router87'
 import { Currency, CurrencyAmount, Percent, TradeType } from 'core87'
 import { Route as V2RouteSDK } from 'v287'
 import { Route as V3RouteSDK } from 'v387'

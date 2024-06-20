@@ -1,4 +1,4 @@
-import { Protocol } from '@uniswap/router-sdk'
+import { Protocol } from 'router87'
 import { Currency, Percent, TradeType } from 'core87'
 import { Pair } from 'v287'
 import { FeeAmount } from 'v387'

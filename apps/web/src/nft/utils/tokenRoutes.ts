@@ -1,4 +1,4 @@
-import { IRoute, Protocol } from '@uniswap/router-sdk'
+import { IRoute, Protocol } from 'router87'
 import { Currency, CurrencyAmount } from 'core87'
 import { Pair } from 'v287'
 import { Pool } from 'v387'

@@ -1,4 +1,4 @@
-import { Protocol } from '@uniswap/router-sdk'
+import { Protocol } from 'router87'
 import { Currency } from 'core87'
 import { FeeAmount } from 'v387'
 import Badge from 'components/Badge'

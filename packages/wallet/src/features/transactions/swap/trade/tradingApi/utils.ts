@@ -1,4 +1,4 @@
-import { MixedRouteSDK } from '@uniswap/router-sdk'
+import { MixedRouteSDK } from 'router87'
 import { Currency, CurrencyAmount, Percent, Token, TradeType } from 'core87'
 import { Pair, Route as V2Route } from 'v287'
 import { FeeAmount, Pool, Route as V3Route } from 'v387'
