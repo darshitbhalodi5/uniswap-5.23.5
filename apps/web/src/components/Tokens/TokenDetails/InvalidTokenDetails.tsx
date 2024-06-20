@@ -1,6 +1,6 @@
 import { ChainId } from '@uniswap/sdk-core'
 import { useWeb3React } from '@web3-react/core'
-import { ButtonPrimary } from 'components/Button'
+import { BaseButton } from 'components/Button'
 import { getChainInfo } from 'constants/chainInfo'
 import useSelectChain from 'hooks/useSelectChain'
 import { Trans } from 'i18n'
@@ -29,7 +29,7 @@ const InvalidDetailsText = styled.span`
   line-height: 28px;
 `
 
-const TokenExploreButton = styled(ButtonPrimary)`
+const TokenExploreButton = styled(BaseButton)`
   width: fit-content;
   padding: 12px 16px;
   border-radius: 12px;

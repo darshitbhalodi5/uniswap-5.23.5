@@ -127,11 +127,11 @@ export default function AuthenticatedHeader({
   const navigate = useNavigate();
   const closeModal = useCloseModal();
   const setSellPageState = useProfilePageState(
-    (state) => state.setProfilePageState
+    (state) => state.setProfilePageState,
   );
   const resetSellAssets = useSellAsset((state) => state.reset);
   const clearCollectionFilters = useWalletCollections(
-    (state) => state.clearCollectionFilters
+    (state) => state.clearCollectionFilters,
   );
   const shouldShowBuyFiatButton = !isPathBlocked("/buy");
   const { formatNumber, formatDelta } = useFormatter();
@@ -196,7 +196,7 @@ export default function AuthenticatedHeader({
   const disableBuyCryptoButton = Boolean(
     error ||
       (!fiatOnrampAvailable && fiatOnrampAvailabilityChecked) ||
-      fiatOnrampAvailabilityLoading
+      fiatOnrampAvailabilityLoading,
   );
 
   const { data: portfolioBalances } = useTokenBalancesQuery({
@@ -277,7 +277,7 @@ export default function AuthenticatedHeader({
             <LoadingBubble height="16px" width="100px" margin="4px 0 20px 0" />
           </Column>
         )}
-        <Row
+        {/* <Row
           gap="8px"
           marginBottom={
             !fiatOnrampAvailable && fiatOnrampAvailabilityChecked
@@ -308,7 +308,7 @@ export default function AuthenticatedHeader({
               onClick={navigateToProfile}
             />
           )}
-        </Row>
+        </Row> */}
         <MiniPortfolio account={account} />
         {isUnclaimed && (
           <UNIButton

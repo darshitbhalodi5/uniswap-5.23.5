@@ -17,6 +17,9 @@ const Icon = styled(Settings)`
   > * {
     fill: ${({ theme }) => theme.neutral2};
   }
+  &:hover > * {
+    fill: #e9e002; /* Change the fill color on hover */
+  }
 `;
 
 const Button = styled.button<{ isActive: boolean }>`

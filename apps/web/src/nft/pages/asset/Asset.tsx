@@ -1,14 +1,14 @@
-import { InterfacePageName } from '@uniswap/analytics-events'
-import { Trace } from 'analytics'
-import { useNftAssetDetails } from 'graphql/data/nft/Details'
-import { t } from 'i18n'
-import { AssetDetails } from 'nft/components/details/AssetDetails'
-import { AssetDetailsLoading } from 'nft/components/details/AssetDetailsLoading'
-import { AssetPriceDetails } from 'nft/components/details/AssetPriceDetails'
-import { blocklistedCollections } from 'nft/utils'
-import { Helmet } from 'react-helmet-async/lib/index'
-import { Navigate, useParams } from 'react-router-dom'
-import styled from 'styled-components'
+import { InterfacePageName } from "@uniswap/analytics-events";
+import { Trace } from "analytics";
+import { useNftAssetDetails } from "graphql/data/nft/Details";
+import { t } from "i18n";
+import { AssetDetails } from "nft/components/details/AssetDetails";
+import { AssetDetailsLoading } from "nft/components/details/AssetDetailsLoading";
+import { AssetPriceDetails } from "nft/components/details/AssetPriceDetails";
+import { blocklistedCollections } from "nft/utils";
+import { Helmet } from "react-helmet-async/lib/index";
+import { Navigate, useParams } from "react-router-dom";
+import styled from "styled-components";
 
 const AssetContainer = styled.div`
   display: flex;
@@ -26,7 +26,7 @@ const AssetContainer = styled.div`
   @media (max-width: 420px) {
     padding: 16px 16px 0 16px;
   }
-`
+`;
 
 const AssetPriceDetailsContainer = styled.div`
   min-width: 360px;
@@ -35,24 +35,25 @@ const AssetPriceDetailsContainer = styled.div`
   @media (max-width: 960px) {
     display: none;
   }
-`
+`;
 
 const AssetPage = () => {
-  const { tokenId = '', contractAddress = '' } = useParams()
-  const { data, loading } = useNftAssetDetails(contractAddress, tokenId)
+  const { tokenId = "", contractAddress = "" } = useParams();
+  const { data, loading } = useNftAssetDetails(contractAddress, tokenId);
 
-  const [asset, collection] = data
+  const [asset, collection] = data;
 
   if (blocklistedCollections.includes(contractAddress)) {
-    return <Navigate to="/nfts" replace />
+    return <Navigate to="/nfts" replace />;
   }
 
-  if (loading) return <AssetDetailsLoading />
+  if (loading) return <AssetDetailsLoading />;
   return (
     <>
       <Helmet>
         <title>
-          {asset.name ?? ''} {asset.name ? '|' : ''} {collection.collectionName ?? t`Explore NFTs`} on Uniswap
+          {asset.name ?? ""} {asset.name ? "|" : ""}{" "}
+          {collection.collectionName ?? t`Explore NFTs`} on Uniswap
         </title>
       </Helmet>
       <Trace
@@ -70,7 +71,7 @@ const AssetPage = () => {
         ) : null}
       </Trace>
     </>
-  )
-}
+  );
+};
 
-export default AssetPage
+export default AssetPage;

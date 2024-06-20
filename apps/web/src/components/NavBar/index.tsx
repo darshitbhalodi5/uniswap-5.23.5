@@ -95,15 +95,9 @@ export const PageTabs = () => {
         <Trans>Explore</Trans>
       </MenuItem>
 
-      <Box display={{ sm: "flex", lg: "none", xxl: "flex" }} width="full">
-        <MenuItem
-          href="/pool"
-          dataTestId="pool-nav-link"
-          isActive={isPoolActive}
-        >
-          <Trans>Pool</Trans>
-        </MenuItem>
-      </Box>
+      <MenuItem href="/pool" dataTestId="pool-nav-link" isActive={isPoolActive}>
+        <Trans>Pool</Trans>
+      </MenuItem>
     </>
   );
 };
@@ -146,11 +140,7 @@ const Navbar = ({ blur }: { blur: boolean }) => {
                 onClick={handleUniIconClick}
               />
             </Box>
-            {!isNftPage && (
-              <Box display={{ sm: "flex", lg: "none" }}>
-                <ChainSelector leftAlign={true} />
-              </Box>
-            )}
+
             <Row
               display={{ sm: "none", lg: "flex" }}
               style={{ background: "rgb(28, 25, 36)", borderRadius: "10px" }}

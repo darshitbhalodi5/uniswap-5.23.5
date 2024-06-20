@@ -32,7 +32,7 @@ export const SwapWrapperOuter = styled.main<{ isDark?: boolean }>`
 `;
 
 export const SwapWrapper = (
-  props: React.ComponentProps<typeof SwapWrapperOuter>
+  props: React.ComponentProps<typeof SwapWrapperOuter>,
 ) => {
   return (
     <SwapWrapperOuter {...props}>
@@ -66,6 +66,7 @@ export const ArrowWrapper = styled.div<{ clickable: boolean }>`
           :hover {
             cursor: pointer;
             opacity: 0.8;
+            background-color: rgb(28, 25, 36);
           }
         `
       : null}
@@ -142,8 +143,11 @@ export const SwapShowAcceptChanges = styled(AutoColumn)`
 
 export const SwapSection = styled.div`
   background-color: ${({ theme }) => theme.surface2};
-  box-shadow: rgba(0, 0, 0, 0.01) 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 4px 8px,
-    rgba(0, 0, 0, 0.04) 0px 16px 24px, rgba(0, 0, 0, 0.01) 0px 24px 32px;
+  box-shadow:
+    rgba(0, 0, 0, 0.01) 0px 0px 1px,
+    rgba(0, 0, 0, 0.04) 0px 4px 8px,
+    rgba(0, 0, 0, 0.04) 0px 16px 24px,
+    rgba(0, 0, 0, 0.01) 0px 24px 32px;
   border-radius: 16px;
   color: #ffffff;
   font-size: 14px;

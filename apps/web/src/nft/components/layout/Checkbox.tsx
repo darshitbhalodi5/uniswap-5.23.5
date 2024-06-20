@@ -42,6 +42,7 @@ const StyledCheck = styled(ApprovedCheckmarkIcon)<{ checked?: boolean; size?: nu
   color: white;
   position: absolute;
   right: 1px;
+  
 `
 
 interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {

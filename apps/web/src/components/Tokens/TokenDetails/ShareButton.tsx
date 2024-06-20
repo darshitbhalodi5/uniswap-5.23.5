@@ -32,6 +32,7 @@ const ShareAction = styled.div`
   cursor: pointer;
   :hover {
     background-color: ${({ theme }) => opacify(10, theme.darkMode ? colors.gray200 : colors.gray300)};
+    
   }
 `
 

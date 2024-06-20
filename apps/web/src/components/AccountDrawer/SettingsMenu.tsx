@@ -106,16 +106,16 @@ export default function SettingsMenu({
             <AnalyticsToggle />
             <TestnetsToggle />
           </ToggleWrapper>
-          {!currencyConversionEnabled && (
+          {/* {!currencyConversionEnabled && (
             <>
               <SectionTitle data-testid="wallet-header">
                 <Trans>Language</Trans>
               </SectionTitle>
               <LanguageMenuItems />
             </>
-          )}
+          )} */}
 
-          {currencyConversionEnabled && (
+          {/* {currencyConversionEnabled && (
             <Column>
               <SettingsButton
                 title={<Trans>Language</Trans>}
@@ -130,7 +130,7 @@ export default function SettingsMenu({
                 testId="local-currency-settings-button"
               />
             </Column>
-          )}
+          )} */}
         </div>
         <GitVersionRow />
       </Container>

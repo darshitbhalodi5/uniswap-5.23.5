@@ -69,7 +69,7 @@ export const Scrim = (props: ScrimBackgroundProps) => {
 
 const AccountDrawerScrollWrapper = styled.div`
   overflow-y: auto;
-
+  background-color: #000000;
   ${ScrollBarStyles}
 
   scrollbar-gutter: stable;

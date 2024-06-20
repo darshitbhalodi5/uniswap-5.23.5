@@ -38,7 +38,7 @@ const IconStyles = css<{ hideHorizontal?: boolean }>`
   overflow: hidden;
   height: 32px;
   width: ${({ hideHorizontal }) => (hideHorizontal ? "0px" : "32px")};
-  color: ${({ theme }) => theme.neutral2};
+  color: ${({ theme }) => theme.neutral1};
   :hover {
     transition: ${({
       theme: {
@@ -46,6 +46,7 @@ const IconStyles = css<{ hideHorizontal?: boolean }>`
       },
     }) =>
       `${duration.fast} background-color ${timing.in}, ${getWidthTransition}`};
+    color: #e9e002;
 
     ${IconHoverText} {
       opacity: 1;
@@ -53,8 +54,8 @@ const IconStyles = css<{ hideHorizontal?: boolean }>`
   }
   :active {
     background-color: ${({ theme }) => theme.surface1};
-    transition: background-color
-        ${({ theme }) => theme.transition.duration.fast} linear,
+    transition:
+      background-color ${({ theme }) => theme.transition.duration.fast} linear,
       ${getWidthTransition};
   }
 `;
@@ -135,7 +136,8 @@ const TextWrapper = styled.div`
 
 const TextHide = styled.div`
   overflow: hidden;
-  transition: width ${({ theme }) => theme.transition.timing.inOut}
+  transition:
+    width ${({ theme }) => theme.transition.timing.inOut}
       ${({ theme }) => theme.transition.duration.fast},
     max-width ${({ theme }) => theme.transition.timing.inOut}
       ${({ theme }) => theme.transition.duration.fast};
@@ -166,7 +168,7 @@ export const IconWithConfirmTextButton = ({
       setShowTextWithoutCallback(val);
       onShowConfirm?.(val);
     },
-    [onShowConfirm]
+    [onShowConfirm],
   );
 
   const dimensionsRef = useRef({

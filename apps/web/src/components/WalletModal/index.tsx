@@ -1,24 +1,24 @@
-import { useWeb3React } from '@web3-react/core'
-import IconButton from 'components/AccountDrawer/IconButton'
-import { useShowMoonpayText } from 'components/AccountDrawer/MiniPortfolio/hooks'
-import Column from 'components/Column'
-import { Settings } from 'components/Icons/Settings'
-import Row, { AutoRow } from 'components/Row'
-import { networkConnection } from 'connection'
-import { ActivationStatus, useActivationState } from 'connection/activate'
-import { isSupportedChain } from 'constants/chains'
-import { useUniswapWalletOptions } from 'hooks/useUniswapWalletOptions'
-import { Trans } from 'i18n'
-import { useEffect } from 'react'
-import styled from 'styled-components'
-import { ThemedText } from 'theme/components'
-import { flexColumnNoWrap } from 'theme/styles'
-import { Text } from 'ui/src/components/text/Text'
-import ConnectionErrorView from './ConnectionErrorView'
-import { DeprecatedInjectorMessage } from './Option'
-import PrivacyPolicyNotice from './PrivacyPolicyNotice'
-import { UniswapWalletOptions } from './UniswapWalletOptions'
-import { useOrderedConnections } from './useOrderedConnections'
+import { useWeb3React } from "@web3-react/core";
+import IconButton from "components/AccountDrawer/IconButton";
+import { useShowMoonpayText } from "components/AccountDrawer/MiniPortfolio/hooks";
+import Column from "components/Column";
+import { Settings } from "components/Icons/Settings";
+import Row, { AutoRow } from "components/Row";
+import { networkConnection } from "connection";
+import { ActivationStatus, useActivationState } from "connection/activate";
+import { isSupportedChain } from "constants/chains";
+import { useUniswapWalletOptions } from "hooks/useUniswapWalletOptions";
+import { Trans } from "i18n";
+import { useEffect } from "react";
+import styled from "styled-components";
+import { ThemedText } from "theme/components";
+import { flexColumnNoWrap } from "theme/styles";
+import { Text } from "ui/src/components/text/Text";
+import ConnectionErrorView from "./ConnectionErrorView";
+import { DeprecatedInjectorMessage } from "./Option";
+import PrivacyPolicyNotice from "./PrivacyPolicyNotice";
+import { UniswapWalletOptions } from "./UniswapWalletOptions";
+import { useOrderedConnections } from "./useOrderedConnections";
 
 const Wrapper = styled.div`
   ${flexColumnNoWrap};
@@ -27,7 +27,7 @@ const Wrapper = styled.div`
   padding: 14px 16px 16px;
   flex: 1;
   gap: 16px;
-`
+`;
 
 const OptionGrid = styled.div`
   display: grid;
@@ -38,38 +38,52 @@ const OptionGrid = styled.div`
   ${({ theme }) => theme.deprecated_mediaWidth.deprecated_upToMedium`
     grid-template-columns: 1fr;
   `};
-`
+`;
 
 const TextSectionWrapper = styled.div`
   padding: 0 4px;
-`
+`;
 
 const Line = styled.div`
   height: 1px;
   width: 100%;
   background: ${({ theme }) => theme.surface3};
-`
+`;
 
-export default function WalletModal({ openSettings }: { openSettings: () => void }) {
-  const { connector, chainId } = useWeb3React()
-  const showMoonpayText = useShowMoonpayText()
+export default function WalletModal({
+  openSettings,
+}: {
+  openSettings: () => void;
+}) {
+  const { connector, chainId } = useWeb3React();
+  const showMoonpayText = useShowMoonpayText();
 
-  const { activationState } = useActivationState()
+  const { activationState } = useActivationState();
   // Keep the network connector in sync with any active user connector to prevent chain-switching on wallet disconnection.
   useEffect(() => {
-    if (chainId && isSupportedChain(chainId) && connector !== networkConnection.connector) {
-      networkConnection.connector.activate(chainId)
+    if (
+      chainId &&
+      isSupportedChain(chainId) &&
+      connector !== networkConnection.connector
+    ) {
+      networkConnection.connector.activate(chainId);
     }
-  }, [chainId, connector])
+  }, [chainId, connector]);
 
-  const showUniswapWalletOptions = useUniswapWalletOptions()
-  const { orderedConnections, showDeprecatedMessage } = useOrderedConnections(!!showUniswapWalletOptions)
+  const showUniswapWalletOptions = useUniswapWalletOptions();
+  const { orderedConnections, showDeprecatedMessage } = useOrderedConnections(
+    !!showUniswapWalletOptions,
+  );
 
   return (
     <Wrapper data-testid="wallet-modal">
       <AutoRow justify="space-between" width="100%">
         <ThemedText.SubHeader>Connect a wallet</ThemedText.SubHeader>
-        <IconButton Icon={Settings} onClick={openSettings} data-testid="wallet-settings" />
+        <IconButton
+          Icon={Settings}
+          onClick={openSettings}
+          data-testid="wallet-settings"
+        />
       </AutoRow>
       {showUniswapWalletOptions && (
         <>
@@ -88,7 +102,9 @@ export default function WalletModal({ openSettings }: { openSettings: () => void
       ) : (
         <Column gap="md" flex="1">
           <Row flex="1" align="flex-start">
-            <OptionGrid data-testid="option-grid">{orderedConnections}</OptionGrid>
+            <OptionGrid data-testid="option-grid">
+              {orderedConnections}
+            </OptionGrid>
           </Row>
           {showDeprecatedMessage && (
             <TextSectionWrapper>
@@ -96,9 +112,6 @@ export default function WalletModal({ openSettings }: { openSettings: () => void
             </TextSectionWrapper>
           )}
           <Column gap="md">
-            <TextSectionWrapper>
-              <PrivacyPolicyNotice />
-            </TextSectionWrapper>
             {showMoonpayText && (
               <>
                 <Line />
@@ -113,5 +126,5 @@ export default function WalletModal({ openSettings }: { openSettings: () => void
         </Column>
       )}
     </Wrapper>
-  )
+  );
 }

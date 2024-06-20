@@ -101,7 +101,7 @@ export const colors = {
   networkBlast: "#fcfc03",
   //NEW COLORS FOR SPORE - need to define light/dark here cause they are root colors now (different system)
   neutral1_dark: "#FFFFFF",
-  neutral2_dark: "#9B9B9B",
+  neutral2_dark: "#FFFFFF",
   neutral3_dark: "#5E5E5E",
   surface1_dark: "#000000",
   surface2_dark: "rgb(19,17,24)",

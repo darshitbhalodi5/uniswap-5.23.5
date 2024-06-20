@@ -1,17 +1,17 @@
-import { useHeaderDateFormatter } from 'components/Charts/hooks'
-import Column from 'components/Column'
-import Row from 'components/Row'
-import { getProtocolColor, getProtocolName } from 'graphql/data/util'
-import { UTCTimestamp } from 'lightweight-charts'
-import { ReactElement, ReactNode } from 'react'
-import styled, { useTheme } from 'styled-components'
-import { EllipsisStyle } from 'theme/components'
-import { ThemedText } from 'theme/components/text'
-import { textFadeIn } from 'theme/styles'
-import { PriceSource } from 'uniswap/src/data/graphql/uniswap-data-api/__generated__/types-and-hooks'
-import { NumberType, useFormatter } from 'utils/formatNumbers'
+import { useHeaderDateFormatter } from "components/Charts/hooks";
+import Column from "components/Column";
+import Row from "components/Row";
+import { getProtocolColor, getProtocolName } from "graphql/data/util";
+import { UTCTimestamp } from "lightweight-charts";
+import { ReactElement, ReactNode } from "react";
+import styled, { useTheme } from "styled-components";
+import { EllipsisStyle } from "theme/components";
+import { ThemedText } from "theme/components/text";
+import { textFadeIn } from "theme/styles";
+import { PriceSource } from "uniswap/src/data/graphql/uniswap-data-api/__generated__/types-and-hooks";
+import { NumberType, useFormatter } from "utils/formatNumbers";
 
-export type ChartHeaderProtocolInfo = { protocol: PriceSource; value?: number }
+export type ChartHeaderProtocolInfo = { protocol: PriceSource; value?: number };
 
 const ChartHeaderWrapper = styled(Row)`
   ${textFadeIn};
@@ -19,7 +19,7 @@ const ChartHeaderWrapper = styled(Row)`
   width: 100%;
   gap: 8px;
   align-items: flex-start;
-`
+`;
 const ChartHeaderLeftDisplay = styled.div`
   position: absolute;
   display: flex;
@@ -33,7 +33,7 @@ const ChartHeaderLeftDisplay = styled.div`
   * {
     ${EllipsisStyle}
   }
-`
+`;
 const ProtocolLegendWrapper = styled(Column)`
   position: absolute;
   right: 0px;
@@ -41,23 +41,27 @@ const ProtocolLegendWrapper = styled(Column)`
   gap: 12px;
   text-align: left;
   pointer-events: none;
-`
+`;
 const ProtocolBlip = styled.div<{ color: string }>`
   background-color: ${({ color }) => color};
   border-radius: 4px;
   width: 12px;
   height: 12px;
-`
+`;
 
 const ProtocolText = styled(ThemedText.Caption)`
   width: 80px;
   text-align: right;
   ${EllipsisStyle}
-`
+`;
 
-function ProtocolLegend({ protocolData }: { protocolData?: ChartHeaderProtocolInfo[] }) {
-  const { formatFiatPrice } = useFormatter()
-  const theme = useTheme()
+function ProtocolLegend({
+  protocolData,
+}: {
+  protocolData?: ChartHeaderProtocolInfo[];
+}) {
+  const { formatFiatPrice } = useFormatter();
+  const theme = useTheme();
 
   return (
     <ProtocolLegendWrapper>
@@ -65,54 +69,63 @@ function ProtocolLegend({ protocolData }: { protocolData?: ChartHeaderProtocolIn
         ?.map(({ value, protocol }) => {
           const display = value
             ? formatFiatPrice({ price: value, type: NumberType.ChartFiatValue })
-            : getProtocolName(protocol)
+            : getProtocolName(protocol);
           return (
-            <Row gap="6px" justify="flex-end" key={protocol + '_blip'}>
+            <Row gap="6px" justify="flex-end" key={protocol + "_blip"}>
               <ProtocolText>{display}</ProtocolText>
               <ProtocolBlip color={getProtocolColor(protocol, theme)} />
             </Row>
-          )
+          );
         })
         .reverse()}
     </ProtocolLegendWrapper>
-  )
+  );
 }
 
 interface HeaderValueDisplayProps {
   /** The number to be formatted and displayed, or the ReactElement to be displayed */
-  value?: number | ReactElement
+  value?: number | ReactElement;
   /** Used to override default format NumberType (ChartFiatValue) */
-  valueFormatterType?: NumberType
+  valueFormatterType?: NumberType;
 }
 
-function HeaderValueDisplay({ value, valueFormatterType = NumberType.ChartFiatValue }: HeaderValueDisplayProps) {
-  const { formatFiatPrice } = useFormatter()
+function HeaderValueDisplay({
+  value,
+  valueFormatterType = NumberType.ChartFiatValue,
+}: HeaderValueDisplayProps) {
+  const { formatFiatPrice } = useFormatter();
 
-  if (typeof value !== 'number' && typeof value !== 'undefined') {
-    return <>{value}</>
+  if (typeof value !== "number" && typeof value !== "undefined") {
+    return <>{value}</>;
   }
 
   return (
-    <ThemedText.HeadlineLarge>{formatFiatPrice({ price: value, type: valueFormatterType })}</ThemedText.HeadlineLarge>
-  )
+    <ThemedText.HeadlineLarge>
+      {formatFiatPrice({ price: value, type: valueFormatterType })}
+    </ThemedText.HeadlineLarge>
+  );
 }
 
 interface HeaderTimeDisplayProps {
-  time?: UTCTimestamp
+  time?: UTCTimestamp;
   /** Optional string to display when time is undefined */
-  timePlaceholder?: string
+  timePlaceholder?: string;
 }
 
 function HeaderTimeDisplay({ time, timePlaceholder }: HeaderTimeDisplayProps) {
-  const headerDateFormatter = useHeaderDateFormatter()
+  const headerDateFormatter = useHeaderDateFormatter();
   return (
-    <ThemedText.SubHeader color="neutral2">{time ? headerDateFormatter(time) : timePlaceholder}</ThemedText.SubHeader>
-  )
+    <ThemedText.SubHeader color="neutral2">
+      {time ? headerDateFormatter(time) : timePlaceholder}
+    </ThemedText.SubHeader>
+  );
 }
 
-interface ChartHeaderProps extends HeaderValueDisplayProps, HeaderTimeDisplayProps {
-  protocolData?: ChartHeaderProtocolInfo[]
-  additionalFields?: ReactNode
+interface ChartHeaderProps
+  extends HeaderValueDisplayProps,
+    HeaderTimeDisplayProps {
+  protocolData?: ChartHeaderProtocolInfo[];
+  additionalFields?: ReactNode;
 }
 
 export function ChartHeader({
@@ -126,7 +139,10 @@ export function ChartHeader({
   return (
     <ChartHeaderWrapper data-cy="chart-header">
       <ChartHeaderLeftDisplay>
-        <HeaderValueDisplay value={value} valueFormatterType={valueFormatterType} />
+        <HeaderValueDisplay
+          value={value}
+          valueFormatterType={valueFormatterType}
+        />
         <Row gap="sm">
           {additionalFields}
           <HeaderTimeDisplay time={time} timePlaceholder={timePlaceholder} />
@@ -134,5 +150,5 @@ export function ChartHeader({
       </ChartHeaderLeftDisplay>
       <ProtocolLegend protocolData={protocolData} />
     </ChartHeaderWrapper>
-  )
+  );
 }

@@ -1,67 +1,75 @@
-import { InterfaceElementName, InterfaceEventName } from '@uniswap/analytics-events'
-import { WalletConnect as WalletConnectv2 } from '@web3-react/walletconnect-v2'
-import { sendAnalyticsEvent } from 'analytics'
-import Column, { AutoColumn } from 'components/Column'
-import Modal from 'components/Modal'
-import { RowBetween } from 'components/Row'
-import { uniwalletWCV2ConnectConnection } from 'connection'
-import { UniwalletConnect as UniwalletConnectV2 } from 'connection/WalletConnectV2'
-import { ActivationStatus, useActivationState } from 'connection/activate'
-import { ConnectionType } from 'connection/types'
-import { Trans } from 'i18n'
-import { QRCodeSVG } from 'qrcode.react'
-import { useEffect, useState } from 'react'
-import styled, { useTheme } from 'styled-components'
-import { CloseIcon, ThemedText } from 'theme/components'
-import { isWebAndroid, isWebIOS } from 'uniswap/src/utils/platform'
+import {
+  InterfaceElementName,
+  InterfaceEventName,
+} from "@uniswap/analytics-events";
+import { WalletConnect as WalletConnectv2 } from "@web3-react/walletconnect-v2";
+import { sendAnalyticsEvent } from "analytics";
+import Column, { AutoColumn } from "components/Column";
+import Modal from "components/Modal";
+import { RowBetween } from "components/Row";
+// import { uniwalletWCV2ConnectConnection } from "connection";
+// import { UniwalletConnect as UniwalletConnectV2 } from "connection/WalletConnectV2";
+import { ActivationStatus, useActivationState } from "connection/activate";
+import { ConnectionType } from "connection/types";
+import { Trans } from "i18n";
+import { QRCodeSVG } from "qrcode.react";
+import { useEffect, useState } from "react";
+import styled, { useTheme } from "styled-components";
+import { CloseIcon, ThemedText } from "theme/components";
+import { isWebAndroid, isWebIOS } from "uniswap/src/utils/platform";
 
-import uniPng from '../../assets/images/uniwallet_modal_icon.png'
-import { DownloadButton } from './DownloadButton'
+import uniPng from "../../assets/images/uniwallet_modal_icon.png";
+import { DownloadButton } from "./DownloadButton";
 
 const UniwalletConnectWrapper = styled(RowBetween)`
   display: flex;
   flex-direction: column;
   padding: 20px 16px 16px;
-`
+`;
 const HeaderRow = styled(RowBetween)`
   display: flex;
-`
+`;
 const QRCodeWrapper = styled(RowBetween)`
   aspect-ratio: 1;
   border-radius: 12px;
   background-color: ${({ theme }) => theme.white};
   margin: 24px 32px 20px;
   padding: 10px;
-`
+`;
 const Divider = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.surface3};
   width: 100%;
-`
+`;
 
 export default function UniwalletModal() {
-  const { activationState, cancelActivation } = useActivationState()
-  const [uri, setUri] = useState<string>()
+  const { activationState, cancelActivation } = useActivationState();
+  const [uri, setUri] = useState<string>();
 
   // Displays the modal if not on iOS/Android, a Uniswap Wallet Connection is pending, & qrcode URI is available
-  const onLaunchedMobilePlatform = isWebIOS || isWebAndroid
+  const onLaunchedMobilePlatform = isWebIOS || isWebAndroid;
   const open =
     !onLaunchedMobilePlatform &&
     activationState.status === ActivationStatus.PENDING &&
     activationState.connection.type === ConnectionType.UNISWAP_WALLET_V2 &&
-    !!uri
+    !!uri;
+
+  // useEffect(() => {
+  //   const connectorV2 =
+  //     uniwalletWCV2ConnectConnection.connector as WalletConnectv2;
+  //   connectorV2.events.addListener(
+  //     UniwalletConnectV2.UNI_URI_AVAILABLE,
+  //     (uri: string) => {
+  //       uri && setUri(uri);
+  //     },
+  //   );
+  // }, []);
 
   useEffect(() => {
-    const connectorV2 = uniwalletWCV2ConnectConnection.connector as WalletConnectv2
-    connectorV2.events.addListener(UniwalletConnectV2.UNI_URI_AVAILABLE, (uri: string) => {
-      uri && setUri(uri)
-    })
-  }, [])
+    if (open)
+      sendAnalyticsEvent(InterfaceEventName.UNIWALLET_CONNECT_MODAL_OPENED);
+  }, [open]);
 
-  useEffect(() => {
-    if (open) sendAnalyticsEvent(InterfaceEventName.UNIWALLET_CONNECT_MODAL_OPENED)
-  }, [open])
-
-  const theme = useTheme()
+  const theme = useTheme();
   return (
     <Modal isOpen={open} onDismiss={cancelActivation}>
       <UniwalletConnectWrapper>
@@ -92,7 +100,7 @@ export default function UniwalletModal() {
         <InfoSection />
       </UniwalletConnectWrapper>
     </Modal>
-  )
+  );
 }
 
 const InfoSectionWrapper = styled(RowBetween)`
@@ -100,7 +108,7 @@ const InfoSectionWrapper = styled(RowBetween)`
   flex-direction: row;
   padding-top: 20px;
   gap: 20px;
-`
+`;
 
 function InfoSection() {
   return (
@@ -110,12 +118,17 @@ function InfoSection() {
           <Trans>Don&apos;t have a Uniswap wallet?</Trans>
         </ThemedText.SubHeaderSmall>
         <ThemedText.BodySmall color="neutral2">
-          <Trans>Safely store and swap tokens with the Uniswap app. Available on iOS and Android.</Trans>
+          <Trans>
+            Safely store and swap tokens with the Uniswap app. Available on iOS
+            and Android.
+          </Trans>
         </ThemedText.BodySmall>
       </AutoColumn>
       <Column>
-        <DownloadButton element={InterfaceElementName.UNISWAP_WALLET_MODAL_DOWNLOAD_BUTTON} />
+        <DownloadButton
+          element={InterfaceElementName.UNISWAP_WALLET_MODAL_DOWNLOAD_BUTTON}
+        />
       </Column>
     </InfoSectionWrapper>
-  )
+  );
 }
