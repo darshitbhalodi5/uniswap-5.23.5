@@ -1,7 +1,7 @@
 import { IRoute, Protocol } from '@uniswap/router-sdk'
 import { Currency, CurrencyAmount } from 'core87'
 import { Pair } from 'v287'
-import { Pool } from '@uniswap/v3-sdk'
+import { Pool } from 'v387'
 import { ClassicTrade } from 'state/routing/types'
 import {
   TokenAmountInput,

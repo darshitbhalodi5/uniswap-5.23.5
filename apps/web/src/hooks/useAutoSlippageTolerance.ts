@@ -1,7 +1,7 @@
 import { MixedRoute, partitionMixedRouteByProtocol, Protocol, Trade } from '@uniswap/router-sdk'
 import { Currency, CurrencyAmount, Percent, TradeType } from 'core87'
 import { Pair } from 'v287'
-import { Pool } from '@uniswap/v3-sdk'
+import { Pool } from 'v387'
 import { useWeb3React } from '@web3-react/core'
 import { L2_CHAIN_IDS, SUPPORTED_GAS_ESTIMATE_CHAIN_IDS } from 'constants/chains'
 import JSBI from 'jsbi'

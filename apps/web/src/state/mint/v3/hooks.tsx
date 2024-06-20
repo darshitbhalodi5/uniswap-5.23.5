@@ -9,7 +9,7 @@ import {
   nearestUsableTick,
   priceToClosestTick,
   tickToPrice,
-} from '@uniswap/v3-sdk'
+} from 'v387'
 import { useWeb3React } from '@web3-react/core'
 import { usePool } from 'hooks/usePools'
 import { Trans } from 'i18n'

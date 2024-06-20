@@ -13,7 +13,7 @@ import {
   NONFUNGIBLE_POSITION_MANAGER_ADDRESSES,
   Percent,
 } from "core87";
-import { FeeAmount, NonfungiblePositionManager } from "@uniswap/v3-sdk";
+import { FeeAmount, NonfungiblePositionManager } from "v387";
 import { useWeb3React } from "@web3-react/core";
 import { TraceEvent, sendAnalyticsEvent, useTrace } from "analytics";
 import { useToggleAccountDrawer } from "components/AccountDrawer/MiniPortfolio/hooks";

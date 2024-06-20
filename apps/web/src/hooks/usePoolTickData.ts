@@ -1,5 +1,5 @@
 import { ChainId, Currency, Price, Token, V3_CORE_FACTORY_ADDRESSES } from 'core87'
-import { FeeAmount, Pool, TICK_SPACINGS, tickToPrice } from '@uniswap/v3-sdk'
+import { FeeAmount, Pool, TICK_SPACINGS, tickToPrice } from 'v387'
 import { useWeb3React } from '@web3-react/core'
 import { TickData, Ticks } from 'graphql/thegraph/AllV3TicksQuery'
 import { useAllV3TicksQuery } from 'graphql/thegraph/__generated__/types-and-hooks'

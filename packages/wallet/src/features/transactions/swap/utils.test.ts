@@ -1,5 +1,5 @@
 import { Currency, CurrencyAmount, TradeType } from 'core87'
-import { Route } from '@uniswap/v3-sdk'
+import { Route } from 'v387'
 import { ChainId } from 'wallet/src/constants/chains'
 import { UNI, WBTC, wrappedNativeCurrency } from 'wallet/src/constants/tokens'
 import { NativeCurrency } from 'wallet/src/features/tokens/NativeCurrency'

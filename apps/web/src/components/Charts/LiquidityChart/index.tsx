@@ -2,7 +2,7 @@ import { ChartHoverData, ChartModel, ChartModelParams } from 'components/Charts/
 import { ISeriesApi, UTCTimestamp } from 'lightweight-charts'
 
 import { ChainId, CurrencyAmount, Token } from 'core87'
-import { FeeAmount, Pool, TICK_SPACINGS, TickMath, tickToPrice } from '@uniswap/v3-sdk'
+import { FeeAmount, Pool, TICK_SPACINGS, TickMath, tickToPrice } from 'v387'
 import { BigNumber } from 'ethers/lib/ethers'
 import { TickProcessed, usePoolActiveLiquidity } from 'hooks/usePoolTickData'
 import JSBI from 'jsbi'

@@ -1,5 +1,5 @@
 import { Price, Token } from 'core87'
-import { FeeAmount, TICK_SPACINGS } from '@uniswap/v3-sdk'
+import { FeeAmount, TICK_SPACINGS } from 'v387'
 import { TickData } from 'graphql/thegraph/AllV3TicksQuery'
 import { TickProcessed } from 'hooks/usePoolTickData'
 import JSBI from 'jsbi'

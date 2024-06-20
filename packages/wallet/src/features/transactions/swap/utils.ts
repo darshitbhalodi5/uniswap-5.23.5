@@ -5,7 +5,7 @@ import {
   SwapOptions as UniversalRouterSwapOptions,
   SwapRouter as UniversalSwapRouter,
 } from '@uniswap/universal-router-sdk'
-import { FeeOptions } from '@uniswap/v3-sdk'
+import { FeeOptions } from 'v387'
 import { BigNumber } from 'ethers'
 import { AppTFunction } from 'ui/src/i18n/types'
 import { CurrencyId } from 'uniswap/src/types/currency'

@@ -1,5 +1,5 @@
 import { Price, WETH9 } from 'core87'
-import { FeeAmount, Pool } from '@uniswap/v3-sdk'
+import { FeeAmount, Pool } from 'v387'
 import { PositionInfo } from 'components/AccountDrawer/MiniPortfolio/Pools/cache'
 import { USDC_MAINNET } from 'constants/tokens'
 import { render, screen } from 'test-utils/render'

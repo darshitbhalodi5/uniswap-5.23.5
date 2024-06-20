@@ -1,5 +1,5 @@
 import { ChainId, CurrencyAmount, Token } from 'core87'
-import { FeeAmount } from '@uniswap/v3-sdk'
+import { FeeAmount } from 'v387'
 import { ChartHeader } from 'components/Charts/ChartHeader'
 import { Chart } from 'components/Charts/ChartModel'
 import { LiquidityBarChartModel, useLiquidityBarData } from 'components/Charts/LiquidityChart'

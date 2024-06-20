@@ -1,5 +1,5 @@
 import { Currency, Token } from 'core87'
-import { FeeAmount } from '@uniswap/v3-sdk'
+import { FeeAmount } from 'v387'
 import useBlockNumber from 'lib/hooks/useBlockNumber'
 import ms from 'ms'
 import { useMemo } from 'react'

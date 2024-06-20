@@ -83,7 +83,6 @@
     "@uniswap/analytics": "1.7.0",
     "@uniswap/analytics-events": "2.32.0",
     "@uniswap/ethers-rs-mobile": "0.0.5",
-    "@uniswap/v3-sdk": "3.11.0",
     "@walletconnect/core": "2.11.2",
     "@walletconnect/react-native-compat": "2.11.2",
     "@walletconnect/utils": "2.11.2",
@@ -151,6 +150,7 @@
     "typed-redux-saga": "1.5.0",
     "uniswap": "workspace:^",
     "utilities": "workspace:^",
+    "v387": "1.0.0",
     "wallet": "workspace:^"
   },
   "devDependencies": {

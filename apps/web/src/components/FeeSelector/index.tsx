@@ -3,7 +3,7 @@ import {
   LiquidityEventName,
 } from "@uniswap/analytics-events";
 import { Currency } from "core87";
-import { FeeAmount } from "@uniswap/v3-sdk";
+import { FeeAmount } from "v387";
 import { useWeb3React } from "@web3-react/core";
 import { sendAnalyticsEvent, useTrace } from "analytics";
 import { ButtonGray } from "components/Button";

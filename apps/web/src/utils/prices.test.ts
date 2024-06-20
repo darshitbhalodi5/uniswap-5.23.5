@@ -1,7 +1,7 @@
 import { Trade } from '@uniswap/router-sdk'
 import { CurrencyAmount, Percent, TradeType } from 'core87'
 import { Pair, Route as V2Route } from 'v287'
-import { Route as V3Route } from '@uniswap/v3-sdk'
+import { Route as V3Route } from 'v387'
 import JSBI from 'jsbi'
 import {
   TEST_POOL_12,

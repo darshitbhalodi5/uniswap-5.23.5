@@ -6,7 +6,7 @@ import {
   encodeSqrtRatioX96,
   nearestUsableTick,
   priceToClosestTick,
-} from '@uniswap/v3-sdk'
+} from 'v387'
 import JSBI from 'jsbi'
 
 export function tryParsePrice(baseToken?: Token, quoteToken?: Token, value?: string) {

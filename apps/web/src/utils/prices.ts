@@ -1,7 +1,7 @@
 import { Trade } from '@uniswap/router-sdk'
 import { Currency, CurrencyAmount, Fraction, Percent, TradeType } from 'core87'
 import { Pair } from 'v287'
-import { FeeAmount } from '@uniswap/v3-sdk'
+import { FeeAmount } from 'v387'
 import { DefaultTheme } from 'styled-components'
 
 import {

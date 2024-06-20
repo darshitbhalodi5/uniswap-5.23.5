@@ -1,5 +1,5 @@
 import { Currency, Price, Token } from 'core87'
-import { FeeAmount } from '@uniswap/v3-sdk'
+import { FeeAmount } from 'v387'
 import { AutoColumn, ColumnCenter } from 'components/Column'
 import Loader from 'components/Icons/LoadingSpinner'
 import { useColor } from 'hooks/useColor'

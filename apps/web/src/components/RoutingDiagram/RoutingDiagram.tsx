@@ -1,6 +1,6 @@
 import { Protocol } from '@uniswap/router-sdk'
 import { Currency } from 'core87'
-import { FeeAmount } from '@uniswap/v3-sdk'
+import { FeeAmount } from 'v387'
 import Badge from 'components/Badge'
 import DoubleCurrencyLogo from 'components/DoubleLogo'
 import CurrencyLogo from 'components/Logo/CurrencyLogo'

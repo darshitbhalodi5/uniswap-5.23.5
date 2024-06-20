@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { Currency, CurrencyAmount } from 'core87'
-import { Pool } from '@uniswap/v3-sdk'
+import { Pool } from 'v387'
 import { useSingleCallResult } from 'lib/hooks/multicall'
 import useBlockNumber from 'lib/hooks/useBlockNumber'
 import { useEffect, useState } from 'react'

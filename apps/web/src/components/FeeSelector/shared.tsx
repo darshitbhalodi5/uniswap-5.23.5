@@ -1,5 +1,5 @@
 import { ChainId, SUPPORTED_CHAINS } from 'core87'
-import { FeeAmount } from '@uniswap/v3-sdk'
+import { FeeAmount } from 'v387'
 import { Trans } from 'i18n'
 import type { ReactNode } from 'react'
 

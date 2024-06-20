@@ -1,5 +1,5 @@
 import { Currency, CurrencyAmount, Percent } from 'core87'
-import { Position } from '@uniswap/v3-sdk'
+import { Position } from 'v387'
 import { useWeb3React } from '@web3-react/core'
 import { useToken } from 'hooks/Tokens'
 import { usePool } from 'hooks/usePools'

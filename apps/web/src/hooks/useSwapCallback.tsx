@@ -1,6 +1,6 @@
 import { Percent, TradeType } from 'core87'
 import { FlatFeeOptions } from '@uniswap/universal-router-sdk'
-import { FeeOptions } from '@uniswap/v3-sdk'
+import { FeeOptions } from 'v387'
 import { useWeb3React } from '@web3-react/core'
 import { BigNumber } from 'ethers/lib/ethers'
 import { PermitSignature } from 'hooks/usePermitAllowance'

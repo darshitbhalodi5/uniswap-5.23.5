@@ -13285,7 +13285,6 @@ __metadata:
     "@uniswap/v2-periphery": 1.1.0-beta.0
     "@uniswap/v3-core": 1.0.1
     "@uniswap/v3-periphery": 1.4.4
-    "@uniswap/v3-sdk": 3.11.0
     "@vanilla-extract/css": 1.14.0
     "@vanilla-extract/dynamic": 2.1.0
     "@vanilla-extract/jest-transform": 1.1.1
@@ -13410,6 +13409,7 @@ __metadata:
     utilities: "workspace:^"
     uuid: 9.0.0
     v287: 1.0.0
+    v387: 1.0.0
     video-extensions: 1.2.0
     wcag-contrast: 3.0.0
     web-vitals: 2.1.4
@@ -13503,7 +13503,6 @@ __metadata:
     "@uniswap/analytics-events": 2.32.0
     "@uniswap/eslint-config": "workspace:^"
     "@uniswap/ethers-rs-mobile": 0.0.5
-    "@uniswap/v3-sdk": 3.11.0
     "@walletconnect/core": 2.11.2
     "@walletconnect/react-native-compat": 2.11.2
     "@walletconnect/types": 2.11.2
@@ -13602,6 +13601,7 @@ __metadata:
     typescript: 5.3.3
     uniswap: "workspace:^"
     utilities: "workspace:^"
+    v387: 1.0.0
     wallet: "workspace:^"
     yarn-deduplicate: 6.0.0
   languageName: unknown
@@ -13845,7 +13845,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uniswap/v3-sdk@npm:3.11.0, @uniswap/v3-sdk@npm:^3.10.0, @uniswap/v3-sdk@npm:^3.11.0":
+"@uniswap/v3-sdk@npm:^3.10.0, @uniswap/v3-sdk@npm:^3.11.0":
   version: 3.11.0
   resolution: "@uniswap/v3-sdk@npm:3.11.0"
   dependencies:
@@ -43901,6 +43901,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"v387@npm:1.0.0":
+  version: 1.0.0
+  resolution: "v387@npm:1.0.0"
+  dependencies:
+    "@ethersproject/abi": ^5.0.12
+    "@ethersproject/solidity": ^5.0.9
+    "@uniswap/swap-router-contracts": ^1.2.1
+    "@uniswap/v3-periphery": ^1.1.1
+    "@uniswap/v3-staker": 1.0.0
+    core87: ^1.0.0
+    tiny-invariant: ^1.1.0
+    tiny-warning: ^1.0.3
+  checksum: 621e9e651ce55c3ada777cfa98fa37e3820dc7ff6385dbde8bfa93a930a209358638c7e7ee1492154be503db6d2194ef839bec14fd91918162656a250e054e04
+  languageName: node
+  linkType: hard
+
 "v8-compile-cache-lib@npm:^3.0.1":
   version: 3.0.1
   resolution: "v8-compile-cache-lib@npm:3.0.1"
@@ -44345,7 +44361,6 @@ __metadata:
     "@uniswap/permit2-sdk": 1.2.0
     "@uniswap/router-sdk": 1.9.0
     "@uniswap/universal-router-sdk": 1.8.2
-    "@uniswap/v3-sdk": 3.11.0
     apollo-link-rest: 0.9.0
     axios: 1.6.5
     core87: 1.0.0
@@ -44396,6 +44411,7 @@ __metadata:
     utilities: "workspace:^"
     uuid: 9.0.0
     v287: 1.0.0
+    v387: 1.0.0
     wcag-contrast: 3.0.0
     zod: 3.22.4
     zxcvbn: 4.4.2

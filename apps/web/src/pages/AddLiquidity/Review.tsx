@@ -1,5 +1,5 @@
 import { Currency, CurrencyAmount, Price } from 'core87'
-import { Position } from '@uniswap/v3-sdk'
+import { Position } from 'v387'
 import { AutoColumn } from 'components/Column'
 import { PositionPreview } from 'components/PositionPreview'
 import styled from 'styled-components'

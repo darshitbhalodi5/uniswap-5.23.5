@@ -5,7 +5,7 @@ import {
   V3_CORE_FACTORY_ADDRESSES,
 } from "core87";
 import IUniswapV3PoolStateJSON from "@uniswap/v3-core/artifacts/contracts/interfaces/pool/IUniswapV3PoolState.sol/IUniswapV3PoolState.json";
-import { Pool, Position, computePoolAddress } from "@uniswap/v3-sdk";
+import { Pool, Position, computePoolAddress } from "v387";
 import { BigNumber } from "ethers/lib/ethers";
 import { Interface } from "ethers/lib/utils";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
