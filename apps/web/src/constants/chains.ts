@@ -4,7 +4,6 @@ import {
   SupportedChainsType,
   V2_ROUTER_ADDRESSES,
 } from "core87";
-import { Chain } from "uniswap/src/data/graphql/uniswap-data-api/__generated__/types-and-hooks";
 
 export const CHAIN_IDS_TO_NAMES = {
   [ChainId.MAINNET]: "mainnet",
@@ -81,7 +80,6 @@ export const SUPPORTED_GAS_ESTIMATE_CHAIN_IDS = [
   ChainId.AVALANCHE,
   ChainId.BASE,
   ChainId.BLAST,
-  ChainId.MODE,
 ] as const;
 
 /**
@@ -97,13 +95,13 @@ export const SUPPORTED_V2POOL_CHAIN_IDS = Object.keys(V2_ROUTER_ADDRESSES).map(
 );
 
 export const TESTNET_CHAIN_IDS = [
+  ChainId.MODE,
   ChainId.GOERLI,
   ChainId.SEPOLIA,
   ChainId.POLYGON_MUMBAI,
   ChainId.ARBITRUM_GOERLI,
   ChainId.OPTIMISM_GOERLI,
   ChainId.CELO_ALFAJORES,
-  ChainId.MODE,
 ] as const;
 
 /**
@@ -128,12 +126,12 @@ export type SupportedL1ChainId = (typeof L1_CHAIN_IDS)[number];
  * The expectation is that all of these networks have immediate transaction confirmation.
  */
 export const L2_CHAIN_IDS = [
+  ChainId.MODE,
   ChainId.ARBITRUM_ONE,
   ChainId.ARBITRUM_GOERLI,
   ChainId.OPTIMISM,
   ChainId.OPTIMISM_GOERLI,
   ChainId.BASE,
-  ChainId.MODE,
 ] as const;
 
 export type SupportedL2ChainId = (typeof L2_CHAIN_IDS)[number];
@@ -148,9 +146,9 @@ export function getChainPriority(chainId: ChainId): number {
     case ChainId.MAINNET:
     case ChainId.GOERLI:
     case ChainId.SEPOLIA:
-    case ChainId.MODE:
       return 0;
     case ChainId.ARBITRUM_ONE:
+    case ChainId.MODE:
     case ChainId.ARBITRUM_GOERLI:
       return 1;
     case ChainId.OPTIMISM:

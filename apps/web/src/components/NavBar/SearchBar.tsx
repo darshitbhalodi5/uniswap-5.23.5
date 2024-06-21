@@ -1,30 +1,45 @@
 // eslint-disable-next-line no-restricted-imports
-import { BrowserEvent, InterfaceElementName, InterfaceEventName, InterfaceSectionName } from '@uniswap/analytics-events'
-import { useWeb3React } from '@web3-react/core'
-import { Trace, TraceEvent, sendAnalyticsEvent, useTrace } from 'analytics'
-import clsx from 'clsx'
-import { Search } from 'components/Icons/Search'
-import { useSearchTokens } from 'graphql/data/SearchTokens'
-import { useCollectionSearch } from 'graphql/data/nft/CollectionSearch'
-import useDebounce from 'hooks/useDebounce'
-import { useDisableNFTRoutes } from 'hooks/useDisableNFTRoutes'
-import { useIsNftPage } from 'hooks/useIsNftPage'
-import { useOnClickOutside } from 'hooks/useOnClickOutside'
-import { organizeSearchResults } from 'lib/utils/searchBar'
-import { Box } from 'nft/components/Box'
-import { Column, Row } from 'nft/components/Flex'
-import { magicalGradientOnHover } from 'nft/css/common.css'
-import { useIsMobile, useIsTablet } from 'nft/hooks'
-import { useIsNavSearchInputVisible } from 'nft/hooks/useIsNavSearchInputVisible'
-import { ChangeEvent, useCallback, useEffect, useReducer, useRef, useState } from 'react'
-import { useLocation } from 'react-router-dom'
-import styled from 'styled-components'
+import {
+  BrowserEvent,
+  InterfaceElementName,
+  InterfaceEventName,
+  InterfaceSectionName,
+} from "@uniswap/analytics-events";
+import { useWeb3React } from "@web3-react/core";
+import { Trace, TraceEvent, sendAnalyticsEvent, useTrace } from "analytics";
+import clsx from "clsx";
+import { Search } from "components/Icons/Search";
+import { useSearchTokens } from "graphql/data/SearchTokens";
+import { useCollectionSearch } from "graphql/data/nft/CollectionSearch";
+import useDebounce from "hooks/useDebounce";
+import { useDisableNFTRoutes } from "hooks/useDisableNFTRoutes";
+import { useIsNftPage } from "hooks/useIsNftPage";
+import { useOnClickOutside } from "hooks/useOnClickOutside";
+import { organizeSearchResults } from "lib/utils/searchBar";
+import { Box } from "nft/components/Box";
+import { Column, Row } from "nft/components/Flex";
+import { magicalGradientOnHover } from "nft/css/common.css";
+import { useIsMobile, useIsTablet } from "nft/hooks";
+import { useIsNavSearchInputVisible } from "nft/hooks/useIsNavSearchInputVisible";
+import {
+  ChangeEvent,
+  useCallback,
+  useEffect,
+  useReducer,
+  useRef,
+  useState,
+} from "react";
+import { useLocation } from "react-router-dom";
+import styled from "styled-components";
 
-import { useTranslation } from 'i18n'
-import { ChevronLeftIcon, NavMagnifyingGlassIcon } from '../../nft/components/icons'
-import { NavIcon } from './NavIcon'
-import * as styles from './SearchBar.css'
-import { SearchBarDropdown } from './SearchBarDropdown'
+import { useTranslation } from "i18n";
+import {
+  ChevronLeftIcon,
+  NavMagnifyingGlassIcon,
+} from "../../nft/components/icons";
+import { NavIcon } from "./NavIcon";
+import * as styles from "./SearchBar.css";
+import { SearchBarDropdown } from "./SearchBarDropdown";
 
 const KeyShortCut = styled.div`
   background-color: ${({ theme }) => theme.surface3};
@@ -40,141 +55,153 @@ const KeyShortCut = styled.div`
   align-items: center;
   opacity: 0.6;
   backdrop-filter: blur(60px);
-`
+`;
 
 export const SearchBar = () => {
-  const [isOpen, toggleOpen] = useReducer((state: boolean) => !state, false)
-  const [searchValue, setSearchValue] = useState('')
-  const debouncedSearchValue = useDebounce(searchValue, 300)
-  const searchRef = useRef<HTMLDivElement>(null)
-  const inputRef = useRef<HTMLInputElement>(null)
-  const { pathname } = useLocation()
-  const isMobile = useIsMobile()
-  const isTablet = useIsTablet()
-  const isNavSearchInputVisible = useIsNavSearchInputVisible()
-  const shouldDisableNFTRoutes = useDisableNFTRoutes()
+  const [isOpen, toggleOpen] = useReducer((state: boolean) => !state, false);
+  const [searchValue, setSearchValue] = useState("");
+  const debouncedSearchValue = useDebounce(searchValue, 300);
+  const searchRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const { pathname } = useLocation();
+  const isMobile = useIsMobile();
+  const isTablet = useIsTablet();
+  const isNavSearchInputVisible = useIsNavSearchInputVisible();
+  const shouldDisableNFTRoutes = useDisableNFTRoutes();
 
   useOnClickOutside(searchRef, () => {
-    isOpen && toggleOpen()
-  })
+    isOpen && toggleOpen();
+  });
 
-  const { data: collections, loading: collectionsAreLoading } = useCollectionSearch(debouncedSearchValue)
+  const { data: collections, loading: collectionsAreLoading } =
+    useCollectionSearch(debouncedSearchValue);
 
-  const { chainId } = useWeb3React()
-  const { data: tokens, loading: tokensAreLoading } = useSearchTokens(debouncedSearchValue, chainId ?? 1)
+  const { chainId } = useWeb3React();
+  const { data: tokens, loading: tokensAreLoading } = useSearchTokens(
+    debouncedSearchValue,
+    chainId ?? 1,
+  );
 
-  const isNFTPage = useIsNftPage()
+  const isNFTPage = useIsNftPage();
 
-  const [reducedTokens, reducedCollections] = organizeSearchResults(isNFTPage, tokens ?? [], collections ?? [])
+  const [reducedTokens, reducedCollections] = organizeSearchResults(
+    isNFTPage,
+    tokens ?? [],
+    collections ?? [],
+  );
 
   // close dropdown on escape
   useEffect(() => {
     const escapeKeyDownHandler = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && isOpen) {
-        event.preventDefault()
-        toggleOpen()
+      if (event.key === "Escape" && isOpen) {
+        event.preventDefault();
+        toggleOpen();
       }
-    }
+    };
 
-    document.addEventListener('keydown', escapeKeyDownHandler)
+    document.addEventListener("keydown", escapeKeyDownHandler);
 
     return () => {
-      document.removeEventListener('keydown', escapeKeyDownHandler)
-    }
-  }, [isOpen, toggleOpen, collections])
+      document.removeEventListener("keydown", escapeKeyDownHandler);
+    };
+  }, [isOpen, toggleOpen, collections]);
 
   // clear searchbar when changing pages
   useEffect(() => {
-    setSearchValue('')
-  }, [pathname])
+    setSearchValue("");
+  }, [pathname]);
 
   // auto set cursor when searchbar is opened
   useEffect(() => {
     if (isOpen) {
-      inputRef.current?.focus()
+      inputRef.current?.focus();
     }
-  }, [isOpen])
+  }, [isOpen]);
 
-  const isMobileOrTablet = isMobile || isTablet || !isNavSearchInputVisible
+  const isMobileOrTablet = isMobile || isTablet || !isNavSearchInputVisible;
 
-  const trace = useTrace({ section: InterfaceSectionName.NAVBAR_SEARCH })
+  const trace = useTrace({ section: InterfaceSectionName.NAVBAR_SEARCH });
 
   const navbarSearchEventProperties = {
     navbar_search_input_text: debouncedSearchValue,
     hasInput: debouncedSearchValue && debouncedSearchValue.length > 0,
     ...trace,
-  }
+  };
 
-  const { t } = useTranslation() // subscribe to locale changes
+  const { t } = useTranslation(); // subscribe to locale changes
   const placeholderText = isMobileOrTablet
     ? t`Search`
     : shouldDisableNFTRoutes
-    ? t`Search tokens`
-    : t`Search tokens and NFT collections`
+      ? t`Search tokens`
+      : t`Search tokens`;
 
   const handleKeyPress = useCallback(
     (event: any) => {
-      if (event.key === '/' && event.target.tagName !== 'INPUT') {
-        event.preventDefault()
-        !isOpen && toggleOpen()
+      if (event.key === "/" && event.target.tagName !== "INPUT") {
+        event.preventDefault();
+        !isOpen && toggleOpen();
       }
     },
-    [isOpen]
-  )
+    [isOpen],
+  );
 
   useEffect(() => {
-    const innerRef = inputRef.current
+    const innerRef = inputRef.current;
 
     if (innerRef !== null) {
       //only mount the listener when input available as ref
-      document.addEventListener('keydown', handleKeyPress)
+      document.addEventListener("keydown", handleKeyPress);
     }
 
     return () => {
       if (innerRef !== null) {
-        document.removeEventListener('keydown', handleKeyPress)
+        document.removeEventListener("keydown", handleKeyPress);
       }
-    }
-  }, [handleKeyPress, inputRef])
+    };
+  }, [handleKeyPress, inputRef]);
 
   return (
     <Trace section={InterfaceSectionName.NAVBAR_SEARCH}>
       <Column
         data-cy="search-bar"
-        position={{ sm: 'fixed', md: 'absolute' }}
-        width={{ sm: isOpen ? 'viewWidth' : 'auto', md: 'auto' }}
+        position={{ sm: "fixed", md: "absolute" }}
+        width={{ sm: isOpen ? "viewWidth" : "auto", md: "auto" }}
         ref={searchRef}
         className={clsx(styles.searchBarContainerNft, {
           searchBarContainerDisableBlur: isNavSearchInputVisible,
         })}
-        display={{ sm: isOpen ? 'flex' : 'none', xl: 'flex' }}
+        display={{ sm: isOpen ? "flex" : "none", xl: "flex" }}
         {...(isNavSearchInputVisible && {
-          position: 'relative',
-          display: 'flex',
+          position: "relative",
+          display: "flex",
         })}
         {...(isOpen && {
-          boxShadow: 'deep',
+          boxShadow: "deep",
         })}
       >
         <Row
           className={clsx(
             styles.nftSearchBar,
             !isOpen && !isMobile && magicalGradientOnHover,
-            isMobileOrTablet && (isOpen ? styles.visible : styles.hidden)
+            isMobileOrTablet && (isOpen ? styles.visible : styles.hidden),
           )}
-          borderRadius={isOpen || isMobileOrTablet ? undefined : '16'}
-          borderTopRightRadius={isOpen && !isMobile ? '16' : undefined}
-          borderTopLeftRadius={isOpen && !isMobile ? '16' : undefined}
-          borderBottomWidth={isOpen || isMobileOrTablet ? '0px' : '1px'}
-          backgroundColor={isOpen ? 'surface1' : 'surface1'}
+          borderRadius={isOpen || isMobileOrTablet ? undefined : "16"}
+          borderTopRightRadius={isOpen && !isMobile ? "16" : undefined}
+          borderTopLeftRadius={isOpen && !isMobile ? "16" : undefined}
+          borderBottomWidth={isOpen || isMobileOrTablet ? "0px" : "1px"}
+          backgroundColor={isOpen ? "surface1" : "surface1"}
           onClick={() => !isOpen && toggleOpen()}
           gap="12"
         >
           <Box className={styles.searchContentLeftAlign}>
-            <Box display={{ sm: 'none', md: 'flex' }}>
+            <Box display={{ sm: "none", md: "flex" }}>
               <Search width="20px" height="20px" />
             </Box>
-            <Box display={{ sm: 'flex', md: 'none' }} color="neutral3" onClick={toggleOpen}>
+            <Box
+              display={{ sm: "flex", md: "none" }}
+              color="neutral3"
+              onClick={toggleOpen}
+            >
               <ChevronLeftIcon />
             </Box>
           </Box>
@@ -189,10 +216,15 @@ export const SearchBar = () => {
               data-cy="search-bar-input"
               placeholder={placeholderText}
               onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                !isOpen && toggleOpen()
-                setSearchValue(event.target.value)
+                !isOpen && toggleOpen();
+                setSearchValue(event.target.value);
               }}
-              onBlur={() => sendAnalyticsEvent(InterfaceEventName.NAVBAR_SEARCH_EXITED, navbarSearchEventProperties)}
+              onBlur={() =>
+                sendAnalyticsEvent(
+                  InterfaceEventName.NAVBAR_SEARCH_EXITED,
+                  navbarSearchEventProperties,
+                )
+              }
               className={`${styles.searchBarInput} ${styles.searchContentLeftAlign}`}
               value={searchValue}
               ref={inputRef}
@@ -201,7 +233,10 @@ export const SearchBar = () => {
           </TraceEvent>
           {!isOpen && <KeyShortCut>/</KeyShortCut>}
         </Row>
-        <Column overflow="hidden" className={clsx(isOpen ? styles.visible : styles.hidden)}>
+        <Column
+          overflow="hidden"
+          className={clsx(isOpen ? styles.visible : styles.hidden)}
+        >
           {isOpen && (
             <SearchBarDropdown
               toggleOpen={toggleOpen}
@@ -220,5 +255,5 @@ export const SearchBar = () => {
         </NavIcon>
       )}
     </Trace>
-  )
-}
+  );
+};

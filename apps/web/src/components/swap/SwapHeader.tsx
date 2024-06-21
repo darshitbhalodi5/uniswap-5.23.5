@@ -11,7 +11,7 @@ import { FeatureFlags } from "uniswap/src/features/experiments/flags";
 import { useFeatureFlag } from "uniswap/src/features/experiments/hooks";
 import { RowBetween, RowFixed } from "../Row";
 import SettingsTab from "../Settings";
-import SwapBuyFiatButton from "./SwapBuyFiatButton";
+// import SwapBuyFiatButton from "./SwapBuyFiatButton";
 import { SwapTab } from "./constants";
 import { SwapHeaderTabButton } from "./styled";
 
@@ -118,7 +118,6 @@ export default function SwapHeader({
             <Trans>Send</Trans>
           </SwapHeaderTabButton>
         )}
-        <SwapBuyFiatButton />
       </HeaderButtonContainer>
       {currentTab === SwapTab.Swap && (
         <RowFixed>

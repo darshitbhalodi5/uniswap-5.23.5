@@ -6,10 +6,10 @@ import { SupportedL1ChainId, SupportedL2ChainId } from "./chains";
 import {
   ARBITRUM_LIST,
   AVALANCHE_LIST,
-  MODE_LIST,
   BASE_LIST,
   CELO_LIST,
   OPTIMISM_LIST,
+  MODE_LIST,
   PLASMA_BNB_LIST,
 } from "./lists";
 
@@ -31,7 +31,7 @@ export function getBlocksPerMainnetEpochForChainId(
     case ChainId.ARBITRUM_ONE:
       return 46;
     case ChainId.MODE:
-      return 919;
+      return 7;
     case ChainId.OPTIMISM:
       return 6;
     case ChainId.POLYGON:
@@ -141,8 +141,7 @@ const CHAIN_INFO: ChainInfoMap = {
     infoLink: "https://mode.com/help/get-started",
     label: "Mode",
     statusPage: "https://mode.com/help/get-started",
-    helpCenterUrl:
-      "https://mode.com/help/get-started",
+    helpCenterUrl: "https://mode.com/help/get-started",
     nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
     color: darkTheme.chain_10,
     backgroundColor: darkTheme.chain_10_background,

@@ -64,8 +64,6 @@ const magicalGradient = style({
       content: "",
       position: "absolute",
       inset: "-1px",
-      background: "#E9E002",
-      borderColor: "#E9E002",
       WebkitMask:
         "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);",
       WebkitMaskComposite: "xor;",
