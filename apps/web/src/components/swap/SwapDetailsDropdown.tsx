@@ -1,5 +1,5 @@
 import { BrowserEvent, InterfaceElementName, SwapEventName } from '@uniswap/analytics-events'
-import { Percent } from 'core87'
+import { Currency, Percent, Price } from 'core87'
 import { TraceEvent, useTrace } from 'analytics'
 import AnimatedDropdown from 'components/AnimatedDropdown'
 import Column from 'components/Column'
@@ -73,7 +73,7 @@ export default function SwapDetailsDropdown(props: SwapDetailsProps) {
           <RowFixed>
             {trade ? (
               <LoadingOpacityContainer $loading={syncing} data-testid="trade-price-container">
-                <TradePrice price={trade.executionPrice} />
+                <TradePrice price={trade.executionPrice as Price<Currency, Currency>} />
               </LoadingOpacityContainer>
             ) : loading || syncing ? (
               <ThemedText.DeprecatedMain fontSize={14}>

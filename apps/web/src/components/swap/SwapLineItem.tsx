@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, Percent, TradeType } from 'core87'
+import { Currency, CurrencyAmount, Percent, Price, TradeType } from 'core87'
 import { formatTimestamp } from 'components/AccountDrawer/MiniPortfolio/formatTimestamp'
 import { LoadingRow } from 'components/Loader/styled'
 import RouterLabel from 'components/RouterLabel'
@@ -137,7 +137,7 @@ function useLineItem(props: SwapLineItemProps): LineItemData | undefined {
     case SwapLineItemType.EXCHANGE_RATE:
       return {
         Label: () => (isLimitTrade(trade) ? <Trans>Limit price</Trans> : <Trans>Rate</Trans>),
-        Value: () => <TradePrice price={trade.executionPrice} />,
+        Value: () => <TradePrice price={trade.executionPrice as Price<Currency, Currency>} />,
         TooltipBody: !isPreview ? () => <RoutingTooltip trade={trade} /> : undefined,
         tooltipSize: isUniswapX ? TooltipSize.Small : TooltipSize.Large,
       }

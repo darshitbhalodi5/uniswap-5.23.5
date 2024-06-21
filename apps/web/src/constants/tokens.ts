@@ -18,6 +18,13 @@ export const USDC_MAINNET = new Token(
   "USDC",
   "USD//C",
 );
+export const USDC_MODE = new Token(
+  ChainId.MODE,
+  "0x4Cc496ca61683944f20a1C4796761273EE74FB62",
+  6,
+  "USDC",
+  "USD Coin",
+);
 export const USDC_GOERLI = new Token(
   ChainId.GOERLI,
   "0x07865c6e87b9f70255377e024ace6630c1eaa37f",

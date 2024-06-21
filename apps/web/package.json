@@ -278,7 +278,7 @@
     "redux": "4.2.1",
     "redux-persist": "6.0.0",
     "router87": "1.0.0",
-    "smartroute87": "1.0.0",
+    "smartroute87": "1.0.1",
     "statsig-react": "1.32.0",
     "styled-components": "5.3.11",
     "tiny-invariant": "1.3.1",

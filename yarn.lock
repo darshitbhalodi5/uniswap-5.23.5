@@ -13398,7 +13398,7 @@ __metadata:
     resize-observer-polyfill: 1.5.1
     router87: 1.0.0
     serve: ^14.2.0
-    smartroute87: 1.0.0
+    smartroute87: 1.0.1
     source-map-explorer: 2.5.3
     start-server-and-test: 2.0.0
     statsig-react: 1.32.0
@@ -40044,9 +40044,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"smartroute87@npm:1.0.0":
-  version: 1.0.0
-  resolution: "smartroute87@npm:1.0.0"
+"smartroute87@npm:1.0.1":
+  version: 1.0.1
+  resolution: "smartroute87@npm:1.0.1"
   dependencies:
     "@uniswap/default-token-list": ^11.2.0
     "@uniswap/permit2-sdk": ^1.2.0
@@ -40072,7 +40072,7 @@ __metadata:
     v387: 1.0.0
   peerDependencies:
     jsbi: ^3.2.0
-  checksum: 54a45446053374ecad485f858940a99e63c6ece2d88a49ef0579195fad16deb5a08064792e0fe4f40bf619a78d80924ad48629b64a9313316102edf4b5435063
+  checksum: 511156935d657777149eeaacc86777323c506b88b9274e7158fdee083ba3cdf654496ce7245f295ac2fb5b618db6e68a9947eee37a87f11f3c81f10039fe6eca
   languageName: node
   linkType: hard
 
