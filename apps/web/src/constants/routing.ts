@@ -13,6 +13,7 @@ import {
   DAI_ARBITRUM_ONE,
   DAI_AVALANCHE,
   DAI_BSC,
+  DAI_MODE,
   DAI_OPTIMISM,
   DAI_POLYGON,
   ETH_BSC,
@@ -73,6 +74,9 @@ export const COMMON_BASES: ChainCurrencyList = {
     WBTC,
     WRAPPED_NATIVE_CURRENCY[ChainId.MAINNET] as Token,
   ],
+  [ChainId.MODE]: [DAI_MODE,
+    WRAPPED_NATIVE_CURRENCY[ChainId.MODE] as Token,
+  ],
   [ChainId.GOERLI]: [nativeOnChain(ChainId.GOERLI), WRAPPED_NATIVE_CURRENCY[ChainId.GOERLI] as Token],
   [ChainId.SEPOLIA]: [nativeOnChain(ChainId.SEPOLIA), WRAPPED_NATIVE_CURRENCY[ChainId.SEPOLIA] as Token],
 
@@ -131,10 +135,6 @@ export const COMMON_BASES: ChainCurrencyList = {
     USDC_AVALANCHE,
     USDT_AVALANCHE,
     WETH_AVALANCHE,
-  ],
-
-  [ChainId.MODE]: [
-    WRAPPED_NATIVE_CURRENCY[ChainId.MODE] as Token,
   ],
 }
 

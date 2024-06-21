@@ -19,6 +19,7 @@ import {
   USDC_MAINNET,
   USDC_MODE,
   USDC_OPTIMISM_GOERLI,
+  DAI_MODE,
   USDC_POLYGON,
   USDC_POLYGON_MUMBAI,
   USDC_SEPOLIA,
@@ -43,7 +44,7 @@ export const STABLECOIN_AMOUNT_OUT: { [key in SupportedInterfaceChain]: Currency
   [ChainId.POLYGON_MUMBAI]: CurrencyAmount.fromRawAmount(USDC_POLYGON_MUMBAI, 10_000e6),
   [ChainId.CELO_ALFAJORES]: CurrencyAmount.fromRawAmount(CUSD_CELO_ALFAJORES, 10_000e6),
   [ChainId.BLAST]: CurrencyAmount.fromRawAmount(USDB_BLAST, 10_000e18),
-  [ChainId.MODE]: CurrencyAmount.fromRawAmount(USDC_MODE, 10_000e6),
+  [ChainId.MODE]: CurrencyAmount.fromRawAmount(DAI_MODE, 10_000e18),
 }
 
 /**
