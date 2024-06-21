@@ -6,6 +6,7 @@ import { SupportedL1ChainId, SupportedL2ChainId } from "./chains";
 import {
   ARBITRUM_LIST,
   AVALANCHE_LIST,
+  MODE_LIST,
   BASE_LIST,
   CELO_LIST,
   OPTIMISM_LIST,
@@ -29,6 +30,8 @@ export function getBlocksPerMainnetEpochForChainId(
   switch (chainId) {
     case ChainId.ARBITRUM_ONE:
       return 46;
+    case ChainId.MODE:
+      return 919;
     case ChainId.OPTIMISM:
       return 6;
     case ChainId.POLYGON:
@@ -124,6 +127,22 @@ const CHAIN_INFO: ChainInfoMap = {
     statusPage: "https://optimism.io/status",
     helpCenterUrl:
       "https://help.uniswap.org/en/collections/3137778-uniswap-on-optimistic-ethereum-oξ",
+    nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
+    color: darkTheme.chain_10,
+    backgroundColor: darkTheme.chain_10_background,
+  },
+  [ChainId.MODE]: {
+    networkType: NetworkType.L2,
+    blockWaitMsBeforeWarning: ms(`25m`),
+    bridge: "https://mode.com/help/get-started",
+    defaultListUrl: MODE_LIST,
+    docs: "https://mode.com/help/get-started",
+    explorer: "https://sepolia.explorer.mode.network/",
+    infoLink: "https://mode.com/help/get-started",
+    label: "Mode",
+    statusPage: "https://mode.com/help/get-started",
+    helpCenterUrl:
+      "https://mode.com/help/get-started",
     nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
     color: darkTheme.chain_10,
     backgroundColor: darkTheme.chain_10_background,

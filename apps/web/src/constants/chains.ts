@@ -4,9 +4,11 @@ import {
   SupportedChainsType,
   V2_ROUTER_ADDRESSES,
 } from "core87";
+import { Chain } from "uniswap/src/data/graphql/uniswap-data-api/__generated__/types-and-hooks";
 
 export const CHAIN_IDS_TO_NAMES = {
   [ChainId.MAINNET]: "mainnet",
+  [ChainId.MODE]: "mode",
   [ChainId.GOERLI]: "goerli",
   [ChainId.SEPOLIA]: "sepolia",
   [ChainId.POLYGON]: "polygon",
@@ -79,6 +81,7 @@ export const SUPPORTED_GAS_ESTIMATE_CHAIN_IDS = [
   ChainId.AVALANCHE,
   ChainId.BASE,
   ChainId.BLAST,
+  ChainId.MODE,
 ] as const;
 
 /**
@@ -87,6 +90,7 @@ export const SUPPORTED_GAS_ESTIMATE_CHAIN_IDS = [
 export const SUPPORTED_V2POOL_CHAIN_IDS_DEPRECATED = [
   ChainId.MAINNET,
   ChainId.GOERLI,
+  ChainId.MODE,
 ] as const;
 export const SUPPORTED_V2POOL_CHAIN_IDS = Object.keys(V2_ROUTER_ADDRESSES).map(
   (chainId) => parseInt(chainId),
@@ -99,6 +103,7 @@ export const TESTNET_CHAIN_IDS = [
   ChainId.ARBITRUM_GOERLI,
   ChainId.OPTIMISM_GOERLI,
   ChainId.CELO_ALFAJORES,
+  ChainId.MODE,
 ] as const;
 
 /**
@@ -128,6 +133,7 @@ export const L2_CHAIN_IDS = [
   ChainId.OPTIMISM,
   ChainId.OPTIMISM_GOERLI,
   ChainId.BASE,
+  ChainId.MODE,
 ] as const;
 
 export type SupportedL2ChainId = (typeof L2_CHAIN_IDS)[number];
@@ -142,6 +148,7 @@ export function getChainPriority(chainId: ChainId): number {
     case ChainId.MAINNET:
     case ChainId.GOERLI:
     case ChainId.SEPOLIA:
+    case ChainId.MODE:
       return 0;
     case ChainId.ARBITRUM_ONE:
     case ChainId.ARBITRUM_GOERLI:

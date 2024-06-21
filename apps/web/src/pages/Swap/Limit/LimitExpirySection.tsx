@@ -21,10 +21,13 @@ const LimitExpiryButton = styled.button<{ $selected: boolean }>`
   border: 1px solid ${({ theme }) => theme.surface3};
   height: 28px;
   border-radius: 999px;
-  background-color: ${({ theme, $selected }) => ($selected ? theme.surface3 : 'unset')};
+  background-color: ${({ theme, $selected }) => ($selected ? "#9657EB59" : 'unset')};
   color: ${({ theme, $selected }) => ($selected ? theme.neutral1 : theme.neutral2)};
   ${ClickableStyle}
-`
+ :hover {
+    border-color: #9657eb59;
+  }
+`;
 
 const EXPIRY_OPTIONS = [Expiry.Day, Expiry.Week, Expiry.Month, Expiry.Year]
 

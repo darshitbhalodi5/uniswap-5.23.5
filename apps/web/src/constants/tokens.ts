@@ -405,6 +405,13 @@ export const MNW = new Token(
 export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } =
   {
     ...(WETH9 as Record<ChainId, Token>),
+    [ChainId.MODE]: new Token(
+      ChainId.MODE,
+      "0x4200000000000000000000000000000000000006",
+      18,
+      "WETH",
+      "Wrapped Ether",
+    ),
     [ChainId.OPTIMISM]: new Token(
       ChainId.OPTIMISM,
       "0x4200000000000000000000000000000000000006",
@@ -672,6 +679,7 @@ const STABLECOINS: { [chainId in ChainId]: Token[] } = {
   [ChainId.ZORA]: [],
   [ChainId.ROOTSTOCK]: [],
   [ChainId.BLAST]: [USDB_BLAST],
+  [ChainId.MODE]: [],
 };
 
 export function isStablecoin(currency?: Currency): boolean {
