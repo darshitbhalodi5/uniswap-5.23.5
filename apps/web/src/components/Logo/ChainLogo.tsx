@@ -8,8 +8,8 @@ import { useIsDarkMode } from "theme/components/ThemeToggle";
 import { ReactComponent as arbitrum } from "./ChainSymbols/arbitrum.svg";
 import { ReactComponent as avax } from "./ChainSymbols/avax.svg";
 import { ReactComponent as base } from "./ChainSymbols/base.svg";
-import { ReactComponent as blast } from "./ChainSymbols/blast.svg";
-import { ReactComponent as blastLight } from "./ChainSymbols/blast_light.svg";
+import { ReactComponent as mode } from "./ChainSymbols/mode.svg";
+// import { ReactComponent as blastLight } from "./ChainSymbols/blast_light.svg";
 import { ReactComponent as bnb } from "./ChainSymbols/bnb.svg";
 import { ReactComponent as celo } from "./ChainSymbols/celo.svg";
 import { ReactComponent as celoLight } from "./ChainSymbols/celo_light.svg";
@@ -89,17 +89,18 @@ export function getChainUI(
         bgColor: "#0052FF33",
         textColor: "#0052FF",
       };
-    case ChainId.BLAST:
+
+    case ChainId.MODE:
       return darkMode
         ? {
-            Symbol: blast,
-            bgColor: "rgba(252, 252, 3, 0.12)",
-            textColor: "rgba(252, 252, 3, 1) ",
+            Symbol: mode,
+            bgColor: "#E9E002",
+            textColor: "black",
           }
         : {
-            Symbol: blastLight,
-            bgColor: "rgba(252, 252, 3, 0.16)",
-            textColor: "rgba(17, 20, 12, 1)",
+            Symbol: mode,
+            bgColor: "#E9E002",
+            textColor: "black",
           };
     default:
       return undefined;
@@ -130,7 +131,12 @@ export function ChainLogo({
   const { surface2 } = useTheme();
 
   if (!isSupportedChain(chainId)) return null;
+
+  const chainInfo = getChainInfo(chainId);
+  if (!chainInfo) return null; // If chain info is undefined, return null
   const { label } = getChainInfo(chainId);
+  const chainUI = getChainUI(chainId, darkMode);
+  if (!chainUI) return null; // If chain UI is undefined, return null
 
   const { Symbol, bgColor } = getChainUI(chainId, darkMode);
   const iconSize = fillContainer ? "100%" : size;
