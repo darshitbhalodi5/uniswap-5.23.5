@@ -2,7 +2,7 @@ import { Protocol } from 'router87'
 import { Currency, CurrencyAmount, TradeType } from 'core87'
 // This file is lazy-loaded, so the import of smart-order-router is intentional.
 // eslint-disable-next-line @typescript-eslint/no-restricted-imports
-import { routeAmountsToString, SwapRoute } from '@uniswap/smart-order-router'
+import { routeAmountsToString, SwapRoute } from 'smartroute87'
 import { Pool } from 'v387'
 import {
   ClassicQuoteData,

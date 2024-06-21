@@ -1,7 +1,7 @@
 import { Percent, TradeType } from 'core87'
 // This is allowed in test files.
 // eslint-disable-next-line @typescript-eslint/no-restricted-imports
-import { V3Route } from '@uniswap/smart-order-router'
+import { V3Route } from 'smartroute87'
 import { ClassicTrade, QuoteMethod } from 'state/routing/types'
 import {
   TEST_POOL_13,
