@@ -128,6 +128,7 @@ export function chainIdToBackendName(chainId: number | undefined) {
 
 const GQL_CHAINS = [
   ChainId.MAINNET,
+  ChainId.MODE,
   ChainId.OPTIMISM,
   ChainId.POLYGON,
   ChainId.ARBITRUM_ONE,
@@ -183,7 +184,7 @@ const URL_CHAIN_PARAM_TO_BACKEND: { [key: string]: InterfaceGqlChain } = {
   avalanche: Chain.Avalanche,
   base: Chain.Base,
   blast: Chain.Blast,
-  mode:Chain.Mode,
+  mode: Chain.Mode,
 };
 
 /**

@@ -12,6 +12,7 @@ export const FEE_AMOUNT_DETAIL: Record<
     description: <Trans>Best for very stable pairs.</Trans>,
     supportedChains: [
       ChainId.ARBITRUM_ONE,
+      ChainId.MODE,
       ChainId.BNB,
       ChainId.CELO,
       ChainId.CELO_ALFAJORES,
@@ -22,7 +23,6 @@ export const FEE_AMOUNT_DETAIL: Record<
       ChainId.AVALANCHE,
       ChainId.BASE,
       ChainId.BLAST,
-      ChainId.MODE,
     ],
   },
   [FeeAmount.LOW]: {

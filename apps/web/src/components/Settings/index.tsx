@@ -146,14 +146,14 @@ export default function SettingsTab({
   const Settings = useMemo(
     () => (
       <>
-        {showRoutingSettings && (
+        {/* {showRoutingSettings && (
           <AutoColumn gap="16px">
             <RouterPreferenceSettings />
           </AutoColumn>
-        )}
+        )} */}
         <AnimatedDropdown open={!isUniswapXTrade(trade)}>
           <ExpandColumn $padTop={showRoutingSettings}>
-            {showRoutingSettings && <Divider />}
+            {showRoutingSettings}
             <MaxSlippageSettings autoSlippage={autoSlippage} />
             {showDeadlineSettings && (
               <>

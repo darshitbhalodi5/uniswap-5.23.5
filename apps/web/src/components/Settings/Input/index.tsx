@@ -21,7 +21,7 @@ export const Input = styled.input`
 `;
 
 export const InputContainer = styled(Row)<{ error?: boolean }>`
-  padding: 8px 16px;
+  padding: 8px 0px;
   border-radius: 12px;
   width: auto;
   min-width: 100px;

@@ -32,6 +32,7 @@ export class SwapEventTimestampTracker {
   private timestamps: Map<SwapEventType, number | undefined> = new Map()
 
   public hasTimestamp(eventType: SwapEventType): boolean {
+    console.log("this timestamp..............", this.timestamps)
     return this.timestamps.has(eventType)
   }
 

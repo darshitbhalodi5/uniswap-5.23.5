@@ -117,6 +117,16 @@ export const approvedERC20: InteractiveToken[] = [
       'https://raw.githubusercontent.com/Uniswap/assets/master/blockchains/optimism/assets/0x4200000000000000000000000000000000000042/logo.png',
   },
   {
+    name: 'mode',
+    symbol: 'ETH',
+    address: '0x4200000000000000000000000000000000000006',
+    chain: Chain.Mode,
+    standard: TokenStandard.ERC20,
+    color: '#FF001A',
+    logoUrl:
+      'https://github.com/UdonSwap/v3-interface/blob/mode-chain/apps/web/src/components/Logo/ChainSymbols/mode.svg',
+  },
+  {
     name: 'Uniswap',
     symbol: 'UNI',
     color: '#FF007A',

@@ -31,7 +31,7 @@ export function getBlocksPerMainnetEpochForChainId(
     case ChainId.ARBITRUM_ONE:
       return 46;
     case ChainId.MODE:
-      return 7;
+      return 6;
     case ChainId.OPTIMISM:
       return 6;
     case ChainId.POLYGON:

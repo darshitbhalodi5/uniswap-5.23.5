@@ -12,6 +12,7 @@ import { NATIVE_CHAIN_ID, isCelo, nativeOnChain } from "../../constants/tokens";
 
 type Network =
   | "ethereum"
+  | "mode"
   | "arbitrum"
   | "optimism"
   | "polygon"
@@ -20,7 +21,7 @@ type Network =
   | "avalanchec"
   | "base"
   | "blast"
-  | "mode";
+
 
 export function chainIdToNetworkName(networkId: ChainId): Network {
   switch (networkId) {
@@ -93,12 +94,12 @@ function getTokenLogoURI(
 export default function useCurrencyLogoURIs(
   currency:
     | {
-        isNative?: boolean;
-        isToken?: boolean;
-        address?: string;
-        chainId: number;
-        logoURI?: string | null;
-      }
+      isNative?: boolean;
+      isToken?: boolean;
+      address?: string;
+      chainId: number;
+      logoURI?: string | null;
+    }
     | null
     | undefined,
 ): string[] {

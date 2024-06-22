@@ -72,6 +72,7 @@ export function asSupportedChain(
 
 export const SUPPORTED_GAS_ESTIMATE_CHAIN_IDS = [
   ChainId.MAINNET,
+  ChainId.MODE,
   ChainId.POLYGON,
   ChainId.CELO,
   ChainId.OPTIMISM,
@@ -95,7 +96,6 @@ export const SUPPORTED_V2POOL_CHAIN_IDS = Object.keys(V2_ROUTER_ADDRESSES).map(
 );
 
 export const TESTNET_CHAIN_IDS = [
-  ChainId.MODE,
   ChainId.GOERLI,
   ChainId.SEPOLIA,
   ChainId.POLYGON_MUMBAI,
@@ -144,11 +144,11 @@ export type SupportedL2ChainId = (typeof L2_CHAIN_IDS)[number];
 export function getChainPriority(chainId: ChainId): number {
   switch (chainId) {
     case ChainId.MAINNET:
+    case ChainId.MODE:
     case ChainId.GOERLI:
     case ChainId.SEPOLIA:
       return 0;
     case ChainId.ARBITRUM_ONE:
-    case ChainId.MODE:
     case ChainId.ARBITRUM_GOERLI:
       return 1;
     case ChainId.OPTIMISM:

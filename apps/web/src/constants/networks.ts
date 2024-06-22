@@ -1,21 +1,31 @@
-import { ChainId } from 'core87'
-import { SupportedInterfaceChain } from 'constants/chains'
+import { ChainId } from "core87";
+import { SupportedInterfaceChain } from "constants/chains";
 
-const INFURA_KEY = process.env.REACT_APP_INFURA_KEY
-if (typeof INFURA_KEY === 'undefined') {
-  throw new Error(`REACT_APP_INFURA_KEY must be a defined environment variable`)
+const INFURA_KEY = process.env.REACT_APP_INFURA_KEY;
+if (typeof INFURA_KEY === "undefined") {
+  throw new Error(
+    `REACT_APP_INFURA_KEY must be a defined environment variable`,
+  );
 }
-const QUICKNODE_MAINNET_RPC_URL = process.env.REACT_APP_QUICKNODE_MAINNET_RPC_URL
-if (typeof QUICKNODE_MAINNET_RPC_URL === 'undefined') {
-  throw new Error(`REACT_APP_QUICKNODE_MAINNET_RPC_URL must be a defined environment variable`)
+const QUICKNODE_MAINNET_RPC_URL =
+  process.env.REACT_APP_QUICKNODE_MAINNET_RPC_URL;
+if (typeof QUICKNODE_MAINNET_RPC_URL === "undefined") {
+  throw new Error(
+    `REACT_APP_QUICKNODE_MAINNET_RPC_URL must be a defined environment variable`,
+  );
 }
-const QUICKNODE_ARBITRUM_RPC_URL = process.env.REACT_APP_QUICKNODE_ARBITRUM_RPC_URL
-if (typeof QUICKNODE_ARBITRUM_RPC_URL === 'undefined') {
-  throw new Error(`REACT_APP_QUICKNODE_ARBITRUM_RPC_URL must be a defined environment variable`)
+const QUICKNODE_ARBITRUM_RPC_URL =
+  process.env.REACT_APP_QUICKNODE_ARBITRUM_RPC_URL;
+if (typeof QUICKNODE_ARBITRUM_RPC_URL === "undefined") {
+  throw new Error(
+    `REACT_APP_QUICKNODE_ARBITRUM_RPC_URL must be a defined environment variable`,
+  );
 }
-const QUICKNODE_BNB_RPC_URL = process.env.REACT_APP_BNB_RPC_URL
-if (typeof QUICKNODE_BNB_RPC_URL === 'undefined') {
-  throw new Error(`REACT_APP_BNB_RPC_URL must be a defined environment variable`)
+const QUICKNODE_BNB_RPC_URL = process.env.REACT_APP_BNB_RPC_URL;
+if (typeof QUICKNODE_BNB_RPC_URL === "undefined") {
+  throw new Error(
+    `REACT_APP_BNB_RPC_URL must be a defined environment variable`,
+  );
 }
 
 /**
@@ -31,64 +41,64 @@ if (typeof QUICKNODE_BNB_RPC_URL === 'undefined') {
 export const PUBLIC_RPC_URLS: Record<SupportedInterfaceChain, string[]> = {
   [ChainId.MAINNET]: [
     // "Safe" URLs
-    'https://api.mycryptoapi.com/eth',
-    'https://cloudflare-eth.com',
+    "https://api.mycryptoapi.com/eth",
+    "https://cloudflare-eth.com",
     // "Fallback" URLs
-    'https://rpc.ankr.com/eth',
-    'https://eth-mainnet.public.blastapi.io',
+    "https://rpc.ankr.com/eth",
+    "https://eth-mainnet.public.blastapi.io",
   ],
-  [ChainId.MODE]: ["https://sepolia.mode.network"],
+  [ChainId.MODE]: ["https://sepolia.explorer.mode.network/"],
   [ChainId.GOERLI]: [
     // "Safe" URLs
-    'https://rpc.goerli.mudit.blog/',
+    "https://rpc.goerli.mudit.blog/",
     // "Fallback" URLs
-    'https://rpc.ankr.com/eth_goerli',
+    "https://rpc.ankr.com/eth_goerli",
   ],
   [ChainId.SEPOLIA]: [
     // "Safe" URLs
-    'https://rpc.sepolia.dev/',
+    "https://rpc.sepolia.dev/",
     // "Fallback" URLs
-    'https://rpc.sepolia.org/',
-    'https://rpc2.sepolia.org/',
-    'https://rpc.sepolia.online/',
-    'https://www.sepoliarpc.space/',
-    'https://rpc-sepolia.rockx.com/',
-    'https://rpc.bordel.wtf/sepolia',
+    "https://rpc.sepolia.org/",
+    "https://rpc2.sepolia.org/",
+    "https://rpc.sepolia.online/",
+    "https://www.sepoliarpc.space/",
+    "https://rpc-sepolia.rockx.com/",
+    "https://rpc.bordel.wtf/sepolia",
   ],
   [ChainId.POLYGON]: [
     // "Safe" URLs
-    'https://polygon-rpc.com/',
-    'https://rpc-mainnet.matic.network',
-    'https://matic-mainnet.chainstacklabs.com',
-    'https://rpc-mainnet.maticvigil.com',
-    'https://rpc-mainnet.matic.quiknode.pro',
-    'https://matic-mainnet-full-rpc.bwarelabs.com',
+    "https://polygon-rpc.com/",
+    "https://rpc-mainnet.matic.network",
+    "https://matic-mainnet.chainstacklabs.com",
+    "https://rpc-mainnet.maticvigil.com",
+    "https://rpc-mainnet.matic.quiknode.pro",
+    "https://matic-mainnet-full-rpc.bwarelabs.com",
   ],
   [ChainId.POLYGON_MUMBAI]: [
     // "Safe" URLs
-    'https://matic-mumbai.chainstacklabs.com',
-    'https://rpc-mumbai.maticvigil.com',
-    'https://matic-testnet-archive-rpc.bwarelabs.com',
+    "https://matic-mumbai.chainstacklabs.com",
+    "https://rpc-mumbai.maticvigil.com",
+    "https://matic-testnet-archive-rpc.bwarelabs.com",
   ],
   [ChainId.ARBITRUM_ONE]: [
     // "Safe" URLs
-    'https://arb1.arbitrum.io/rpc',
+    "https://arb1.arbitrum.io/rpc",
     // "Fallback" URLs
-    'https://arbitrum.public-rpc.com',
+    "https://arbitrum.public-rpc.com",
   ],
   [ChainId.ARBITRUM_GOERLI]: [
     // "Safe" URLs
-    'https://goerli-rollup.arbitrum.io/rpc',
+    "https://goerli-rollup.arbitrum.io/rpc",
   ],
   [ChainId.OPTIMISM]: [
     // "Safe" URLs
-    'https://mainnet.optimism.io/',
+    "https://mainnet.optimism.io/",
     // "Fallback" URLs
-    'https://rpc.ankr.com/optimism',
+    "https://rpc.ankr.com/optimism",
   ],
   [ChainId.OPTIMISM_GOERLI]: [
     // "Safe" URLs
-    'https://goerli.optimism.io',
+    "https://goerli.optimism.io",
   ],
   [ChainId.CELO]: [
     // "Safe" URLs
@@ -100,75 +110,89 @@ export const PUBLIC_RPC_URLS: Record<SupportedInterfaceChain, string[]> = {
   ],
   [ChainId.BNB]: [
     // "Safe" URLs
-    'https://endpoints.omniatech.io/v1/bsc/mainnet/public',
-    'https://bsc-mainnet.gateway.pokt.network/v1/lb/6136201a7bad1500343e248d',
-    'https://1rpc.io/bnb',
-    'https://bsc-dataseed3.binance.org',
-    'https://bsc-dataseed2.defibit.io',
-    'https://bsc-dataseed1.ninicoin.io',
-    'https://binance.nodereal.io',
-    'https://bsc-dataseed4.defibit.io',
-    'https://rpc.ankr.com/bsc',
+    "https://endpoints.omniatech.io/v1/bsc/mainnet/public",
+    "https://bsc-mainnet.gateway.pokt.network/v1/lb/6136201a7bad1500343e248d",
+    "https://1rpc.io/bnb",
+    "https://bsc-dataseed3.binance.org",
+    "https://bsc-dataseed2.defibit.io",
+    "https://bsc-dataseed1.ninicoin.io",
+    "https://binance.nodereal.io",
+    "https://bsc-dataseed4.defibit.io",
+    "https://rpc.ankr.com/bsc",
   ],
   [ChainId.AVALANCHE]: [
     // "Safe" URLs
-    'https://api.avax.network/ext/bc/C/rpc',
-    'https://avalanche-c-chain.publicnode.com',
+    "https://api.avax.network/ext/bc/C/rpc",
+    "https://avalanche-c-chain.publicnode.com",
   ],
   [ChainId.BASE]: [
     // "Safe" URLs
-    'https://mainnet.base.org/',
-    'https://developer-access-mainnet.base.org/',
-    'https://base.gateway.tenderly.co',
-    'https://base.publicnode.com',
+    "https://mainnet.base.org/",
+    "https://developer-access-mainnet.base.org/",
+    "https://base.gateway.tenderly.co",
+    "https://base.publicnode.com",
     // "Fallback" URLs
-    'https://1rpc.io/base',
-    'https://base.meowrpc.com',
+    "https://1rpc.io/base",
+    "https://base.meowrpc.com",
   ],
   [ChainId.BLAST]: [
     // "Safe" URLs
-    'https://rpc.blast.io/',
-    'https://rpc.ankr.com/blast',
-    'https://blast.din.dev/rpc',
-    'https://blastl2-mainnet.public.blastapi.io',
-    'https://blast.blockpi.network/v1/rpc/public',
+    "https://rpc.blast.io/",
+    "https://rpc.ankr.com/blast",
+    "https://blast.din.dev/rpc",
+    "https://blastl2-mainnet.public.blastapi.io",
+    "https://blast.blockpi.network/v1/rpc/public",
   ],
-}
+};
 
 /**
  * Application-specific JSON-RPC endpoints.
  * These are URLs which may only be used by the interface, due to origin policies, &c.
  */
 export const APP_RPC_URLS: Record<SupportedInterfaceChain, string[]> = {
-  [ChainId.MAINNET]: [`https://mainnet.infura.io/v3/${INFURA_KEY}`, QUICKNODE_MAINNET_RPC_URL],
+  [ChainId.MAINNET]: [
+    `https://mainnet.infura.io/v3/${INFURA_KEY}`,
+    QUICKNODE_MAINNET_RPC_URL,
+  ],
+  [ChainId.MODE]: ["https://sepolia.explorer.mode.network/"],
   [ChainId.GOERLI]: [`https://goerli.infura.io/v3/${INFURA_KEY}`],
   [ChainId.SEPOLIA]: [`https://sepolia.infura.io/v3/${INFURA_KEY}`],
   [ChainId.OPTIMISM]: [`https://optimism-mainnet.infura.io/v3/${INFURA_KEY}`],
-  [ChainId.OPTIMISM_GOERLI]: [`https://optimism-goerli.infura.io/v3/${INFURA_KEY}`],
-  [ChainId.ARBITRUM_ONE]: [`https://arbitrum-mainnet.infura.io/v3/${INFURA_KEY}`, QUICKNODE_ARBITRUM_RPC_URL],
-  [ChainId.ARBITRUM_GOERLI]: [`https://arbitrum-goerli.infura.io/v3/${INFURA_KEY}`],
+  [ChainId.OPTIMISM_GOERLI]: [
+    `https://optimism-goerli.infura.io/v3/${INFURA_KEY}`,
+  ],
+  [ChainId.ARBITRUM_ONE]: [
+    `https://arbitrum-mainnet.infura.io/v3/${INFURA_KEY}`,
+    QUICKNODE_ARBITRUM_RPC_URL,
+  ],
+  [ChainId.ARBITRUM_GOERLI]: [
+    `https://arbitrum-goerli.infura.io/v3/${INFURA_KEY}`,
+  ],
   [ChainId.POLYGON]: [`https://polygon-mainnet.infura.io/v3/${INFURA_KEY}`],
-  [ChainId.POLYGON_MUMBAI]: [`https://polygon-mumbai.infura.io/v3/${INFURA_KEY}`],
+  [ChainId.POLYGON_MUMBAI]: [
+    `https://polygon-mumbai.infura.io/v3/${INFURA_KEY}`,
+  ],
   [ChainId.CELO]: [`https://celo-mainnet.infura.io/v3/${INFURA_KEY}`],
-  [ChainId.CELO_ALFAJORES]: [`https://celo-alfajores.infura.io/v3/${INFURA_KEY}`],
+  [ChainId.CELO_ALFAJORES]: [
+    `https://celo-alfajores.infura.io/v3/${INFURA_KEY}`,
+  ],
   [ChainId.BNB]: [QUICKNODE_BNB_RPC_URL],
   [ChainId.AVALANCHE]: [`https://avalanche-mainnet.infura.io/v3/${INFURA_KEY}`],
   [ChainId.BASE]: [`https://base-mainnet.infura.io/v3/${INFURA_KEY}`],
   [ChainId.BLAST]: [`https://blast-mainnet.infura.io/v3/${INFURA_KEY}`],
-  [ChainId.MODE]: ["https://sepolia.mode.network"],
-}
+};
 
 export const INFURA_PREFIX_TO_CHAIN_ID: { [prefix: string]: ChainId } = {
   mainnet: ChainId.MAINNET,
+  mode: ChainId.MODE,
   goerli: ChainId.GOERLI,
   sepolia: ChainId.SEPOLIA,
-  mode: ChainId.MODE,
-  'optimism-mainnet': ChainId.OPTIMISM,
-  'optimism-goerli': ChainId.OPTIMISM_GOERLI,
-  'arbitrum-mainnet': ChainId.ARBITRUM_ONE,
-  'arbitrum-goerli': ChainId.ARBITRUM_GOERLI,
-  'polygon-mainnet': ChainId.POLYGON,
-  'polygon-mumbai': ChainId.POLYGON_MUMBAI,
-  'avalanche-mainnet': ChainId.AVALANCHE,
-  'base-mainnet': ChainId.BASE,
-}
+  "optimism-mainnet": ChainId.OPTIMISM,
+  "optimism-goerli": ChainId.OPTIMISM_GOERLI,
+  "arbitrum-mainnet": ChainId.ARBITRUM_ONE,
+  "arbitrum-goerli": ChainId.ARBITRUM_GOERLI,
+  "polygon-mainnet": ChainId.POLYGON,
+  "polygon-mumbai": ChainId.POLYGON_MUMBAI,
+  "avalanche-mainnet": ChainId.AVALANCHE,
+  "base-mainnet": ChainId.BASE,
+};

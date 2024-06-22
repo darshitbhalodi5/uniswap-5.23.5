@@ -16,6 +16,7 @@ export function getNativeTokenDBAddress(chain: Chain): string | undefined {
       // So instead of returning nativeOnChain().wrapped.address, should directly use the precompile address here
       return MATIC_POLYGON.address
     case Chain.Ethereum:
+    case Chain.Mode:
     case Chain.Arbitrum:
     case Chain.EthereumGoerli:
     case Chain.Optimism:
