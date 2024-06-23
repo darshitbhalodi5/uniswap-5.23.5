@@ -1,12 +1,12 @@
-import { ButtonEmphasis, ButtonSize, ThemeButton } from 'components/Button'
-import GetHelp from 'components/Button/GetHelp'
-import { ColumnCenter } from 'components/Column'
-import Modal from 'components/Modal'
-import Row from 'components/Row'
-import { ReactNode } from 'react'
-import styled, { DefaultTheme } from 'styled-components'
-import { Gap } from 'theme'
-import { CloseIcon, ThemedText } from 'theme/components'
+import { ButtonEmphasis, ButtonSize, ThemeButton } from "components/Button";
+import GetHelp from "components/Button/GetHelp";
+import { ColumnCenter } from "components/Column";
+import Modal from "components/Modal";
+import Row from "components/Row";
+import { ReactNode } from "react";
+import styled, { DefaultTheme } from "styled-components";
+import { Gap } from "theme";
+import { CloseIcon, ThemedText } from "theme/components";
 
 export const Container = styled(ColumnCenter)`
   background-color: ${({ theme }) => theme.surface1};
@@ -14,7 +14,7 @@ export const Container = styled(ColumnCenter)`
   border-radius: 20px;
   padding: 16px 24px 24px 24px;
   width: 100%;
-`
+`;
 
 const IconContainer = styled.div`
   display: flex;
@@ -24,14 +24,14 @@ const IconContainer = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 12px;
-`
+`;
 
 const TitleText = styled(ThemedText.HeadlineMedium)`
   font-size: 24px;
   line-height: 32px;
   text-align: center;
   font-weight: 500;
-`
+`;
 
 const DescriptionText = styled(ThemedText.BodySecondary)`
   font-size: 16px;
@@ -39,7 +39,7 @@ const DescriptionText = styled(ThemedText.BodySecondary)`
   line-height: 24px;
   letter-spacing: 0em;
   text-align: center;
-`
+`;
 
 const StyledButton = styled(ThemeButton)<{ $color?: keyof DefaultTheme }>`
   display: flex;
@@ -47,55 +47,61 @@ const StyledButton = styled(ThemeButton)<{ $color?: keyof DefaultTheme }>`
   height: 40px;
   ${({ $color, theme }) => $color && `color: ${theme[$color]};`}
   border-radius: 12px;
-`
+`;
 
 export enum DialogButtonType {
-  Primary = 'primary',
-  Error = 'error',
-  Accent = 'accent',
+  Primary = "primary",
+  Error = "error",
+  Accent = "accent",
 }
 
 function getButtonEmphasis(type?: DialogButtonType) {
   switch (type) {
     case DialogButtonType.Error:
-      return ButtonEmphasis.destructive
+      return ButtonEmphasis.destructive;
     case DialogButtonType.Accent:
-      return ButtonEmphasis.high
+      return ButtonEmphasis.high;
     default:
-      return ButtonEmphasis.medium
+      return ButtonEmphasis.medium;
   }
 }
 
 type ButtonConfig = {
-  type?: DialogButtonType
-  title: ReactNode
-  onClick: () => void
-  disabled?: boolean
-  textColor?: keyof DefaultTheme
-}
+  type?: DialogButtonType;
+  title: ReactNode;
+  onClick: () => void;
+  disabled?: boolean;
+  textColor?: keyof DefaultTheme;
+};
 
 type ButtonsConfig = {
-  left?: ButtonConfig
-  right?: ButtonConfig
-  gap?: Gap
-}
+  left?: ButtonConfig;
+  right?: ButtonConfig;
+  gap?: Gap;
+};
 
 export interface DialogProps {
-  isVisible: boolean
-  icon: ReactNode
-  title: ReactNode
-  description: ReactNode
-  body?: ReactNode
-  onCancel: () => void
-  buttonsConfig?: ButtonsConfig
+  isVisible: boolean;
+  icon: ReactNode;
+  title: ReactNode;
+  description: ReactNode;
+  body?: ReactNode;
+  onCancel: () => void;
+  buttonsConfig?: ButtonsConfig;
 }
 
 /**
  * All the content of the dialog that doesn't relate to the modal presentation.
  * Use this if you want to use the dialog within a different modal.
  */
-export function DialogContent({ icon, title, description, body, buttonsConfig }: DialogProps) {
-  const { left, right, gap } = buttonsConfig ?? {}
+export function DialogContent({
+  icon,
+  title,
+  description,
+  body,
+  buttonsConfig,
+}: DialogProps) {
+  const { left, right, gap } = buttonsConfig ?? {};
   return (
     <>
       <ColumnCenter gap="md">
@@ -104,7 +110,7 @@ export function DialogContent({ icon, title, description, body, buttonsConfig }:
         <DescriptionText>{description}</DescriptionText>
         {body}
       </ColumnCenter>
-      <Row align="center" justify="center" gap={gap ?? 'md'}>
+      <Row align="center" justify="center" gap={gap ?? "md"}>
         {left && (
           <StyledButton
             size={ButtonSize.small}
@@ -129,7 +135,7 @@ export function DialogContent({ icon, title, description, body, buttonsConfig }:
         )}
       </Row>
     </>
-  )
+  );
 }
 
 /**
@@ -149,12 +155,21 @@ export function Dialog(props: DialogProps) {
   return (
     <Modal $scrollOverlay isOpen={props.isVisible} onDismiss={props.onCancel}>
       <Container gap="lg">
-        <Row gap="10px" width="100%" padding="4px 0px" justify="end" align="center">
-          <GetHelp />
-          <CloseIcon data-testid="Dialog-closeButton" onClick={props.onCancel} />
+        <Row
+          gap="10px"
+          width="100%"
+          padding="4px 0px"
+          justify="end"
+          align="center"
+        >
+          {/* <GetHelp /> */}
+          <CloseIcon
+            data-testid="Dialog-closeButton"
+            onClick={props.onCancel}
+          />
         </Row>
         <DialogContent {...props} />
       </Container>
     </Modal>
-  )
+  );
 }

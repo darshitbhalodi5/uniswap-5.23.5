@@ -61,11 +61,11 @@ export const NewAddressSpeedBumpModal = ({ onCancel, onConfirm }: { onCancel: ()
       onCancel={onCancel}
       buttonsConfig={{
         left: {
-          title: <Trans>Cancel</Trans>,
+          title: <div>Cancel</div>,
           onClick: onCancel,
         },
         right: {
-          title: <Trans>Continue</Trans>,
+          title: <div>Continue</div>,
           onClick: onConfirm,
         },
       }}

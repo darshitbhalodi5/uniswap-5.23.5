@@ -185,7 +185,7 @@ export function Stats() {
                   <Body1>
                     <ProtocolDescription />
                   </Body1>
-                  <LearnMore />
+                  {/* <LearnMore /> */}
                 </Box>
               </Box>
             </Left>

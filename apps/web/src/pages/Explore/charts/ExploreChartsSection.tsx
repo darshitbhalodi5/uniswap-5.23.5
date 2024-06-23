@@ -105,7 +105,7 @@ function VolumeChartSection({ chainId }: { chainId: number }) {
   const isSmallScreen = !useScreenSize()["sm"];
 
   function timeGranularityToHistoryDuration(
-    timePeriod: TimePeriod,
+    timePeriod: TimePeriod
   ): HistoryDuration {
     // note: timePeriod on the Explore Page represents the GRANULARITY, not the timespan of data shown.
     // i.e. timePeriod == D shows 1month data, timePeriod == W shows 1year data, timePeriod == M shows past 3Y data
@@ -124,7 +124,7 @@ function VolumeChartSection({ chainId }: { chainId: number }) {
     chainIdToBackendName(chainId),
     isSmallScreen
       ? HistoryDuration.Month
-      : timeGranularityToHistoryDuration(timePeriod),
+      : timeGranularityToHistoryDuration(timePeriod)
   );
 
   const params = useMemo<{
@@ -138,12 +138,12 @@ function VolumeChartSection({ chainId }: { chainId: number }) {
       headerHeight: 85,
       stale: dataQuality === DataQuality.STALE,
     }),
-    [entries, dataQuality, theme.accent1, theme.accent3],
+    [entries, dataQuality, theme.accent1, theme.accent3]
   );
 
   const cumulativeVolume = useMemo(
     () => getCumulativeVolume(entries),
-    [entries],
+    [entries]
   );
   if (isSmallScreen) {
     return (
@@ -159,7 +159,7 @@ function VolumeChartSection({ chainId }: { chainId: number }) {
     <SectionContainer>
       <RowBetween>
         <SectionTitle>
-          <Trans>Uniswap volume</Trans>
+          <Trans>Udonswap volume</Trans>
         </SectionTitle>
         <div style={{ position: "absolute", right: 0 }}>
           <StyledTimePeriodSelector
@@ -199,11 +199,11 @@ function VolumeChartSection({ chainId }: { chainId: number }) {
                 }
                 time={crosshairData?.time}
                 timePlaceholder={formatHistoryDuration(
-                  timeGranularityToHistoryDuration(timePeriod),
+                  timeGranularityToHistoryDuration(timePeriod)
                 )}
                 protocolData={getVolumeProtocolInfo(
                   crosshairData,
-                  EXPLORE_PRICE_SOURCES,
+                  EXPLORE_PRICE_SOURCES
                 )}
               />
             )}
@@ -218,17 +218,17 @@ function TVLChartSection({ chainId }: { chainId: number }) {
   const theme = useTheme();
 
   const { entries, loading, dataQuality } = useDailyProtocolTVL(
-    chainIdToBackendName(chainId),
+    chainIdToBackendName(chainId)
   );
   const lastEntry = entries[entries.length - 1];
   const params = useMemo(
     () => ({
       data: entries,
       colors: EXPLORE_PRICE_SOURCES?.map((source) =>
-        getProtocolColor(source, theme),
+        getProtocolColor(source, theme)
       ) ?? [theme.accent1],
     }),
-    [entries, theme],
+    [entries, theme]
   );
 
   const isSmallScreen = !useScreenSize()["sm"];
@@ -236,7 +236,7 @@ function TVLChartSection({ chainId }: { chainId: number }) {
     const currentTVL = lastEntry?.values.reduce((acc, curr) => acc + curr, 0);
     return (
       <MinimalStatDisplay
-        title={<Trans>Uniswap TVL</Trans>}
+        title={<Trans>Udonswap TVL</Trans>}
         value={currentTVL}
       />
     );
@@ -245,7 +245,7 @@ function TVLChartSection({ chainId }: { chainId: number }) {
   return (
     <SectionContainer>
       <SectionTitle>
-        <Trans>Uniswap TVL</Trans>
+        <Trans>Udonswap TVL</Trans>
       </SectionTitle>
       {(() => {
         if (dataQuality === DataQuality.INVALID) {
@@ -270,7 +270,7 @@ function TVLChartSection({ chainId }: { chainId: number }) {
               <ChartHeader
                 value={(crosshairData ?? lastEntry)?.values.reduce(
                   (v, sum) => (sum += v),
-                  0,
+                  0
                 )}
                 time={crosshairData?.time}
                 protocolData={EXPLORE_PRICE_SOURCES?.map((source, index) => ({

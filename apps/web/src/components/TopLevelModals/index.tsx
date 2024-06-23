@@ -42,7 +42,6 @@ export default function TopLevelModals() {
       <GetTheAppModal />
       <PrivacyPolicyModal />
       <FeatureFlagModal />
-      {shouldShowDevFlags && <DevFlagsBox />}
     </>
   )
 }
