@@ -63,8 +63,8 @@ const baseMenuItem = style([
     paddingY: "8",
     paddingX: { sm: "6", md: "14" },
     marginY: "4",
-    borderRadius: "14",
-    marginX: { sm: "4", md: "0" },
+    borderRadius: "10",
+    marginX: { sm: "4", md: "4" },
     transition: "250",
     height: "min",
     width: "full",
@@ -79,7 +79,8 @@ const baseMenuItem = style([
     textDecoration: "none",
 
     ":hover": {
-      color: "yellow",
+      color: "black",
+      background:"yellow",
     },
   },
 ]);
@@ -94,7 +95,7 @@ export const menuItem = style([
 export const activeMenuItem = style([
   baseMenuItem,
   sprinkles({
-    color: "yellow",
-    background: "none",
+    color: "black",
+    background:"yellow",
   }),
 ]);

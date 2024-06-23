@@ -89,7 +89,7 @@ const Web3StatusConnected = styled(Web3StatusGeneric)<{
   font-weight: 500;
   :hover {
     color: ${({ pending, theme }) => (pending ? "#FFFFFF" : "#FEF100")};
-    border-color: "none";
+    border:none;
   }
 
   @media only screen and (max-width: ${({ theme }) =>

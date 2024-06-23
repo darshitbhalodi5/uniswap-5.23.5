@@ -189,6 +189,39 @@ export const ThemedGlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme.neutral1};
     background-color: #000000;
   }
+  
+body {
+  min-height: 100vh;
+  background-position: 0 -30vh;
+  background-repeat: no-repeat;
+  background: #000000;
+  --sb-track-color: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.2) 100%
+  ),
+  #E4FF30;
+--sb-thumb-color: #ffffff;
+--sb-size: 5px;
+
+
+scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+}
+
+body::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 10px;
+}
+
 
  summary::-webkit-details-marker {
     display:none;

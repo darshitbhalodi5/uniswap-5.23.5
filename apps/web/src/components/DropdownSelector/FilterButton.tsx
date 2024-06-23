@@ -2,7 +2,6 @@ import styled from "styled-components";
 const FilterButton = styled.button<{ active: boolean; highlight?: boolean }>`
   height: 100%;
   color: ${({ theme }) => theme.neutral1};
-  background: #1c1924 !important;
   margin: 0;
   padding: 2px 6px 2px 14px;
   border-radius: 12px;
@@ -16,7 +15,7 @@ const FilterButton = styled.button<{ active: boolean; highlight?: boolean }>`
 
   :hover {
     cursor: pointer;
-    opacity: ${({ theme, active }) => (active ? theme.opacity.hover : 1)};
+    background: #1c1924 !important;
   }
 `;
 export default FilterButton;

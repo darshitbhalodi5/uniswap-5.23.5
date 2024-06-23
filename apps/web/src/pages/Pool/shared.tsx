@@ -60,23 +60,11 @@ const menuItems = {
     link: "/pool",
     external: false,
   },
-  [ProtocolVersion.V2]: {
-    content: (
-      <PoolVersionItem>
-        <Pool width="20px" height="20px" />
-        <ThemedText.BodyPrimary lineHeight="24px" color="currentColor">
-          <Trans>v2 pools</Trans>
-        </ThemedText.BodyPrimary>
-      </PoolVersionItem>
-    ),
-    link: "/pools/v2",
-    external: false,
-  },
+  
 };
 
 const titles = {
-  [ProtocolVersion.V3]: t`v3`,
-  [ProtocolVersion.V2]: t`v2`,
+  [ProtocolVersion.V3]: t`v3`
 };
 
 export function PoolVersionMenu({
@@ -91,20 +79,10 @@ export function PoolVersionMenu({
       modal={ApplicationModal.POOL_VERSION}
       menuItems={[
         menuItems[
-          protocolVersion === ProtocolVersion.V3
-            ? ProtocolVersion.V2
-            : ProtocolVersion.V3
+          ProtocolVersion.V3
         ],
       ]}
-      flyoutAlignment={FlyoutAlignment.LEFT}
-      ToggleUI={(props: any) => (
-        <PoolOptionsButton {...props} $isOpen={isOpen}>
-          <ThemedText.BodyPrimary>
-            {titles[protocolVersion]}
-          </ThemedText.BodyPrimary>
-          <StyledChevron $isOpen={isOpen} />
-        </PoolOptionsButton>
-      )}
+      
     />
   );
 }

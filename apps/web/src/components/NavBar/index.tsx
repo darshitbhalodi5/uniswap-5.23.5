@@ -143,7 +143,6 @@ const Navbar = ({ blur }: { blur: boolean }) => {
 
             <Row
               display={{ sm: "none", lg: "flex" }}
-              style={{ background: "rgb(28, 25, 36)", borderRadius: "10px" }}
             >
               <PageTabs />
             </Row>

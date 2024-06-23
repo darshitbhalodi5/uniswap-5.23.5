@@ -27,7 +27,6 @@ const MigrateV2Pair = lazy(() => import("pages/MigrateV2/MigrateV2Pair"));
 const NotFound = lazy(() => import("pages/NotFound"));
 const Pool = lazy(() => import("pages/Pool"));
 const PositionPage = lazy(() => import("pages/Pool/PositionPage"));
-const PoolV2 = lazy(() => import("pages/Pool/v2"));
 const PoolDetails = lazy(() => import("pages/PoolDetails"));
 const PoolFinder = lazy(() => import("pages/PoolFinder"));
 const RemoveLiquidity = lazy(() => import("pages/RemoveLiquidity"));
@@ -178,16 +177,7 @@ export const routes: RouteDefinition[] = [
     getElement: () => <Swap />,
     getTitle: () => SwapTitle,
   }),
-  createRouteDefinition({
-    path: "/pool/v2/find",
-    getElement: () => <PoolFinder />,
-    getTitle: () => t`Explore top liquidity pools (v2) on UdonSwap`,
-  }),
-  createRouteDefinition({
-    path: "/pool/v2",
-    getElement: () => <PoolV2 />,
-    getTitle: () => t`Provide liquidity to pools (v2) on UdonSwap`,
-  }),
+ 
   createRouteDefinition({
     path: "/pool",
     getElement: () => <Pool />,
@@ -197,16 +187,6 @@ export const routes: RouteDefinition[] = [
     path: "/pool/:tokenId",
     getElement: () => <PositionPage />,
     getTitle: () => t`Manage pool liquidity on UdonSwap`,
-  }),
-  createRouteDefinition({
-    path: "/pools/v2/find",
-    getElement: () => <PoolFinder />,
-    getTitle: () => t`Explore top liquidity pools (v2) on UdonSwap`,
-  }),
-  createRouteDefinition({
-    path: "/pools/v2",
-    getElement: () => <PoolV2 />,
-    getTitle: () => t`Manage & provide v2 pool liquidity on UdonSwap`,
   }),
   createRouteDefinition({
     path: "/pools",
@@ -219,12 +199,6 @@ export const routes: RouteDefinition[] = [
     getTitle: () => t`Manage pool liquidity on UdonSwap`,
   }),
   createRouteDefinition({
-    path: "/add/v2",
-    nestedPaths: [":currencyIdA", ":currencyIdA/:currencyIdB"],
-    getElement: () => <AddLiquidityV2WithTokenRedirects />,
-    getTitle: () => t`Provide liquidity to pools (v2) on UdonSwap`,
-  }),
-  createRouteDefinition({
     path: "/add",
     nestedPaths: [
       ":currencyIdA",
@@ -235,77 +209,13 @@ export const routes: RouteDefinition[] = [
     getElement: () => <AddLiquidityWithTokenRedirects />,
     getTitle: () => t`Provide liquidity to pools on UdonSwap`,
   }),
-  createRouteDefinition({
-    path: "/remove/v2/:currencyIdA/:currencyIdB",
-    getElement: () => <RemoveLiquidity />,
-    getTitle: () => t`Manage v2 pool liquidity on UdonSwap`,
-  }),
+ 
   createRouteDefinition({
     path: "/remove/:tokenId",
     getElement: () => <RemoveLiquidityV3 />,
     getTitle: () => t`Manage pool liquidity on UdonSwap`,
   }),
-  createRouteDefinition({
-    path: "/migrate/v2",
-    getElement: () => <MigrateV2 />,
-    getTitle: () => t`Migrate v2 pool liquidity to UdonSwap v3`,
-  }),
-  createRouteDefinition({
-    path: "/migrate/v2/:address",
-    getElement: () => <MigrateV2Pair />,
-    getTitle: () => t`Migrate v2 pool liquidity to UdonSwap v3`,
-  }),
-  createRouteDefinition({
-    path: "/nfts",
-    getElement: () => (
-      <Suspense fallback={null}>
-        <NftExplore />
-      </Suspense>
-    ),
-    enabled: (args) => !args.shouldDisableNFTRoutes,
-    getTitle: () =>
-      t`Trade NFTs across OpenSea & other top marketplaces on UdonSwap`,
-  }),
-  createRouteDefinition({
-    path: "/nfts/asset/:contractAddress/:tokenId",
-    getElement: () => (
-      <Suspense fallback={null}>
-        <Asset />
-      </Suspense>
-    ),
-    enabled: (args) => !args.shouldDisableNFTRoutes,
-    getTitle: () => t`Explore NFTs on UdonSwap`,
-  }),
-  createRouteDefinition({
-    path: "/nfts/profile",
-    getElement: () => (
-      <Suspense fallback={null}>
-        <Profile />
-      </Suspense>
-    ),
-    enabled: (args) => !args.shouldDisableNFTRoutes,
-    getTitle: () => t`Explore NFTs on UdonSwap`,
-  }),
-  createRouteDefinition({
-    path: "/nfts/collection/:contractAddress",
-    getElement: () => (
-      <Suspense fallback={null}>
-        <Collection />
-      </Suspense>
-    ),
-    enabled: (args) => !args.shouldDisableNFTRoutes,
-    getTitle: () => t`Explore NFTs on UdonSwap`,
-  }),
-  createRouteDefinition({
-    path: "/nfts/collection/:contractAddress/activity",
-    getElement: () => (
-      <Suspense fallback={null}>
-        <Collection />
-      </Suspense>
-    ),
-    enabled: (args) => !args.shouldDisableNFTRoutes,
-    getTitle: () => t`Explore NFTs on UdonSwap`,
-  }),
+
   createRouteDefinition({
     path: "*",
     getElement: () => <Navigate to="/not-found" replace />,

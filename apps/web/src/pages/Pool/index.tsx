@@ -18,24 +18,18 @@ import { useFilterPossiblyMaliciousPositions } from "hooks/useFilterPossiblyMali
 import { useNetworkSupportsV2 } from "hooks/useNetworkSupportsV2";
 import { useV3Positions } from "hooks/useV3Positions";
 import { Trans } from "i18n";
-import { PoolVersionMenu } from "pages/Pool/shared";
 import { useMemo } from "react";
 import {
   AlertTriangle,
   BookOpen,
-  ChevronDown,
   ChevronsRight,
-  Inbox,
-  Layers,
+  Inbox
 } from "react-feather";
 import { Link } from "react-router-dom";
-import { ApplicationModal } from "state/application/reducer";
 import { useUserHideClosedPositions } from "state/user/hooks";
 import styled, { css, useTheme } from "styled-components";
 import { HideSmall, ThemedText } from "theme/components";
 import { PositionDetails } from "types/position";
-import { ProtocolVersion } from "uniswap/src/data/graphql/uniswap-data-api/__generated__/types-and-hooks";
-import CTACards from "./CTACards";
 import { LoadingRows } from "./styled";
 
 const PageWrapper = styled(AutoColumn)`
@@ -254,38 +248,7 @@ export default function Pool() {
 
   const showConnectAWallet = Boolean(!account);
 
-  const menuItems = [
-    {
-      content: (
-        <PoolMenuItem>
-          <Trans>Migrate</Trans>
-          <ChevronsRight size={16} />
-        </PoolMenuItem>
-      ),
-      link: "/migrate/v2",
-      external: false,
-    },
-    {
-      content: (
-        <PoolMenuItem>
-          <Trans>V2 liquidity</Trans>
-          <Layers size={16} />
-        </PoolMenuItem>
-      ),
-      link: "/pools/v2",
-      external: false,
-    },
-    {
-      content: (
-        <PoolMenuItem>
-          <Trans>Learn</Trans>
-          <BookOpen size={16} />
-        </PoolMenuItem>
-      ),
-      link: "https://support.uniswap.org/hc/en-us/categories/8122334631437-Providing-Liquidity-",
-      external: true,
-    },
-  ];
+ 
 
   return (
     <Trace page={InterfacePageName.POOL_PAGE} shouldLogImpression>
@@ -297,24 +260,10 @@ export default function Pool() {
                 <ThemedText.LargeHeader>
                   <Trans>Positions</Trans>
                 </ThemedText.LargeHeader>
-                <PoolVersionMenu protocolVersion={ProtocolVersion.V3} />
+               
               </Row>
               <ButtonRow>
-                {networkSupportsV2 && (
-                  <PoolMenu
-                    modal={ApplicationModal.POOL_OVERVIEW_OPTIONS}
-                    menuItems={menuItems}
-                    flyoutAlignment={FlyoutAlignment.LEFT}
-                    ToggleUI={(props: any) => (
-                      <MoreOptionsButton {...props}>
-                        <MoreOptionsText>
-                          <Trans>More</Trans>
-                          <ChevronDown size={15} />
-                        </MoreOptionsText>
-                      </MoreOptionsButton>
-                    )}
-                  />
-                )}
+                
                 <ResponsiveButtonPrimary
                   data-cy="join-pool-button"
                   id="join-pool-button"
@@ -382,9 +331,6 @@ export default function Pool() {
                 </ErrorContainer>
               )}
             </MainContentWrapper>
-            <HideSmall>
-              <CTACards />
-            </HideSmall>
           </AutoColumn>
         </AutoColumn>
       </PageWrapper>

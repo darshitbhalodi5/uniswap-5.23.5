@@ -202,16 +202,17 @@ const StyledTokenName = styled.span<{ active?: boolean }>`
 `;
 
 const StyledBalanceMax = styled.button<{ disabled?: boolean }>`
-  background-color: transparent;
+background-color: rgb(56, 37, 83);
   border: none;
   color: ${({ theme }) => theme.accent1};
   cursor: pointer;
   font-size: 14px;
-  font-weight: 535;
+  border-radius:0.4rem;
+  font-weight: 500;
   opacity: ${({ disabled }) => (!disabled ? 1 : 0.4)};
-  padding: 4px 6px;
+  padding: 4px 10px;
   pointer-events: ${({ disabled }) => (!disabled ? "initial" : "none")};
-
+  margin:10px;
   :hover {
     opacity: ${({ disabled }) => (!disabled ? 0.8 : 0.4)};
   }
@@ -276,13 +277,13 @@ const SwapCurrencyInputPanel = forwardRef<
       label,
       ...rest
     },
-    ref
+    ref,
   ) => {
     const [modalOpen, setModalOpen] = useState(false);
     const { account, chainId } = useWeb3React();
     const selectedCurrencyBalance = useCurrencyBalance(
       account ?? undefined,
-      currency ?? undefined
+      currency ?? undefined,
     );
     const theme = useTheme();
     const { formatCurrencyAmount } = useFormatter();
@@ -482,7 +483,7 @@ const SwapCurrencyInputPanel = forwardRef<
         )}
       </InputPanel>
     );
-  }
+  },
 );
 SwapCurrencyInputPanel.displayName = "SwapCurrencyInputPanel";
 
