@@ -50,6 +50,7 @@ import JSBI from "jsbi";
 import { formatSwapQuoteReceivedEventProperties } from "lib/utils/analytics";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ArrowDown } from "react-feather";
+import { ArrowUp } from "react-feather";
 import { useNavigate } from "react-router-dom";
 import { Text } from "rebass";
 import { useAppSelector } from "state/hooks";
@@ -89,6 +90,7 @@ export function SwapForm({
   disableTokenInputs = false,
   onCurrencyChange,
 }: SwapFormProps) {
+  const [showArrowDown, setShowArrowDown] = useState(true);
   const connectionReady = useConnectionReady();
   const { account, chainId: connectedChainId, connector } = useWeb3React();
   const trace = useTrace();
@@ -117,7 +119,17 @@ export function SwapForm({
   const [loadedOutputCurrency, setLoadedOutputCurrency] = useState(
     prefilledOutputCurrency,
   );
-
+  // .....
+  const handleClick = () => {
+    if (disableTokenInputs) return;
+    onSwitchTokens({
+      newOutputHasTax: inputTokenHasTax,
+      previouslyEstimatedOutput: formattedAmounts[dependentField],
+    });
+    maybeLogFirstSwapAction(trace);
+    setShowArrowDown(!showArrowDown);
+  };
+  //........
   useEffect(() => {
     setLoadedInputCurrency(prefilledInputCurrency);
     setLoadedOutputCurrency(prefilledOutputCurrency);
@@ -675,17 +687,10 @@ export function SwapForm({
           >
             <ArrowContainer
               data-testid="swap-currency-button"
-              onClick={() => {
-                if (disableTokenInputs) return;
-                onSwitchTokens({
-                  newOutputHasTax: inputTokenHasTax,
-                  previouslyEstimatedOutput: formattedAmounts[dependentField],
-                });
-                maybeLogFirstSwapAction(trace);
-              }}
+              onClick={handleClick}
               color={theme.neutral1}
             >
-              <ArrowDown size="16" color={theme.neutral1} />
+              {showArrowDown ? <ArrowDown size="16" /> : <ArrowUp size="16" />}
             </ArrowContainer>
           </TraceEvent>
         </ArrowWrapper>

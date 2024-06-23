@@ -65,8 +65,11 @@ export const ArrowWrapper = styled.div<{ clickable: boolean }>`
       ? css`
           :hover {
             cursor: pointer;
-            opacity: 0.8;
-            background-color: rgb(28, 25, 36);
+            background-color: rgb(56, 37, 83);
+            transform: scale(1.1); /* Adds a scaling effect */
+            transition:
+              transform 0.3s ease,
+              background-color 0.3s ease; /* Smooth transition */
           }
         `
       : null}

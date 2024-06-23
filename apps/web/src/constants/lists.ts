@@ -1,6 +1,6 @@
 export const UNI_LIST = "https://tokenlist-api.vercel.app/v3-tokens";
 export const GRAPH_ENDPOINT =
-  "https://api.thegraph.com/subgraphs/name/ianlapham/optimism-post-regenesis?source=uniswap";
+  "https://api.goldsky.com/api/public/project_clvqb3g2poub601xzgkzc9oxs/subgraphs/udonswap-v3/1/gn";
 export const UNI_EXTENDED_LIST =
   "https://cloudflare-ipfs.com/ipns/extendedtokens.uniswap.org";
 const UNI_UNSUPPORTED_LIST =

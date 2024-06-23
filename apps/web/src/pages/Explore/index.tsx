@@ -34,7 +34,7 @@ import { Transaction } from "./tables/Transaction";
 const ExploreContainer = styled.div`
   width: 100%;
   min-width: 320px;
-  padding: 48px 40px 0px;
+  padding-top: 68px;
 
   @media only screen and (max-width: ${({ theme }) =>
       `${theme.breakpoint.sm}px`}) {

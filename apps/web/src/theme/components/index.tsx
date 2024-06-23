@@ -59,8 +59,6 @@ export const EllipsisStyle = css`
 export const ClickableStyle = css`
   text-decoration: none;
   cursor: pointer;
-  transition-duration: ${({ theme }) => theme.transition.duration.fast};
-
 `;
 
 export const CloseIcon = styled(X)<{ onClick: () => void }>`
@@ -73,8 +71,8 @@ const LinkStyle = css`
   color: ${({ theme }) => theme.accent1};
   stroke: ${({ theme }) => theme.accent1};
   font-weight: 500;
-  :hover{
-    color:#E9E002;
+  :hover {
+    color: #e9e002;
   }
 `;
 
@@ -96,7 +94,6 @@ const CopyIcon = styled(Copy)`
   ${LinkStyle}
   stroke: ${({ theme }) => theme.accent1};
 `;
-
 
 const rotateImg = keyframes`
   0% {
@@ -309,7 +306,7 @@ export const CopyHelper = forwardRef<CopyHelperRefType, CopyHelperProps>(
       iconColor = "currentColor",
       children,
     }: CopyHelperProps,
-    ref
+    ref,
   ) => {
     const [isCopied, setCopied] = useCopyClipboard();
     const copy = useCallback(() => {
@@ -361,7 +358,7 @@ export const CopyHelper = forwardRef<CopyHelperRefType, CopyHelperProps>(
         )}
       </CopyHelperContainer>
     );
-  }
+  },
 );
 CopyHelper.displayName = "CopyHelper";
 
@@ -378,13 +375,10 @@ const SpinnerCss = css`
 `;
 
 const Spinner = styled.img`
- 
   width: 16px;
   height: 16px;
 `;
-export const SpinnerSVG = styled.svg`
-  
-`;
+export const SpinnerSVG = styled.svg``;
 
 const BackArrowIcon = styled(ArrowLeft)`
   color: ${({ theme }) => theme.neutral1};

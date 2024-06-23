@@ -6,6 +6,8 @@ import { getConnection } from "connection";
 import { ConnectionType } from "connection/types";
 import { WalletConnectV2 } from "connection/WalletConnectV2";
 import { getChainInfo } from "constants/chainInfo";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import {
   getChainPriority,
   L1_CHAIN_IDS,
@@ -65,7 +67,7 @@ function useWalletSupportedChains(): ChainId[] {
 export const ChainSelector = ({ leftAlign }: { leftAlign?: boolean }) => {
   const { chainId } = useWeb3React();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
+  const navigate = useNavigate();
   const theme = useTheme();
 
   const showTestnets = useAtomValue(showTestnetsAtom);
@@ -110,7 +112,12 @@ export const ChainSelector = ({ leftAlign }: { leftAlign?: boolean }) => {
     },
     [selectChain, setIsOpen],
   );
-
+  useEffect(() => {
+    if (chainId && !info) {
+      // Redirect to a specific page if the network is unsupported
+      navigate("/unsupported"); // Change the path to your desired page
+    }
+  }, [chainId, info, navigate]);
   if (!chainId) {
     return null;
   }

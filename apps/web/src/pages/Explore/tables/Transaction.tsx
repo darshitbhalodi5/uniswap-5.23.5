@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import allpool from "components/Tokens/TokenV3/allpool.module.css";
 import axios from "axios";
 import { GRAPH_ENDPOINT } from "constants/lists";
+import { Tooltip } from "@nextui-org/react";
 
 interface Transaction {
   burns: {

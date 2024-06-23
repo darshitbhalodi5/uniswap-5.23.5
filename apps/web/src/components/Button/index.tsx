@@ -71,7 +71,7 @@ export const BaseButton = styled(RebassButton)<BaseButtonProps>`
 `;
 
 export const ButtonPrimary = styled(BaseButton)`
-  background-color: #fef100;
+  background-color: white;
   color: #000000;
   font-size: 20px;
   &:focus {
