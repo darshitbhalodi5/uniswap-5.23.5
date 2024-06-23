@@ -43,7 +43,7 @@ const FocusedOutlineCard = styled(Card)<{ pulsing: boolean }>`
   animation: ${({ pulsing, theme }) => pulsing && pulse(theme.accent1)} 0.6s
     linear;
   align-self: center;
-  background: rgb(19, 17, 24) !important;
+  background:Transparent;
 `;
 
 const Select = styled.div`
@@ -97,9 +97,9 @@ export default function FeeSelector({
           [FeeAmount.LOW]: PoolState.NOT_EXISTS,
           [FeeAmount.MEDIUM]: PoolState.NOT_EXISTS,
           [FeeAmount.HIGH]: PoolState.NOT_EXISTS,
-        }
+        },
       ),
-    [pools]
+    [pools],
   );
 
   const [showOptions, setShowOptions] = useState(false);
@@ -117,7 +117,7 @@ export default function FeeSelector({
       });
       handleFeePoolSelect(fee);
     },
-    [handleFeePoolSelect, trace]
+    [handleFeePoolSelect, trace],
   );
 
   useEffect(() => {
@@ -186,7 +186,7 @@ export default function FeeSelector({
                     <Trans>
                       {{
                         fee: formatDelta(
-                          parseFloat(FEE_AMOUNT_DETAIL[feeAmount].label)
+                          parseFloat(FEE_AMOUNT_DETAIL[feeAmount].label),
                         ),
                       }}{" "}
                       fee tier

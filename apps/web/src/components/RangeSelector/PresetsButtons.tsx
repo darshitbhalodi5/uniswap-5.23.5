@@ -11,6 +11,7 @@ const Button = styled(ButtonOutlined).attrs(() => ({
 }))`
   color: ${({ theme }) => theme.neutral1};
   flex: 1;
+  
 `
 
 interface PresetsButtonsProps {

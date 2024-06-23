@@ -14,6 +14,16 @@ export const Wrapper = styled.div`
 
 export const SmallMaxButton = styled(MaxButton)`
   font-size: 12px;
+  background-color: rgb(33, 30, 43);
+  border: 1px solid rgb(255, 255, 255);
+:hover{
+  border: 1px solid rgb(150, 87, 235);
+  color: rgb(150, 87, 235);
+}
+&:active{
+  border: 1px solid rgb(150, 87, 235);
+  color: rgb(150, 87, 235);
+}
 `
 
 export const ResponsiveHeaderText = styled(Text)`

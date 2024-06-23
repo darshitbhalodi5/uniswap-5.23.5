@@ -109,7 +109,7 @@ import {
 const DEFAULT_ADD_IN_RANGE_SLIPPAGE_TOLERANCE = new Percent(50, 10_000);
 const blastRebasingAlertAtom = atomWithStorage<boolean>(
   "shouldShowBlastRebasingAlert",
-  true
+  true,
 );
 
 const StyledBodyWrapper = styled(BodyWrapper)<{
@@ -160,7 +160,7 @@ function AddLiquidity() {
     useV3PositionFromTokenId(tokenId ? BigNumber.from(tokenId) : undefined);
   const hasExistingPosition = !!existingPositionDetails && !positionLoading;
   const { position: existingPosition } = useDerivedPositionInfo(
-    existingPositionDetails
+    existingPositionDetails,
   );
 
   // fee selection from url
@@ -208,7 +208,7 @@ function AddLiquidity() {
     quoteCurrency ?? undefined,
     feeAmount,
     baseCurrency ?? undefined,
-    existingPosition
+    existingPosition,
   );
 
   const { formatPrice } = useFormatter();
@@ -272,15 +272,15 @@ function AddLiquidity() {
   // check whether the user has approved the router on the tokens
   const [approvalA, approveACallback] = useApproveCallback(
     argentWalletContract ? undefined : parsedAmounts[Field.CURRENCY_A],
-    chainId ? NONFUNGIBLE_POSITION_MANAGER_ADDRESSES[chainId] : undefined
+    chainId ? NONFUNGIBLE_POSITION_MANAGER_ADDRESSES[chainId] : undefined,
   );
   const [approvalB, approveBCallback] = useApproveCallback(
     argentWalletContract ? undefined : parsedAmounts[Field.CURRENCY_B],
-    chainId ? NONFUNGIBLE_POSITION_MANAGER_ADDRESSES[chainId] : undefined
+    chainId ? NONFUNGIBLE_POSITION_MANAGER_ADDRESSES[chainId] : undefined,
   );
 
   const allowedSlippage = useUserSlippageToleranceWithDefault(
-    outOfRange ? ZERO_PERCENT : DEFAULT_ADD_IN_RANGE_SLIPPAGE_TOLERANCE
+    outOfRange ? ZERO_PERCENT : DEFAULT_ADD_IN_RANGE_SLIPPAGE_TOLERANCE,
   );
 
   async function onAdd() {
@@ -296,8 +296,8 @@ function AddLiquidity() {
       const useNative = baseCurrency.isNative
         ? baseCurrency
         : quoteCurrency.isNative
-        ? quoteCurrency
-        : undefined;
+          ? quoteCurrency
+          : undefined;
       const { calldata, value } =
         hasExistingPosition && tokenId
           ? NonfungiblePositionManager.addCallParameters(position, {
@@ -328,7 +328,7 @@ function AddLiquidity() {
             ? [
                 approveAmountCalldata(
                   amountA,
-                  NONFUNGIBLE_POSITION_MANAGER_ADDRESSES[chainId]
+                  NONFUNGIBLE_POSITION_MANAGER_ADDRESSES[chainId],
                 ),
               ]
             : []),
@@ -336,7 +336,7 @@ function AddLiquidity() {
             ? [
                 approveAmountCalldata(
                   amountB,
-                  NONFUNGIBLE_POSITION_MANAGER_ADDRESSES[chainId]
+                  NONFUNGIBLE_POSITION_MANAGER_ADDRESSES[chainId],
                 ),
               ]
             : []),
@@ -348,7 +348,7 @@ function AddLiquidity() {
         ];
         const data = argentWalletContract.interface.encodeFunctionData(
           "wc_multiCall",
-          [batch]
+          [batch],
         );
         txn = {
           to: argentWalletContract.address,
@@ -415,7 +415,7 @@ function AddLiquidity() {
   const handleCurrencySelect = useCallback(
     (
       currencyNew: Currency,
-      currencyIdOther?: string
+      currencyIdOther?: string,
     ): (string | undefined)[] => {
       const currencyIdNew = currencyId(currencyNew);
 
@@ -441,7 +441,7 @@ function AddLiquidity() {
         }
       }
     },
-    [chainId]
+    [chainId],
   );
 
   const handleCurrencyASelect = useCallback(
@@ -453,7 +453,7 @@ function AddLiquidity() {
         navigate(`/add/${idA}/${idB}`);
       }
     },
-    [handleCurrencySelect, currencyIdB, navigate]
+    [handleCurrencySelect, currencyIdB, navigate],
   );
 
   const handleCurrencyBSelect = useCallback(
@@ -465,7 +465,7 @@ function AddLiquidity() {
         navigate(`/add/${idA}/${idB}`);
       }
     },
-    [handleCurrencySelect, currencyIdA, navigate]
+    [handleCurrencySelect, currencyIdA, navigate],
   );
 
   const handleFeePoolSelect = useCallback(
@@ -474,7 +474,7 @@ function AddLiquidity() {
       onRightRangeInput("");
       navigate(`/add/${currencyIdA}/${currencyIdB}/${newFeeAmount}`);
     },
-    [currencyIdA, currencyIdB, navigate, onLeftRangeInput, onRightRangeInput]
+    [currencyIdA, currencyIdB, navigate, onLeftRangeInput, onRightRangeInput],
   );
 
   const handleDismissConfirmation = useCallback(() => {
@@ -490,7 +490,7 @@ function AddLiquidity() {
 
   const addIsUnsupported = useIsSwapUnsupported(
     currencies?.CURRENCY_A,
-    currencies?.CURRENCY_B
+    currencies?.CURRENCY_B,
   );
 
   const clearAll = useCallback(() => {
@@ -524,7 +524,7 @@ function AddLiquidity() {
     feeAmount,
     tickLower,
     tickUpper,
-    pool
+    pool,
   );
 
   // we need an existence check on parsed amounts for single-asset deposits
@@ -699,7 +699,7 @@ function AddLiquidity() {
         : undefined,
       isLoading: false,
     }),
-    [usdcValueCurrencyA]
+    [usdcValueCurrencyA],
   );
   const currencyBFiat = useMemo(
     () => ({
@@ -708,19 +708,19 @@ function AddLiquidity() {
         : undefined,
       isLoading: false,
     }),
-    [usdcValueCurrencyB]
+    [usdcValueCurrencyB],
   );
 
   const owner = useSingleCallResult(
     tokenId ? positionManager : null,
     "ownerOf",
-    [tokenId]
+    [tokenId],
   ).result?.[0];
   const ownsNFT =
     addressesAreEquivalent(owner, account) ||
     addressesAreEquivalent(existingPositionDetails?.operator, account);
   const showOwnershipWarning = Boolean(
-    hasExistingPosition && account && !ownsNFT
+    hasExistingPosition && account && !ownsNFT,
   );
   const showBlastRebasingWarning =
     chainId === ChainId.BLAST &&
@@ -784,9 +784,9 @@ function AddLiquidity() {
               >
                 <MediumOnly>
                   <ButtonText onClick={clearAll}>
-                    <ThemedText.DeprecatedBlue fontSize="12px">
+                    <div style={{color:"#9657EB"}}>
                       <Trans>Clear all</Trans>
-                    </ThemedText.DeprecatedBlue>
+                    </div>
                   </ButtonText>
                 </MediumOnly>
               </Row>
@@ -815,7 +815,7 @@ function AddLiquidity() {
                           hideInput
                           onMax={() => {
                             onFieldAInput(
-                              maxAmounts[Field.CURRENCY_A]?.toExact() ?? ""
+                              maxAmounts[Field.CURRENCY_A]?.toExact() ?? "",
                             );
                           }}
                           onCurrencySelect={handleCurrencyASelect}
@@ -831,7 +831,7 @@ function AddLiquidity() {
                           onCurrencySelect={handleCurrencyBSelect}
                           onMax={() => {
                             onFieldBInput(
-                              maxAmounts[Field.CURRENCY_B]?.toExact() ?? ""
+                              maxAmounts[Field.CURRENCY_B]?.toExact() ?? "",
                             );
                           }}
                           showMaxButton={!atMaxAmounts[Field.CURRENCY_B]}
@@ -884,22 +884,22 @@ function AddLiquidity() {
                                   (invertPrice
                                     ? priceLower
                                     : priceUpper?.invert()
-                                  )?.toSignificant(6) ?? ""
+                                  )?.toSignificant(6) ?? "",
                                 );
                                 onRightRangeInput(
                                   (invertPrice
                                     ? priceUpper
                                     : priceLower?.invert()
-                                  )?.toSignificant(6) ?? ""
+                                  )?.toSignificant(6) ?? "",
                                 );
                                 onFieldAInput(
-                                  formattedAmounts[Field.CURRENCY_B] ?? ""
+                                  formattedAmounts[Field.CURRENCY_B] ?? "",
                                 );
                               }
                               navigate(
                                 `/add/${currencyIdB as string}/${
                                   currencyIdA as string
-                                }${feeAmount ? "/" + feeAmount : ""}`
+                                }${feeAmount ? "/" + feeAmount : ""}`,
                               );
                             }}
                           />
@@ -965,7 +965,10 @@ function AddLiquidity() {
                     {!noLiquidity ? (
                       <>
                         {Boolean(
-                          price && baseCurrency && quoteCurrency && !noLiquidity
+                          price &&
+                            baseCurrency &&
+                            quoteCurrency &&
+                            !noLiquidity,
                         ) && (
                           <AutoColumn gap="2px" style={{ marginTop: "0.5rem" }}>
                             <ThemedText.DeprecatedMain
@@ -1009,7 +1012,7 @@ function AddLiquidity() {
                                   (invertPrice
                                     ? price.invert()
                                     : price
-                                  ).toSignificant(8)
+                                  ).toSignificant(8),
                                 )
                               : undefined
                           }
@@ -1117,7 +1120,7 @@ function AddLiquidity() {
                       onUserInput={onFieldAInput}
                       onMax={() => {
                         onFieldAInput(
-                          maxAmounts[Field.CURRENCY_A]?.toExact() ?? ""
+                          maxAmounts[Field.CURRENCY_A]?.toExact() ?? "",
                         );
                       }}
                       showMaxButton={!atMaxAmounts[Field.CURRENCY_A]}
@@ -1132,7 +1135,7 @@ function AddLiquidity() {
                       onUserInput={onFieldBInput}
                       onMax={() => {
                         onFieldBInput(
-                          maxAmounts[Field.CURRENCY_B]?.toExact() ?? ""
+                          maxAmounts[Field.CURRENCY_B]?.toExact() ?? "",
                         );
                       }}
                       showMaxButton={!atMaxAmounts[Field.CURRENCY_B]}

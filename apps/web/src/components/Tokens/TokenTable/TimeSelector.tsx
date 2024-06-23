@@ -93,6 +93,8 @@ export default function TimeSelector() {
         dataTestId="time-selector"
         buttonCss={css`
           height: 40px;
+          background: #1c1924 !important;
+
         `}
         menuFlyoutCss={StyledMenuFlyout}
       />

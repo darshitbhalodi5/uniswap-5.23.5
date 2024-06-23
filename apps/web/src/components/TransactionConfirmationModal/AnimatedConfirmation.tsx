@@ -26,8 +26,8 @@ const dashCheck = keyframes`
 const Circle = styled.circle`
   stroke-dasharray: 1000;
   stroke-dashoffset: 0;
-  -webkit-animation: ${dash} 0.9s ease-in-out;
-  animation: ${dash} 0.9s ease-in-out;
+  // -webkit-animation: ${dash} 0.9s ease-in-out;
+  // animation: ${dash} 0.9s ease-in-out;
 `
 
 const PolyLine = styled.polyline`
@@ -47,7 +47,7 @@ export default function AnimatedConfirmation({ className }: { className?: string
         <Circle
           className="path circle"
           fill="none"
-          stroke={theme.success}
+          stroke={'#9657EB'}
           strokeWidth="6"
           strokeMiterlimit="10"
           cx="65.1"
@@ -57,7 +57,7 @@ export default function AnimatedConfirmation({ className }: { className?: string
         <PolyLine
           className="path check"
           fill="none"
-          stroke={theme.success}
+          stroke={'#9657EB'}
           strokeWidth="6"
           strokeLinecap="round"
           strokeMiterlimit="10"

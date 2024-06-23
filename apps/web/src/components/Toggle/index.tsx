@@ -5,7 +5,7 @@ import styled, { keyframes } from "styled-components";
 const Wrapper = styled.button<{ isActive?: boolean; activeElement?: boolean }>`
   align-items: center;
   background: ${({ isActive, theme }) =>
-    isActive ? "#9657EB" : "transparent"};
+    isActive ? "#9657EB" : "black"};
   border: ${({ theme, isActive }) =>
     isActive ? "1px solid transparent" : `1px solid ${theme.surface3}`};
   border-radius: 20px;
@@ -64,10 +64,7 @@ const ToggleElement = styled.span<{
   background: white;
   border-radius: 50%;
   height: 24px;
-  :hover {
-    ${({ bgColor, theme, isActive }) =>
-      ToggleElementHoverStyle(!!bgColor, theme, isActive)}
-  }
+  
   margin-left: ${({ isActive }) => isActive && "2.2em"};
   margin-right: ${({ isActive }) => !isActive && "2.2em"};
   width: 24px;

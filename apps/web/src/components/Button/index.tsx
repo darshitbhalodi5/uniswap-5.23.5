@@ -139,10 +139,10 @@ export const ButtonGray = styled(BaseButton)`
   background-color: #1c1924;
   color: ${({ theme }) => theme.neutral1};
   border: 1px solid ${({ theme }) => theme.surface3};
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 535;
   border-radius: 8px;
-  padding: 4px;
+  padding: 4px 10px;
 
   &:hover {
     background-color: ${({ theme, disabled }) =>
@@ -186,12 +186,12 @@ export const ButtonOutlined = styled(BaseButton)`
   border: none;
   line-height: 12px;
   border-radius: 7px;
-  background: transparent;
+  background: #1c1924;
   color: ${({ theme }) => theme.neutral1};
   &:focus {
   }
   &:hover {
-    border: 1px solid white;
+    border: 1px solid #ffffff38;
   }
   &:active {
   }
@@ -208,9 +208,6 @@ export const ButtonEmpty = styled(BaseButton)`
   justify-content: center;
   align-items: center;
 
-  &:focus {
-    text-decoration: underline;
-  }
   &:hover {
     text-decoration: none;
   }
@@ -228,15 +225,11 @@ export const ButtonText = styled(BaseButton)`
   width: fit-content;
   background: none;
   text-decoration: none;
-  &:focus {
-    text-decoration: underline;
-  }
+  
   &:hover {
     opacity: 0.9;
   }
-  &:active {
-    text-decoration: underline;
-  }
+
   &:disabled {
     opacity: 50%;
     cursor: auto;

@@ -5,7 +5,7 @@ import { ArrowUpCircle, X } from 'react-feather'
 import styled, { useTheme } from 'styled-components'
 import { CustomLightSpinner, ExternalLink, ThemedText } from 'theme/components'
 
-import Circle from '../../assets/images/blue-loader.svg'
+import Circle from '../../assets/images/circle.gif'
 import { useQueueCallback } from '../../state/governance/hooks'
 import { ExplorerDataType, getExplorerLink } from '../../utils/getExplorerLink'
 import { ButtonPrimary } from '../Button'

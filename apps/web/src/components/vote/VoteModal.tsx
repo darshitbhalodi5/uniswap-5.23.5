@@ -6,7 +6,7 @@ import styled, { useTheme } from 'styled-components'
 import { CustomLightSpinner, ExternalLink, ThemedText } from 'theme/components'
 import { formatCurrencyAmount } from 'utils/formatCurrencyAmount'
 
-import Circle from '../../assets/images/blue-loader.svg'
+import Circle from '../../assets/images/circle.gif'
 import { useUserVotes, useVoteCallback } from '../../state/governance/hooks'
 import { VoteOption } from '../../state/governance/types'
 import { ExplorerDataType, getExplorerLink } from '../../utils/getExplorerLink'

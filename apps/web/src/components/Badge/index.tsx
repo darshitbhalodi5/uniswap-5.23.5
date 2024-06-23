@@ -82,17 +82,13 @@ function pickFontColor(
 const Badge = styled.div<PropsWithChildren<BadgeProps>>`
   align-items: center;
   background: ${({ theme, variant }) => pickBackgroundColor(variant, theme)};
-  border: ${({ theme, variant }) => pickBorder(variant, theme)};
+  border: 1px solid ${({ theme }) => theme.surface3};
   border-radius: 0.5rem;
   color: ${({ theme, variant }) => pickFontColor(variant, theme)};
   display: inline-flex;
   padding: 4px 6px;
   justify-content: center;
   font-weight: 535;
-
-  &:hover {
-    border: 1px solid ${({ theme }) => theme.surface3};
-  }
 `;
 
 export default Badge;

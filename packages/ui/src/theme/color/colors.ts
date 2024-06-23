@@ -210,7 +210,7 @@ const sporeDark = {
   neutral3: "#5E5E5E",
 
   accent1: "#FC72FF",
-  accent2: "#311C31",
+  accent2: "#000000",
 
   accentSoft: "#FC72FF33", //33 = 20%
 

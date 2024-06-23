@@ -32,6 +32,7 @@ const Tag = styled(Badge)`
 `
 const StyledButton = css`
   height: 40px;
+  background: #1c1924 !important;
 `
 const StyledMenuFlyout = css`
   max-height: 350px;

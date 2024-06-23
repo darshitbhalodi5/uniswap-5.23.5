@@ -28,6 +28,10 @@ export const BreadcrumbNavLink = styled(Link)`
   color: ${({ theme }) => theme.neutral2};
   transition-duration: ${({ theme }) => theme.transition.duration.fast};
   text-decoration: none;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0) rgba(222, 255, 2, 0.35) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+  border-image: initial;
 
   &:hover {
     color: #e9e002;

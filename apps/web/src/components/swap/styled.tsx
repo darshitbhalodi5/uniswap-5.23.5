@@ -167,6 +167,7 @@ export const SwapSection = styled.div`
     height: 100%;
     pointer-events: none;
     content: "";
+    border: 1px solid ${({ theme }) => theme.surface2};
   }
   &:hover:before {
     border-color: ${({ theme }) => theme.deprecated_stateOverlayHover};

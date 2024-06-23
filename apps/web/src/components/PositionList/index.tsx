@@ -8,6 +8,7 @@ import { PositionDetails } from 'types/position'
 const DesktopHeader = styled.div`
   display: none;
   font-size: 14px;
+  background: #9657EB;
   padding: 16px;
   border-bottom: 1px solid ${({ theme }) => theme.surface3};
 

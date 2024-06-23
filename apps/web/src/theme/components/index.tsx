@@ -47,9 +47,6 @@ export const ButtonText = styled.button`
     opacity: ${({ theme }) => theme.opacity.hover};
   }
 
-  :focus {
-    text-decoration: underline;
-  }
 `;
 
 export const EllipsisStyle = css`
@@ -64,10 +61,6 @@ export const ClickableStyle = css`
   cursor: pointer;
   transition-duration: ${({ theme }) => theme.transition.duration.fast};
 
-  :hover {
-  }
-  :active {
-  }
 `;
 
 export const CloseIcon = styled(X)<{ onClick: () => void }>`
@@ -80,6 +73,9 @@ const LinkStyle = css`
   color: ${({ theme }) => theme.accent1};
   stroke: ${({ theme }) => theme.accent1};
   font-weight: 500;
+  :hover{
+    color:#E9E002;
+  }
 `;
 
 // An internal link from the react-router-dom library that is correctly styled
@@ -100,6 +96,7 @@ const CopyIcon = styled(Copy)`
   ${LinkStyle}
   stroke: ${({ theme }) => theme.accent1};
 `;
+
 
 const rotateImg = keyframes`
   0% {
@@ -381,12 +378,12 @@ const SpinnerCss = css`
 `;
 
 const Spinner = styled.img`
-  ${SpinnerCss}
+ 
   width: 16px;
   height: 16px;
 `;
 export const SpinnerSVG = styled.svg`
-  ${SpinnerCss}
+  
 `;
 
 const BackArrowIcon = styled(ArrowLeft)`

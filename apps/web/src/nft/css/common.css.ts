@@ -61,17 +61,18 @@ export const buttonTextSmall = sprinkles({
 const magicalGradient = style({
   selectors: {
     "&::before": {
-      content: "",
-      position: "absolute",
-      inset: "-1px",
-      WebkitMask:
-        "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);",
-      WebkitMaskComposite: "xor;",
-      maskComposite: "exclude",
-      borderStyle: "solid",
-      borderWidth: "1px",
-      borderRadius: "inherit",
-      pointerEvents: "none",
+      content: '',
+      position: 'absolute',
+      inset: '-1px',
+      background: 'linear-gradient(45deg, #e9e00278 0%, #e9e00252 100.13%) border-box',
+      borderColor: 'transparent',
+      WebkitMask: 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);',
+      WebkitMaskComposite: 'xor;',
+      maskComposite: 'exclude',
+      borderStyle: 'solid',
+      borderWidth: '1px',
+      borderRadius: 'inherit',
+      pointerEvents: 'none',
     },
   },
 });
