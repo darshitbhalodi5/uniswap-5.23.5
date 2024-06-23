@@ -80,6 +80,8 @@
   -webkit-box-align: center;
   align-items: center;
   margin: 0px auto 24px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
 }
 .head .table {
   width: 100%;
@@ -94,16 +96,15 @@
 .content .table {
   overflow-x: auto;
   overscroll-behavior-x: none;
-  background-color: #18151f;
   width: fit-content;
   /* display: flex; */
   min-width: 100%;
   min-height: 55px;
   position: relative;
-margin-bottom: 2px;
+  margin-bottom: 2px;
   scrollbar-width: none;
 }
-.content .table:hover  {
+.content .row:hover {
   background: #ffffff12;
 }
 .head {
@@ -111,8 +112,8 @@ margin-bottom: 2px;
   position: sticky;
 }
 .content {
-  height: 275px;
-  overflow-y: scroll; 
+  height: 420px;
+  overflow-y: scroll;
   width: 100%;
   position: relative;
   /* overflow-x: auto; */
@@ -173,7 +174,8 @@ margin-bottom: 2px;
   justify-content: flex-start;
   -webkit-box-align: center;
   align-items: center;
-
+  font-weight: 300;
+  font-size: 16px;
   overflow: hidden;
   padding: 12px 8px;
 }
@@ -181,6 +183,8 @@ margin-bottom: 2px;
   min-width: 276px;
   flex: 1 1 0%;
   display: flex;
+  font-weight: 300;
+  font-size: 16px;
   -webkit-box-pack: start;
   justify-content: flex-start;
   -webkit-box-align: center;
@@ -192,6 +196,8 @@ margin-bottom: 2px;
 .column30 {
   min-width: 125px;
   flex: 0 1 0%;
+  font-weight: 300;
+  font-size: 16px;
   display: flex;
   -webkit-box-pack: end;
   justify-content: flex-end;
@@ -204,6 +210,8 @@ margin-bottom: 2px;
 .column40 {
   min-width: 200px;
   flex: 0 1 0%;
+  font-weight: 300;
+  font-size: 16px;
   display: flex;
   -webkit-box-pack: end;
   justify-content: flex-end;
@@ -216,6 +224,8 @@ margin-bottom: 2px;
 .column50 {
   min-width: 200px;
   flex: 0 1 0%;
+  font-weight: 300;
+  font-size: 16px;
   display: flex;
   -webkit-box-pack: end;
   justify-content: flex-end;
@@ -229,6 +239,8 @@ margin-bottom: 2px;
   min-width: 150px;
   flex: 0 1 0%;
   display: flex;
+  font-weight: 300;
+  font-size: 16px;
   -webkit-box-pack: end;
   justify-content: flex-end;
   -webkit-box-align: center;
@@ -336,10 +348,9 @@ margin-bottom: 2px;
   overflow: auto;
   width: unset;
   /* min-height: 52px; */
-
   scrollbar-width: none;
   overscroll-behavior: none;
-  /* padding: 0px 12px; */
+  padding: 0px 12px;
   width: fit-content;
   min-width: 100%;
   display: flex;
@@ -349,12 +360,13 @@ margin-bottom: 2px;
 .content .row {
   width: 100%;
   display: flex;
-  min-height: 50px;
+  min-height: 55px;
   position: relative;
-
+  background-color: #18151f;
+  margin-bottom: 5px;
+  padding: 0px 12px;
   scrollbar-width: none;
 }
-
 
 /* loader */
 .loader {
@@ -378,84 +390,38 @@ margin-bottom: 2px;
 }
 
 @media screen and (max-width: 768px) and (min-width: 500px) {
-  .poolList {
-    width: 90%;
+  .tablediv {
+    overflow: auto;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    margin: 0px auto 24px;
   }
-  .text h3 {
-    font-size: 3.2vw;
-  }
-  .text p,
-  .total h4 {
-    font-size: 1.2vw;
-  }
-  .total p {
-    font-size: 2vw;
-  }
-  .button {
-    font-size: 2vw;
-  }
-  .left {
-    width: 60%;
-  }
-  .head .column1,
-  .head .column2,
-  .head .column3 .head .column4 {
-    font-weight: 700;
-    font-size: 1.4vw;
-  }
-  .column1,
-  .column2,
-  .column3 .column4 {
-    font-size: 1.4vw;
+  .head .table {
+    width: 100%;
+    top: 73px;
+    position: sticky;
+    z-index: 990;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 }
-@media screen and (max-width: 500px) {
-  .poolList {
-    width: 95%;
-    border-radius: 30px;
+
+@media screen and (max-width: 425px) {
+  .head .table {
+    width: 100%;
+    top: 73px;
+    position: sticky;
+
+    z-index: 990;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
-  .upperPart,
   .tablediv {
-    width: 95%;
-  }
-  .text h3 {
-    font-size: 3.5vw;
-  }
-  .text p,
-  .total h4 {
-    font-size: 1.4vw;
-  }
-  .total p {
-    font-size: 2.2vw;
-  }
-  .button {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    font-size: 2.2vw;
-  }
-  .left {
-    width: 70%;
-  }
-  .head .column1,
-  .head .column2,
-  .head .column3 .head .column4 {
-    font-weight: 700;
-    font-size: 2vw;
-  }
-  .column1 {
-    font-size: 2vw;
-    width: 25vw;
-  }
-  .column2 {
-    width: 20vw;
-    font-size: 2vw;
-  }
-  .column3 {
-    font-size: 2vw;
-    width: 25vw;
-  }
-  .column4 {
-    font-size: 2vw;
-    width: 25vw;
+    overflow: auto;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    margin: 0px auto 24px;
   }
 }

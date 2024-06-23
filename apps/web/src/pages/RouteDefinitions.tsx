@@ -5,7 +5,7 @@ import { matchPath, Navigate, useLocation } from "react-router-dom";
 import { shouldDisableNFTRoutesAtom } from "state/application/atoms";
 import { SpinnerSVG } from "theme/components";
 import { isBrowserRouterEnabled } from "utils/env";
-
+import Unsupported from "./Unsupported";
 import { getDefaultTokensTitle } from "./getDefaultTokensTitle";
 import { getExploreTitle } from "./getExploreTitle";
 // High-traffic pages (index and /swap) should not be lazy-loaded.
@@ -178,6 +178,11 @@ export const routes: RouteDefinition[] = [
     path: "/swap",
     getElement: () => <Swap />,
     getTitle: () => SwapTitle,
+  }),
+  createRouteDefinition({
+    path: "/unsupported",
+    getElement: () => <Unsupported />,
+    getTitle: () => t`Connect with supported chain`,
   }),
 
   createRouteDefinition({

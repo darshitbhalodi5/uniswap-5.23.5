@@ -1,114 +1,83 @@
 import React, { useEffect, useState } from "react";
 import allpool from "./allpool.module.css";
-import { Link } from "react-router-dom";
 import axios from "axios";
-import styled from "styled-components";
-import { ArrowChangeDown } from "components/Icons/ArrowChangeDown";
+import { GRAPH_ENDPOINT } from "constants/lists";
+import { Tooltip, Button } from "@nextui-org/react";
 
-const StyledDownArrow = styled(ArrowChangeDown)<{ $noColor?: boolean }>`
-  color: ${({ theme, $noColor }) =>
-    $noColor ? theme.neutral2 : theme.critical};
-`;
+// Define the types for the data
+interface TokenDayData {
+  volumeUSD: string;
+  date: number;
+  priceUSD: string;
+}
 
+interface Token {
+  id: string;
+  name: string;
+  symbol: string;
+  totalSupply: string;
+  derivedETH: string;
+  tokenDayData: TokenDayData[];
+}
+
+// Helper function to format large numbers
+const formatLargeNumber = (num: number): string => {
+  if (num >= 1e6) {
+    return (num / 1e6).toFixed(2) + "M";
+  }
+  if (num >= 1e3) {
+    return (num / 1e3).toFixed(2) + "K";
+  }
+  return num.toFixed(2);
+};
+
+// Component
 export function TokenTable() {
-  //   const [poolData, setPoolData] = useState([]);
-  //   const [totalTVL, setTotalTVL] = useState<number>();
-  //   const getPoolDetails = async () => {
-  //     // ETH price in dollar
-  //     const api_url = process.env.REACT_APP_ETHAPIURL;
-  //     let ethPriceDollar: number;
-  //     if (api_url) {
-  //       const response = await fetch(api_url);
-  //       const ethPrice = await response.json();
-  //       ethPriceDollar = ethPrice.USD;
-  //     }
-  //     const graphURL =
-  //       "https://api.goldsky.com/api/public/project_clth71vucl2l701uu07ha0im7/subgraphs/udonswap/0.0.1/gn";
-  //     const poolQuery = `
-  //     query MyQuery {
-  //       pairs(first: 100) {
-  //         id
-  //         token1 {
-  //           name
-  //           symbol
-  //           derivedETH
-  //         }
-  //         token0 {
-  //           name
-  //           symbol
-  //           derivedETH
-  //         }
-  //         reserve0
-  //         reserve1
-  //       }
-  //     }`;
-  //     axios({
-  //       url: graphURL,
-  //       method: "post",
-  //       data: {
-  //         query: poolQuery,
-  //       },
-  //     }).then(async (result) => {
-  //       // Changed to async
-  //       const data = result.data.data.pairs;
-  //       let addTVL = 0;
-  //       // Calculate TVL price in dollar
-  //       for (let i = 0; i < data.length; i++) {
-  //         const token0InEth = data[i].reserve0 * data[i].token0.derivedETH;
-  //         const token1InEth = data[i].reserve1 * data[i].token1.derivedETH;
-  //         const TVL = (token0InEth + token1InEth) * ethPriceDollar;
-  //         data[i]["TVL"] = TVL;
-  //         addTVL += TVL;
-  //       }
-  //       setTotalTVL(addTVL);
-  //       // Get the daily volume
-  //       const sevenDaysEpoch = 604800;
-  //       const currentTimestamp = Math.floor(Date.now() / 1000);
-  //       const time = currentTimestamp - sevenDaysEpoch;
+  const [tokens, setTokens] = useState<Token[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  //       // Fetch volume data for each pair asynchronously
-  //       await Promise.all(
-  //         data.map(async (pair: any, j: number) => {
-  //           const dailyVolumeQuery = `
-  //           query MyQuery{
-  //             pairDayDatas(where: {date_gte: ${time}, pairAddress: "${pair.id}"}){
-  //               dailyVolumeToken0
-  //               dailyVolumeToken1
-  //               reserve0
-  //               reserve1
-  //             }
-  //           }`;
-  //           const result = await axios({
-  //             url: graphURL,
-  //             method: "post",
-  //             data: {
-  //               query: dailyVolumeQuery,
-  //             },
-  //           });
-  //           const volumeData = result.data.data.pairDayDatas;
+  useEffect(() => {
+    const fetchTokens = async () => {
+      try {
+        const response = await axios.post(GRAPH_ENDPOINT, {
+          query: `
+              {
+                tokens(first: 25, orderDirection: desc, orderBy: volumeUSD) {
+                  id
+                  name
+                  symbol
+                  totalSupply
+                  derivedETH
+                  tokenDayData(first: 7, orderBy: date, orderDirection: desc) {
+                    volumeUSD
+                    date
+                    priceUSD
+                  }
+                }
+              }
+            `,
+        });
+        setTokens(response.data.data.tokens);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching token data: ", error);
+        setLoading(false);
+      }
+    };
 
-  //           let volumeToken0 = 0;
-  //           let volumeToken1 = 0;
-  //           for (let k = 0; k < volumeData.length; k++) {
-  //             volumeToken0 += Number(volumeData[k].dailyVolumeToken0);
-  //             volumeToken1 += Number(volumeData[k].dailyVolumeToken1);
-  //           }
+    fetchTokens();
+  }, []);
 
-  //           const volumeToken0Eth = volumeToken0 * Number(pair.token0.derivedETH);
-  //           const volumeToken1Eth = volumeToken1 * Number(pair.token1.derivedETH);
-  //           const volumeTokenDollar =
-  //             (volumeToken0Eth + volumeToken1Eth) * ethPriceDollar;
-  //           pair["volume7d"] = volumeTokenDollar;
-  //         }),
-  //       );
-  //       console.log(data);
-  //       setPoolData(data);
-  //     });
-  //   };
-
-  //   useEffect(() => {
-  //     getPoolDetails();
-  //   }, []);
+  const calculatePercentageChange = (
+    current: number,
+    previous: number
+  ): string => {
+    if (previous === 0) {
+      return "N/A"; // Avoid division by zero
+    }
+    const change = ((current - previous) / previous) * 100;
+    return change.toFixed(2) + "%";
+  };
 
   return (
     <div className="">
@@ -118,69 +87,81 @@ export function TokenTable() {
             <thead>
               <tr className={allpool.row}>
                 <th className={allpool.column1}>#</th>
+
                 <th className={allpool.column2}>Token name</th>
-                <th className={allpool.column3}>Price</th>
-                <th className={allpool.column4}>1 hour</th>
-                <th className={allpool.column5}>1 day</th>
-                <th className={allpool.column6}>FDV</th>
-                <th className={allpool.column7}>Volume</th>
+                <th className={allpool.column3}>Price (USD)</th>
+                <th className={allpool.column4}>1 day</th>
+                <th className={allpool.column5}>7 days</th>
+
+                <th className={allpool.column6}>FDV (USD) </th>
+
+                <th className={allpool.column7}>1d Volume (USD)</th>
               </tr>
             </thead>
           </table>
         </div>
         <div className={allpool.content}>
-          <table className={allpool.table}>
-            <tbody>
-              <tr className={allpool.row}>
-                <td className={allpool.column1}>1</td>
-                <td className={allpool.column2}>token/symbol</td>
-                <td className={allpool.column3}>757587098</td>
-                <td className={allpool.column4}>7856846575</td>
-                <td className={allpool.column5}>0857789</td>
-                <td className={allpool.column6}>0857789</td>
-                <td className={allpool.column7}>0857789</td>
-              </tr>
-            </tbody>
-          </table>
-          <table className={allpool.table}>
-            <tbody>
-              <tr className={allpool.row}>
-                <td className={allpool.column1}>1</td>
-                <td className={allpool.column2}>token/symbol</td>
-                <td className={allpool.column3}>757587098</td>
-                <td className={allpool.column4}>7856846575</td>
-                <td className={allpool.column5}>0857789</td>
-                <td className={allpool.column6}>0857789</td>
-                <td className={allpool.column7}>0857789</td>
-              </tr>
-            </tbody>
-          </table>
-          {/* <table className={allpool.table}>
-            <tbody>
-              {poolData?.length > 0 ? (
-                poolData.map((token, index) => (
-                  <tr className={allpool.row} key={index}>
-                    <td className={allpool.column1}>
-                      {token["token0"]["symbol"]}-{token["token1"]["symbol"]}
-                    </td>
-                    <td className={allpool.column2}>
-                      $ {parseFloat(token["TVL"]).toFixed(3)}
-                    </td>
-                    <td className={allpool.column3}>
-                      $ {parseFloat(token["volume7d"]).toFixed(3)}
-                    </td>
-                    <td className={allpool.column4}>
-                      ${token["volume7d"] * 0.03}
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <div style={{ textAlign: "center" }}>
-                  <span className={allpool.loader}></span>
-                </div>
-              )}
-            </tbody>
-          </table> */}
+          {loading ? (
+            <div style={{ textAlign: "center" }}>
+              <span className={allpool.loader}></span>
+            </div>
+          ) : (
+            <table className={allpool.table}>
+              <tbody>
+                {tokens.map((token, index) => {
+                  const currentPriceUSD = parseFloat(
+                    token.tokenDayData[0].priceUSD
+                  );
+                  const fdv = currentPriceUSD * parseFloat(token.totalSupply);
+
+                  // 1 day change
+
+                  console.log("token:", token);
+                  const previousDayPriceUSD = token.tokenDayData[1]
+                    ? parseFloat(token.tokenDayData[1].priceUSD)
+                    : 0;
+                  const oneDayChange = calculatePercentageChange(
+                    currentPriceUSD,
+                    previousDayPriceUSD
+                  );
+
+                  // 7 days change
+                  const sevenDayPriceUSD = token.tokenDayData[6]
+                    ? parseFloat(token.tokenDayData[6].priceUSD)
+                    : 0;
+                  const sevenDayChange = calculatePercentageChange(
+                    currentPriceUSD,
+                    sevenDayPriceUSD
+                  );
+
+                  // Latest volume
+                  const latestVolume = parseFloat(
+                    token.tokenDayData[0].volumeUSD
+                  );
+
+                  return (
+                    <tr className={allpool.row} key={token.id}>
+                      <td className={allpool.column1}>{index + 1}</td>
+                      <td className={allpool.column2}>
+                        {token.name} ({token.symbol})
+                      </td>
+                      <td className={allpool.column3}>
+                        ${currentPriceUSD.toFixed(2)}
+                      </td>
+                      <td className={allpool.column4}>{oneDayChange}</td>
+                      <td className={allpool.column5}>{sevenDayChange}</td>
+                      <td className={allpool.column6}>
+                        ${formatLargeNumber(fdv)}
+                      </td>
+                      <td className={allpool.column7}>
+                        ${formatLargeNumber(latestVolume)}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
     </div>
