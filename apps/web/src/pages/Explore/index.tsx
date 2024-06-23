@@ -5,9 +5,9 @@ import {
   SharedEventName,
 } from "@uniswap/analytics-events";
 import { Trace, TraceEvent } from "analytics";
-import { TopPoolTable } from "components/Pools/PoolTable/PoolTable";
+import { PoolTable } from "components/Pools/PoolV3/PoolTable";
 import { AutoRow } from "components/Row";
-import { TopTokensTable } from "components/Tokens/TokenTable";
+import { TokenTable } from "components/Tokens/TokenV3/TokenTable";
 import NetworkFilter from "components/Tokens/TokenTable/NetworkFilter";
 import SearchBar from "components/Tokens/TokenTable/SearchBar";
 import TimeSelector from "components/Tokens/TokenTable/TimeSelector";
@@ -18,7 +18,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { StyledInternalLink, ThemedText } from "theme/components";
-
+import "./tables/table.css";
 import { manualChainOutageAtom } from "featureFlags/flags/outageBanner";
 import {
   getTokenExploreURL,
@@ -29,7 +29,7 @@ import { useOnGlobalChainSwitch } from "hooks/useGlobalChainSwitch";
 import { useResetAtom } from "jotai/utils";
 import { Chain } from "uniswap/src/data/graphql/uniswap-data-api/__generated__/types-and-hooks";
 import { useExploreParams } from "./redirects";
-import RecentTransactions from "./tables/RecentTransactions";
+import { Transaction } from "./tables/Transaction";
 
 const ExploreContainer = styled.div`
   width: 100%;
@@ -101,19 +101,19 @@ const Pages: Array<Page> = [
   {
     title: <Trans>Tokens</Trans>,
     key: ExploreTab.Tokens,
-    component: TopTokensTable,
+    component: TokenTable,
     loggingElementName: InterfaceElementName.EXPLORE_TOKENS_TAB,
   },
   {
     title: <Trans>Pools</Trans>,
     key: ExploreTab.Pools,
-    component: TopPoolTable,
+    component: PoolTable,
     loggingElementName: InterfaceElementName.EXPLORE_POOLS_TAB,
   },
   {
     title: <Trans>Transactions</Trans>,
     key: ExploreTab.Transactions,
-    component: RecentTransactions,
+    component: Transaction,
     loggingElementName: InterfaceElementName.EXPLORE_TRANSACTIONS_TAB,
   },
 ];
@@ -165,8 +165,8 @@ const Explore = ({ initialTab }: { initialTab?: ExploreTab }) => {
           navigate(getTokenExploreURL({ tab, chain }));
         }
       },
-      [navigate, tab]
-    )
+      [navigate, tab],
+    ),
   );
 
   return (
@@ -176,7 +176,36 @@ const Explore = ({ initialTab }: { initialTab?: ExploreTab }) => {
       shouldLogImpression
     >
       <ExploreContainer>
-        <ExploreChartsSection />
+        {/* <ExploreChartsSection /> */}
+        <section className="explorMain">
+          <div className="exploreDiv">
+            <div className="exFlex">
+              <div className="mainFlex">
+                <h1 style={{ margin: "0" }}>EARN WITH YOUR LIQUIDITY</h1>
+                <div className="flexDiv">
+                  <div className="flexDiv1">
+                    <div style={{ fontSize: "18px" }}>Udonswap volume</div>
+                    <div style={{ fontSize: "32px" }}>$103.69m</div>
+                  </div>
+                  <div className="flexDiv1">
+                    <div style={{ fontSize: "18px" }}>Udonswap TVL</div>
+                    <div style={{ fontSize: "32px" }}>$539.72m</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flexbtn">
+                <a>
+                  <button>View Existing Pools ↓</button>
+                </a>
+                <span>or</span>
+                <a>
+                  <button>Create Your Position Now! →</button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
         <NavWrapper ref={tabNavRef}>
           <TabBar data-testid="explore-navbar">
             {Pages.map(({ title, loggingElementName, key }, index) => {
@@ -209,10 +238,8 @@ const Explore = ({ initialTab }: { initialTab?: ExploreTab }) => {
           </TabBar>
           <FiltersContainer>
             <NetworkFilter />
-            {currentKey === ExploreTab.Tokens && <TimeSelector />}
-            {currentKey !== ExploreTab.Transactions && (
-              <SearchBar tab={currentKey} />
-            )}
+            <TimeSelector />
+            <SearchBar />
           </FiltersContainer>
         </NavWrapper>
         <Page />

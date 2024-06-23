@@ -16,12 +16,13 @@ const Collection = lazy(() => import("nft/pages/collection"));
 const Profile = lazy(() => import("nft/pages/profile"));
 const Asset = lazy(() => import("nft/pages/asset/Asset"));
 const AddLiquidityWithTokenRedirects = lazy(
-  () => import("pages/AddLiquidity/redirects")
+  () => import("pages/AddLiquidity/redirects"),
 );
 const AddLiquidityV2WithTokenRedirects = lazy(
-  () => import("pages/AddLiquidityV2/redirects")
+  () => import("pages/AddLiquidityV2/redirects"),
 );
 const RedirectExplore = lazy(() => import("pages/Explore/redirects"));
+
 const MigrateV2 = lazy(() => import("pages/MigrateV2"));
 const MigrateV2Pair = lazy(() => import("pages/MigrateV2/MigrateV2Pair"));
 const NotFound = lazy(() => import("pages/NotFound"));
@@ -73,7 +74,7 @@ export function useRouterConfig(): RouterConfig {
       hash,
       shouldDisableNFTRoutes: Boolean(shouldDisableNFTRoutes),
     }),
-    [browserRouterEnabled, hash, shouldDisableNFTRoutes]
+    [browserRouterEnabled, hash, shouldDisableNFTRoutes],
   );
 }
 
@@ -87,7 +88,7 @@ export interface RouteDefinition {
 
 // Assigns the defaults to the route definition.
 function createRouteDefinition(
-  route: Partial<RouteDefinition>
+  route: Partial<RouteDefinition>,
 ): RouteDefinition {
   return {
     getElement: () => null,
@@ -115,6 +116,7 @@ export const routes: RouteDefinition[] = [
     nestedPaths: [":tab", ":chainName", ":tab/:chainName"],
     getElement: () => <RedirectExplore />,
   }),
+
   createRouteDefinition({
     path: "/explore/tokens/:chainName/:tokenAddress",
     getTitle: () => t`Buy & sell on UdonSwap`,
@@ -177,7 +179,7 @@ export const routes: RouteDefinition[] = [
     getElement: () => <Swap />,
     getTitle: () => SwapTitle,
   }),
- 
+
   createRouteDefinition({
     path: "/pool",
     getElement: () => <Pool />,
@@ -209,7 +211,7 @@ export const routes: RouteDefinition[] = [
     getElement: () => <AddLiquidityWithTokenRedirects />,
     getTitle: () => t`Provide liquidity to pools on UdonSwap`,
   }),
- 
+
   createRouteDefinition({
     path: "/remove/:tokenId",
     getElement: () => <RemoveLiquidityV3 />,
@@ -230,7 +232,7 @@ export const findRouteByPath = (pathname: string) => {
       return route;
     }
     const subPaths = route.nestedPaths.map(
-      (nestedPath) => `${route.path}/${nestedPath}`
+      (nestedPath) => `${route.path}/${nestedPath}`,
     );
     for (const subPath of subPaths) {
       const match = matchPath(subPath, pathname);

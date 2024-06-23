@@ -76,10 +76,11 @@ interface TokenTableValue {
 function TokenDescription({ token }: { token: TopToken }) {
   return (
     <Row gap="sm">
-      <QueryTokenLogo token={token} size="28px" />
-      <NameText data-testid="token-name">{token?.name}</NameText>
+      {/* <QueryTokenLogo token={} size="28px" /> */}
+      <div>LOGO</div>
+      <NameText data-testid="token-name">ETH</NameText>
       <ThemedText.BodySecondary style={{ minWidth: "fit-content" }}>
-        {token?.symbol}
+        SYMBOL
       </ThemedText.BodySecondary>
     </Row>
   );
@@ -190,14 +191,14 @@ function TokenTable({
   const tokenTableValues: TokenTableValue[] | undefined = useMemo(
     () =>
       tokens?.map((token, i) => {
-        const delta1hr = token?.market?.pricePercentChange1Hour?.value;
-        const delta1d = token?.market?.pricePercentChange1Day?.value;
-        const tokenSortIndex = tokenSortRank[token?.address ?? NATIVE_CHAIN_ID];
+        const delta1hr = 7;
+        const delta1d = 11;
+        const tokenSortIndex = 1;
 
         return {
           index: tokenSortIndex,
           tokenDescription: <TokenDescription token={token} />,
-          price: token?.market?.price?.value ?? 0,
+          price: 400,
           testId: `token-table-row-${token?.address}`,
           percentChange1hr: (
             <>
@@ -211,8 +212,8 @@ function TokenTable({
               <DeltaText delta={delta1d}>{formatDelta(delta1d)}</DeltaText>
             </>
           ),
-          fdv: token?.project?.markets?.[0]?.fullyDilutedValuation?.value ?? 0,
-          volume: token?.market?.volume?.value ?? 0,
+          fdv: 87865,
+          volume: 6865,
           sparkline: (
             <SparklineContainer>
               <ParentSize>
@@ -222,9 +223,7 @@ function TokenTable({
                       width={width}
                       height={height}
                       tokenData={token}
-                      pricePercentChange={
-                        token?.market?.pricePercentChange?.value
-                      }
+                      pricePercentChange={99}
                       sparklineMap={sparklines}
                     />
                   )
@@ -260,7 +259,7 @@ function TokenTable({
       timePeriod,
       tokenSortRank,
       tokens,
-    ]
+    ],
   );
 
   const showLoadingSkeleton = loading || !!error;

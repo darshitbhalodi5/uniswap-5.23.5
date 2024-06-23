@@ -141,9 +141,7 @@ const Navbar = ({ blur }: { blur: boolean }) => {
               />
             </Box>
 
-            <Row
-              display={{ sm: "none", lg: "flex" }}
-            >
+            <Row display={{ sm: "none", lg: "flex" }}>
               <PageTabs />
             </Row>
           </Box>
