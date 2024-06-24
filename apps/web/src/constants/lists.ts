@@ -2,9 +2,9 @@ export const UNI_LIST = "https://tokenlist-api.vercel.app/v3-tokens";
 export const GRAPH_ENDPOINT =
   "https://api.goldsky.com/api/public/project_clvqb3g2poub601xzgkzc9oxs/subgraphs/udonswap-v3/1/gn";
 export const UNI_EXTENDED_LIST =
-  "https://cloudflare-ipfs.com/ipns/extendedtokens.uniswap.org";
+  "https://tokenlist-api.vercel.app/v3-tokens";
 const UNI_UNSUPPORTED_LIST =
-  "https://cloudflare-ipfs.com/ipns/unsupportedtokens.uniswap.org";
+  "https://unsupported-token-list.vercel.app/unsupported-tokens";
 const AAVE_LIST = "tokenlist.aave.eth";
 const BA_LIST =
   "https://raw.githubusercontent.com/The-Blockchain-Association/sec-notice-list/master/ba-sec-list.json";
