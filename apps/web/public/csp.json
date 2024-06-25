@@ -108,7 +108,8 @@
     "https://api.goldsky.com/api/public/project_clvqb3g2poub601xzgkzc9oxs/subgraphs/udonswap-v3/1/gn",
     "https://sepolia.explorer.mode.network/",
     "https://api.coingecko.com/",
-    "https://tokenlist-api.vercel.app"  
+    "https://tokenlist-api.vercel.app",
+    "https://tokenlist-api.vercel.app/v3-tokens"  
   ],
   "workerSrc": ["'self'", "blob:"]
 }
